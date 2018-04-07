@@ -1,0 +1,2 @@
+# jottings
+preparatory code
