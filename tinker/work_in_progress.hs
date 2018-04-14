@@ -16,6 +16,16 @@ population = 3
 sided = 6
 target = 17
 
--- define type h as hit on a dice roll meeting or beating taget t
-
 -- basic unit of dice instructions
+-- contentious actions generate usVsThem values approximated to a force_ratio
+-- in a encounter list of
+-- force_ratio, population, sided, target
+
+encounter :: [Double]
+encounter = [0.5, 3, 20, 17]
+
+-- model of full range of force_ratio creates a list of litst
+
+model :: [[Double]]
+
+model = [[0.5, 3, 20, 17], [0.75, 3, 20, 18]]
