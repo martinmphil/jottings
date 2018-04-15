@@ -29,3 +29,9 @@ encounter = [0.5, 3, 20, 17]
 model :: [[Double]]
 
 model = [[0.5, 3, 20, 17], [0.75, 3, 20, 18]]
+
+-- putStrLn "Hello" >> putStrLn "world!"
+-- outputting strings
+-- main :: IO ()
+
+main = putStr "Roll under " >> print target
