@@ -1,35 +1,65 @@
-{-
-A player rolling equal to or under target number generates a hit
-  as apposed to a miss.
-Party succeeds if any player rolls a hit.
+{- martinmphil@gmail.com
+Theorical force_ratio is analagous to an Us-vs-Them ratio created by specfic user scenarios.
+Assuming: (i) the whole party succeeds if any player meets or beats a target number, and
+(ii) every participating player rolls one dice each and these rolled dice all have equal number of sides,
+derive force_ratio values for all possible dice comninations.
 
-NEXT I want to define
-sided as list
-encounters as a list [force_ratio population sided target]
+Given force-ratio "f" is a function of dice probability "p" in three domains
+"low" (ie pl and fl), "medium" (ie pm and fm), and "high" (ie ph and fh),
+"fl" is a function of "pl" in the domain {0≤"pl"≤0.5} and
+"fm" is a function of "pm" in the domain {0.5≤"pm"≤0.75} and
+"fh" is a function of "ph" in the domain {0.75≤"ph"≤1}
+where ("fl" < 1), and (1 ≤ "fm" ≤ 2), and ("fh" > 2),
+the following relatioships apply:
+fl = 2*fl
+fm = (4*pm)-1
+fh = 1/(2-2*ph)
 
+Game probabilities follow
+p(success) = 1 - p(all_miss)
+with populations of "n" particiapting players {n∈ℤ|1≤n≤9}.
+
+When rolling low succeeds,
+chances of a miss by rolling over target number t
+on a dice with s sides is (s-t)/s
+thus p(miss) = ((s-t)/s)
+and with "n" players all rolling the same type of polyhedral dice,
+p(all_miss) = (((s-t)/s)**n)
+therefore p(success) = 1 - (((s-t)/s)**n)
+
+When rolling high succeeds,
+chances of a miss by rolling under target number t
+on a dice with s sides is (t-1)/s
+thus p(miss) = ((t-1)/s)
+and with "n" players all rolling the same type of polyhedral dice,
+p(all_miss) = (((t-1)/s)**n)
+therefore p(success) = 1 - (((t-1)/s)**n)
 -}
+-- encounters as a list [force_ratio populations sided target]
+-- GOAL force_ratio :: Int -> Int -> Str
 
--- NEED to define type dice these as functions operating on lists
+-- range of possible player poplations
+popGen :: Int -> [Int]
+popGen maxPop = [1..maxPop]
+populations :: [Int]
+populations = popGen 9
+
+-- for each population 
+
+
+
+polyhedral :: [Int]
+polyhedral = [6, 8, 12, 20]
+
 force_ratio :: Double
-population, sided, target :: Int
 force_ratio = 0.5
-population = 3
+
+sided  :: Int
 sided = 6
+
+target :: Int
 target = 17
 
--- basic unit of dice instructions
--- contentious actions generate usVsThem values approximated to a force_ratio
--- in a encounter list of
--- force_ratio, population, sided, target
--- as a MIX of Int and Double
 
-encounter :: [Double]
-encounter = [0.5, 3, 20, 17]
--- model of full range of force_ratio creates a list of list
-model :: [[Double]]
-model = [[0.5, 3, 20, 17], [0.75, 3, 20, 18]]
 
--- putStrLn "Hello" >> putStrLn "world!"
--- outputting strings
--- main :: IO ()
 main = putStr "Roll under " >> print target
