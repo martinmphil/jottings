@@ -1,23 +1,24 @@
 /*
-  1. Get references to all the buttons on the page and sort them in an array.
-  2. Loop through all the buttons and add a click event listener to each one.
-
-  When any button is pressed, the createParagraph() function will be run.
+console.log(buttons.length)
 */
 
+// curry
+multicurry = (n) => ( (m) => n*m)
+
+triple = multicurry(3)
+
+let a = triple(4)
+
+const z = "output " + a
+
+let buttons = document.querySelectorAll('button')
+
+buttons[0].addEventListener('click', createPara)
+
 function createPara() {
-  var para = document.createElement('p');
-  para.textContent = 'you clicked';
-  document.body.appendChild(para);
+  let para = document.createElement('p')
+  para.textContent = z
+  document.body.appendChild(para)
 }
 
-var buttons = document.querySelectorAll('button');
-
-// Sanity check
-console.log(buttons.length)
-
-buttons[0].addEventListener('click', createPara);
-
-for (var i = 1; i < buttons.length; i++) {
-  buttons[i].addEventListener('click', createPara);
-}
+console.log(z)
