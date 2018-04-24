@@ -38,7 +38,6 @@ var guessField = document.querySelector('.guessField');
 
 var guessCount = 1;
 var resetButton;
-guessField.focus();
 
 function checkGuess() {
   var userGuess = Number(guessField.value);
@@ -100,5 +99,3 @@ function resetGame() {
 
   randomNumber = Math.floor(Math.random() * 100) + 1;
 }
-
-
