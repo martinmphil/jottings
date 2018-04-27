@@ -1,0 +1,27 @@
+/* width & height includes padding + border for responsive web design */
+* {
+  box-sizing: border-box;
+}
+body, a  {
+  background-color: black;
+  color: white;
+  font-family: "Cabin", "Trebuchet MS", Helvetica, sans-serif;
+}
+/* central column */
+.col{
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+
+/* responsive web design */
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col {
+    width: 66%;
+    margin: auto;
+  }
+  .inner_col {
+    width: 100%;
+  }
+}
