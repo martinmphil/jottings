@@ -1,5 +1,21 @@
 "use strict";
 
+// players_enclosure impure
+
+function players_enclosure() {
+  var n = 3;
+  // return object
+  return {
+    set_n : function (x) {n=x;},
+    get_n : () => n
+  };
+}
+
+players_enclosure.set_n(4);
+console.log(players_enclosure.get_n);
+
+
+// fractionalTest
 let numer000 = 1;
 let denom000 = 2;
 
@@ -12,14 +28,10 @@ function fractionalTest (j,k,l,m) {
   return p * (1/q);
 }
 
+console.log(fractionalTest(numer000, denom000, numer001, denom001));
 
-var a = fractionalTest(numer000, denom000, numer001, denom001);
-
-console.log(a);
-
-// grabbing a value from within an arg array
-function fn ([x,y,...args] = []){
+// grab_my_value_from_arg_array
+function grab_my_value_from_arg_array ([x,y,...args] = []){
   console.log(y);
 }
-
-fn ([1,2,3]); //2
+grab_my_value_from_arg_array ([1,2,3]); //2
