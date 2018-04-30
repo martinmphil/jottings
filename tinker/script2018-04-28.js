@@ -1,4 +1,19 @@
 "use strict";
+/*
+https://github.com/getify/Functional-Light-JS/blob/master/manuscript/ch7.md/#chapter-7-closure-vs-object
+*/
+function outer() {
+    var x = 10;
+    var y = 12;
+    var z = 14;
+
+    return function inner(){
+        return [x,y,z];
+    }
+};
+
+var point = outer();
+
 
 // players_enclosure impure
 
@@ -11,8 +26,8 @@ function players_enclosure() {
   };
 }
 
-players_enclosure.set_n(4);
-console.log(players_enclosure.get_n);
+//players_enclosure.set_n(4);
+//console.log(players_enclosure.get_n);
 
 
 // fractionalTest
