@@ -15,6 +15,27 @@ function outer() {
 var point = outer();
 
 
+// ----
+function outer() {
+    var name = "Kyle Simpson";
+    return middle();
+
+    // ********************
+
+    function middle() {
+        var street = "123 Easy St";
+        var city = "JS'ville";
+        var state = "ES";
+
+        return function inner(){
+            return [name,street,city,state];
+        };
+    }
+}
+
+var person = outer();
+//----
+
 // players_enclosure impure
 
 function players_enclosure() {
