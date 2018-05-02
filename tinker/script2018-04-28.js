@@ -1,4 +1,57 @@
 "use strict";
+
+// we versus they for theory side
+
+var e = (function () {
+    var n=3; // Private Variable
+    var us=13;
+    var them=10;
+    var us_adv=0.75;
+    var them_adv=0.25
+    console.log("from inside anon fn immediately run them " + [n, us, them, us_adv,them_adv]);
+
+    var enc = {};// public object - returned at end of module
+// check if typeof y === "number"
+    enc.change_n = function (x) {
+      console.log("this is a type of " + typeof x);
+      typeof x === "number" ? n = x : n=n;
+    };
+
+    enc.change_us = function (x) {
+      us = x;
+    };
+
+    enc.change_them = function (x) {
+      them = x;
+    };
+// NEED REST OF changers
+    enc.getState = function() {
+        return [n, us, them, us_adv,them_adv];
+    }
+
+    return enc; // expose externally
+}());
+
+e.change_n("five");
+e.change_us(11);
+e.change_them(12);
+
+//var theState = e.getState();
+var theState = e.getState();
+console.log("outside after change_them to twelve " +theState);
+
+
+
+function main () {
+  var para = document.createElement("p");
+  var node = document.createTextNode("This is new.");
+  para.appendChild(node);
+  var element = document.getElementById("col");
+  element.appendChild(para);
+}
+
+main();
+
 /*
 https://github.com/getify/Functional-Light-JS/blob/master/manuscript/ch7.md/#chapter-7-closure-vs-object
 */
