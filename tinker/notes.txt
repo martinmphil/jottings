@@ -1,0 +1,77 @@
+
+/*
+https://github.com/getify/Functional-Light-JS/blob/master/manuscript/ch7.md/#chapter-7-closure-vs-object
+*/
+function outer() {
+    var x = 10;
+    var y = 12;
+    var z = 14;
+
+    return function inner(){
+        return [x,y,z];
+    }
+};
+
+var point = outer();
+
+
+// ----
+function outer() {
+    var name = "Kyle Simpson";
+    return middle();
+
+    // ********************
+
+    function middle() {
+        var street = "123 Easy St";
+        var city = "JS'ville";
+        var state = "ES";
+
+        return function inner(){
+            return [name,street,city,state];
+        };
+    }
+}
+
+var person = outer();
+//----
+
+// players_enclosure impure
+
+function players_enclosure() {
+  var n = 3;
+  // return object
+  return {
+    set_n : function (x) {n=x;},
+    get_n : () => n
+  };
+}
+
+//players_enclosure.set_n(4);
+//console.log(players_enclosure.get_n);
+
+
+
+//---
+
+  var para = document.createElement("p");
+  var node = document.createTextNode("This is new.");
+  para.appendChild(node);
+  var element = document.getElementById("col");
+  element.appendChild(para);
+}
+
+
+  //clear buttons
+  //document.querySelector(".selectedBttn").classList.add("unselectedBttn");
+  //document.querySelector(".selectedBttn").classList.remove("selectedBttn");
+  //console.log("oh " + document.querySelector('#pbttn3').value);
+  // add event listner
+  //var a = document.querySelector('#pbttn3');
+  //console.log('bttn value ' + a.value);
+  //var b = parseInt(a.value);
+  //a.addEventListener("click", function () {
+  //  e.change_n(b);
+  //  console.log('clicked ' + e.get_n());});
+  //console.log('b is ' + b);
+

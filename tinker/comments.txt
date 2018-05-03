@@ -1,0 +1,18 @@
+[1]
+
+/*
+enclosed state, e (assigned as expression) 
+for impure anonymous function immediately executed,
+with enclosed variables:
+number of players, n;
+friendly total, us;
+enemy total, them;
+advantage us, adv_us;
+advantage them, adv_them;
+and returning globally-exposed object, enc.
+*/
+
+
+
+
+// we versus they for theory side

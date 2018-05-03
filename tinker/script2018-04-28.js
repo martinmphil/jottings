@@ -1,107 +1,69 @@
 "use strict";
-
-// we versus they for theory side
-
+// [1]
 var e = (function () {
-    var n=3; // Private Variable
-    var us=13;
-    var them=10;
-    var us_adv=0.75;
-    var them_adv=0.25
-    console.log("from inside anon fn immediately run them " + [n, us, them, us_adv,them_adv]);
-
-    var enc = {};// public object - returned at end of module
-// check if typeof y === "number"
-    enc.change_n = function (x) {
-      console.log("this is a type of " + typeof x);
-      typeof x === "number" ? n = x : n=n;
-    };
-
-    enc.change_us = function (x) {
-      us = x;
-    };
-
-    enc.change_them = function (x) {
-      them = x;
-    };
-// NEED REST OF changers
-    enc.getState = function() {
-        return [n, us, them, us_adv,them_adv];
-    }
-
-    return enc; // expose externally
+  var n = 3;
+  var us = 10;
+  var them = 10;
+  var adv_us = 0;
+  var adv_them = 0;
+  console.log("initial " + [n, us, them, adv_us,adv_them]);
+  var enc = {};
+  enc.change_n = function (x) {
+    Number.isInteger(x) ? n = x : n = n;
+  };
+  enc.change_us = function (x) {
+    x > 0 ? us = x : us = us;
+  };
+  enc.change_them = function (x) {
+    x > 0 ? them = x : them = them;
+  };
+  enc.change_adv_us = function (x) {
+    x > 0 ? adv_us = x : adv_us = adv_us;
+  };
+  enc.change_adv_them = function (x) {
+    x > 0 ? adv_them = x : adv_them = adv_them;
+  };
+  enc.get_n = function () {
+    return n;
+  };
+  enc.getState = function() {
+    return [n, us, them, adv_us,adv_them];
+  };
+  return enc;
 }());
 
-e.change_n("five");
-e.change_us(11);
+// work_in_progress
+e.change_n(6);
+e.change_us("11");
 e.change_them(12);
-
+e.change_adv_us(1);
+e.change_adv_them(0.75);
 //var theState = e.getState();
 var theState = e.getState();
-console.log("outside after change_them to twelve " +theState);
+console.log("outside after change_them to twelve " + theState);
 
 
 
 function main () {
-  var para = document.createElement("p");
-  var node = document.createTextNode("This is new.");
-  para.appendChild(node);
-  var element = document.getElementById("col");
-  element.appendChild(para);
-}
+  // initiate
+  document.querySelector('#pbttn' + e.get_n()).classList.remove('unselectedBttn');
+  document.querySelector('#pbttn' + e.get_n()).classList.add('selectedBttn');
+  document.querySelector('#pNbrsSection').querySelectorAll('input[type=button]').forEach(function(i) {
+    i.addEventListener('click', function () {
+      e.change_n(parseInt(i.value));
+      document.querySelector(".selectedBttn").classList.add("unselectedBttn");
+      document.querySelector(".selectedBttn").classList.remove("selectedBttn");
+      i.classList.remove('unselectedBttn');
+      i.classList.add('selectedBttn');
+      //to_remove
+      console.log('change_n to ' + e.get_n());
+    });
+  });
 
+
+}
 main();
 
-/*
-https://github.com/getify/Functional-Light-JS/blob/master/manuscript/ch7.md/#chapter-7-closure-vs-object
-*/
-function outer() {
-    var x = 10;
-    var y = 12;
-    var z = 14;
-
-    return function inner(){
-        return [x,y,z];
-    }
-};
-
-var point = outer();
-
-
-// ----
-function outer() {
-    var name = "Kyle Simpson";
-    return middle();
-
-    // ********************
-
-    function middle() {
-        var street = "123 Easy St";
-        var city = "JS'ville";
-        var state = "ES";
-
-        return function inner(){
-            return [name,street,city,state];
-        };
-    }
-}
-
-var person = outer();
-//----
-
-// players_enclosure impure
-
-function players_enclosure() {
-  var n = 3;
-  // return object
-  return {
-    set_n : function (x) {n=x;},
-    get_n : () => n
-  };
-}
-
-//players_enclosure.set_n(4);
-//console.log(players_enclosure.get_n);
 
 
 // fractionalTest
