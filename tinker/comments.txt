@@ -1,15 +1,22 @@
+[2] 
+
+// Pure functions presented at file star.
+
+
 [1]
 
 /*
-enclosed state, e (assigned as expression) 
-for impure anonymous function immediately executed,
-with enclosed variables:
-number of players, n;
-friendly total, us;
-enemy total, them;
-advantage us, adv_us;
-advantage them, adv_them;
-and returning globally-exposed object, enc.
+Impure functions below with
+enclosed state, "e" (assigned as expression) 
+for an impure anonymous function immediately executed, 
+returning globally-exposed object, "enc" 
+with enclosed variables: 
+number of players is "playerNbrs"; 
+friendly total is "us"; 
+enemy total is "them"; 
+advantages to us is "adv_us"; 
+advantages to them is "adv_them"; 
+array of polyhedral sides on dice at the table is "dice_available".
 */
 
 

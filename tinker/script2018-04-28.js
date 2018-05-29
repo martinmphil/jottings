@@ -1,88 +1,66 @@
 "use strict";
+// [2]
+function range_t(s) {
+  return [...Array(s - 1).keys()].map(x => x + 2);
+}
+
+function calculate_odds (polyhedrals) {
+  let result = polyhedrals.map(range_t);
+  return result;
+}
+
 // [1]
 var e = (function () {
-  var n = 3;
+  var playerNbrs = 3;
   var us = 10;
   var them = 10;
   var adv_us = 0;
   var adv_them = 0;
-  console.log("initial " + [n, us, them, adv_us,adv_them]);
+  var dice_available = [4, 6, 8]; // ADD 12, 20, 100!!!!!!!
   var enc = {};
-  enc.change_n = function (x) {
-    Number.isInteger(x) ? n = x : n = n;
-  };
-  enc.change_us = function (x) {
-    x > 0 ? us = x : us = us;
-  };
-  enc.change_them = function (x) {
-    x > 0 ? them = x : them = them;
-  };
-  enc.change_adv_us = function (x) {
-    x > 0 ? adv_us = x : adv_us = adv_us;
-  };
-  enc.change_adv_them = function (x) {
-    x > 0 ? adv_them = x : adv_them = adv_them;
-  };
-  enc.get_n = function () {
-    return n;
-  };
-  enc.getState = function() {
-    return [n, us, them, adv_us,adv_them];
-  };
+  enc.change_n = x => Number.isInteger(x) ? playerNbrs = x : playerNbrs = playerNbrs;
+  enc.change_us = x => x > 0 ? us = x : us = us;
+  enc.change_them = x => x > 0 ? them = x : them = them;
+  enc.change_adv_us = x => x > 0 ? adv_us = x : adv_us = adv_us;
+  enc.change_adv_them = x => x > 0 ? adv_them = x : adv_them = adv_them;
+  enc.get_n = () => playerNbrs;
+  enc.get_state = () => [playerNbrs, us, them, adv_us,adv_them];
+  enc.get_dice = () => dice_available;
   return enc;
 }());
 
 // work_in_progress
 e.change_n(6);
-e.change_us("11");
+e.change_us(11);
 e.change_them(12);
 e.change_adv_us(1);
 e.change_adv_them(0.75);
-//var theState = e.getState();
-var theState = e.getState();
+var theState = e.get_state();
 console.log("outside after change_them to twelve " + theState);
 
 
-
-function main () {
-  // initiate
-  document.querySelector('#pbttn' + e.get_n()).classList.remove('unselectedBttn');
-  document.querySelector('#pbttn' + e.get_n()).classList.add('selectedBttn');
-  document.querySelector('#pNbrsSection').querySelectorAll('input[type=button]').forEach(function(i) {
-    i.addEventListener('click', function () {
+function prepare_player_numbers_section () {
+  document.querySelector('#pbttn' + e.get_n()).classList.remove('availBttn');
+  document.querySelector('#pbttn' + e.get_n()).classList.add('pickedBttn');
+  document.querySelectorAll('#pNbrs > input[type=button]').forEach( i => {
+    i.addEventListener('click', () => {
       e.change_n(parseInt(i.value));
-      document.querySelector(".selectedBttn").classList.add("unselectedBttn");
-      document.querySelector(".selectedBttn").classList.remove("selectedBttn");
-      i.classList.remove('unselectedBttn');
-      i.classList.add('selectedBttn');
-      //to_remove
-      console.log('change_n to ' + e.get_n());
+      document.querySelector(".pickedBttn").classList.add("availBttn");
+      document.querySelector(".pickedBttn").classList.remove("pickedBttn");
+      i.classList.remove('availBttn');
+      i.classList.add('pickedBttn');
     });
   });
 
+// prepare_us_and_them_section
 
+}
+function main () {
+  prepare_player_numbers_section();
+
+  // work_in_progress
+  console.log("dice_available " + e.get_dice());
+  console.log("return of calcualte odds fn is ");
+  console.log(calculate_odds(e.get_dice()));
 }
 main();
-
-
-
-// fractionalTest
-let numer000 = 1;
-let denom000 = 2;
-
-let numer001 = 8;
-let denom001 = 16;
-
-function fractionalTest (j,k,l,m) {
-  let p = j/k;
-  let q = l/m;
-  return p * (1/q);
-}
-
-console.log(fractionalTest(numer000, denom000, numer001, denom001));
-
-// grab_my_value_from_arg_array
-function grab_my_value_from_arg_array ([x,y,...args] = []){
-  console.log(y);
-}
-grab_my_value_from_arg_array ([1,2,3]); //2

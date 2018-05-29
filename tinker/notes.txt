@@ -1,4 +1,32 @@
 
+
+// fractionalTest
+let numer000 = 1;
+let denom000 = 2;
+
+let numer001 = 8;
+let denom001 = 16;
+
+function fractionalTest (j,k,l,m) {
+  let p = j/k;
+  let q = l/m;
+  return p * (1/q);
+}
+
+console.log(fractionalTest(numer000, denom000, numer001, denom001));
+
+// grab_my_value_from_arg_array
+function grab_my_value_from_arg_array ([x,y,...args] = []){
+  console.log(y);
+}
+grab_my_value_from_arg_array ([1,2,3]); //2
+
+
+
+
+
+
+
 /*
 https://github.com/getify/Functional-Light-JS/blob/master/manuscript/ch7.md/#chapter-7-closure-vs-object
 */

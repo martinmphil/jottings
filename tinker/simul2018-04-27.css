@@ -40,12 +40,12 @@ body, p  {
   text-decoration: none;
   cursor: pointer;
 }
-.selectedBttn {
+.pickedBttn {
   background-color: white;
   color: black;
   cursor:auto;
 }
-.unselectedBttn {
+.availBttn {
   background-color: #4CAF50; /* green */
   color: white;
 }
