@@ -4,9 +4,8 @@ function range_t(s) {
   return [...Array(s - 1).keys()].map(x => x + 2);
 }
 
-function calculate_odds (polyhedrals) {
-  let result = polyhedrals.map(range_t);
-  return result;
+function calculate_odds (x) {
+  return x.map(range_t);
 }
 
 // [1]
@@ -16,7 +15,7 @@ var e = (function () {
   var them = 10;
   var adv_us = 0;
   var adv_them = 0;
-  var dice_available = [4, 6, 8]; // ADD 12, 20, 100!!!!!!!
+  var dice_available = [6, 8, 12]; // ADD 4, 12, 20, 100!!!!!!!
   var enc = {};
   enc.change_n = x => Number.isInteger(x) ? playerNbrs = x : playerNbrs = playerNbrs;
   enc.change_us = x => x > 0 ? us = x : us = us;
