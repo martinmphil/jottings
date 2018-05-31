@@ -4,7 +4,7 @@ function range_t(s) {
   return [...Array(s - 1).keys()].map(x => x + 2);
 }
 
-function calculate_odds (x) {
+function calculate_odds(x) {
   return x.map(range_t);
 }
 
@@ -20,8 +20,8 @@ var e = (function () {
   enc.change_n = x => Number.isInteger(x) ? playerNbrs = x : playerNbrs = playerNbrs;
   enc.change_us = x => x > 0 ? us = x : us = us;
   enc.change_them = x => x > 0 ? them = x : them = them;
-  enc.change_adv_us = x => x > 0 ? adv_us = x : adv_us = adv_us;
-  enc.change_adv_them = x => x > 0 ? adv_them = x : adv_them = adv_them;
+  enc.change_adv_us = x => Number.isFinite(x) ? adv_us = x : adv_us = adv_us;
+  enc.change_adv_them = x => Number.isFinite(x) ? adv_them = x : adv_them = adv_them;
   enc.get_n = () => playerNbrs;
   enc.get_state = () => [playerNbrs, us, them, adv_us,adv_them];
   enc.get_dice = () => dice_available;
@@ -29,7 +29,7 @@ var e = (function () {
 }());
 
 // work_in_progress
-e.change_n(6);
+e.change_n(2);
 e.change_us(11);
 e.change_them(12);
 e.change_adv_us(1);
@@ -38,7 +38,7 @@ var theState = e.get_state();
 console.log("outside after change_them to twelve " + theState);
 
 
-function prepare_player_numbers_section () {
+function prepare_player_numbers_section() {
   document.querySelector('#pbttn' + e.get_n()).classList.remove('availBttn');
   document.querySelector('#pbttn' + e.get_n()).classList.add('pickedBttn');
   document.querySelectorAll('#pNbrs > input[type=button]').forEach( i => {
@@ -50,11 +50,16 @@ function prepare_player_numbers_section () {
       i.classList.add('pickedBttn');
     });
   });
-
+}
 // prepare_us_and_them_section
 
+// dice_roll_instructions
+function instruct() {
+  let n = e.get_n();
+  document.querySelector('#dice_roll_instructions').textContent = `Roll ${n}d6 target t.`;
 }
-function main () {
+
+function main() {
   prepare_player_numbers_section();
 
   // work_in_progress
@@ -63,3 +68,4 @@ function main () {
   console.log(calculate_odds(e.get_dice()));
 }
 main();
+instruct();

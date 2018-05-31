@@ -50,6 +50,14 @@ body, p  {
   color: white;
 }
 
+/* style displaying dice instructions */
+#dice_roll_instructions {
+  margin: 2%;
+  font-size: 300%;
+  text-align: center;
+}
+
+
 /* responsive web design */
 @media only screen and (min-width: 768px) {
   /* For desktop: */

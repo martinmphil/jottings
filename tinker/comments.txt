@@ -1,6 +1,6 @@
 [2] 
 
-// Pure functions presented at file star.
+// Pure functions presented at file start.
 
 
 [1]
@@ -20,6 +20,6 @@ array of polyhedral sides on dice at the table is "dice_available".
 */
 
 
-
+//1000000=1e6 coefficient assisting floating point accuracy
 
 // we versus they for theory side
