@@ -8,6 +8,16 @@ function calculate_odds(x) {
   return x.map(range_t);
 }
 
+
+
+
+
+function valid_us_them_predicate(x) {
+  if (x > 0 && Number.isFinite(x)) {
+    return true;
+  }
+}
+
 // [1]
 var e = (function () {
   var player_nbrs = 3;
@@ -20,8 +30,8 @@ var e = (function () {
   var enc = {};
   enc.change_n = x => Number.isInteger(x) && x > 0 && x < max_player_nbrs ?
     player_nbrs = x : player_nbrs = player_nbrs;
-  enc.change_us = x => x > 0 ? us = x : us = us;
-  enc.change_them = x => x > 0 ? them = x : them = them;
+  enc.change_us = x => valid_us_them_predicate(x) ? us = x : us = us;
+  enc.change_them = x => valid_us_them_predicate(x) ? them = x : them = them;
   enc.change_adv_us = x => Number.isFinite(x) ? adv_us = x : adv_us = adv_us;
   enc.change_adv_them = x => Number.isFinite(x) ? adv_them = x : adv_them = adv_them;
   enc.get_n = () => player_nbrs;
@@ -32,7 +42,7 @@ var e = (function () {
 
 // work_in_progress
 e.change_n(4);
-e.change_us(11);
+e.change_us(-11);
 e.change_them(12);
 e.change_adv_us(1);
 e.change_adv_them(0.75);
