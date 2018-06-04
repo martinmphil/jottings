@@ -1,11 +1,17 @@
 "use strict";
 // [2]
 function range_t(s) {
-  return [...Array(s - 1).keys()].map(x => x + 2);
+  return [...Array(s - 1).keys()].map(x => x + 2).reverse();
 }
 
-function calculate_odds(x) {
-  return x.map(range_t);
+function s_t_pairs(...args) {
+  const s = args[0];
+  let result = args.map(x => [s, x]);
+  return result;
+}
+
+function every_dice(x) {
+  return x.map(y => s_t_pairs(...range_t(y))).reduce((a, b) => a.concat(b));
 }
 
 
@@ -77,7 +83,7 @@ function main() {
   // work_in_progress
   console.log("dice_available " + e.get_dice());
   console.log("return of calcualte odds fn is ");
-  console.log(calculate_odds(e.get_dice()));
+  console.log(every_dice(e.get_dice()));
 }
 main();
 instruct();
