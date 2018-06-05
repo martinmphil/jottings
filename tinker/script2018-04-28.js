@@ -17,7 +17,6 @@ function every_dice(x) {
 
 
 
-
 function valid_us_them_predicate(x) {
   if (x > 0 && Number.isFinite(x)) {
     return true;
@@ -32,7 +31,7 @@ var e = (function () {
   var them = 10;
   var adv_us = 0;
   var adv_them = 0;
-  var dice_available = [6, 8, 12]; // ADD 4, 12, 20, 100!!!!!!!
+  var dice_available = [6, 8, 12, 20]; // ADD 4, 12, 20, 100!!!!!!!
   var enc = {};
   enc.change_n = x => Number.isInteger(x) && x > 0 && x < max_player_nbrs ?
     player_nbrs = x : player_nbrs = player_nbrs;
@@ -87,3 +86,16 @@ function main() {
 }
 main();
 instruct();
+
+
+
+//sanity check
+function test_31(x) {
+  return x;
+}
+console.log("sanity check ");
+var vvv = test_31(every_dice(e.get_dice())).map(([s,t]) => (1 - (((t-1)/s))));
+var vv = R.uniq(vvv);
+console.log(vv);
+//end of sanity check
+// PASS
