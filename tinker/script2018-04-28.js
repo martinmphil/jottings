@@ -6,14 +6,13 @@ function range_t(s) {
 
 function s_t_pairs(...args) {
   const s = args[0];
-  let result = args.map(x => [s, x]);
-  return result;
+  return args.map(x => [s, x]);
 }
 
-function every_dice(x) {
-  return x.map(y => s_t_pairs(...range_t(y))).reduce((a, b) => a.concat(b));
+function dice_chances(x) {
+  return R.uniqBy( ([s,t]) => (1 - ((t-1)/s)),
+    x.map(y => s_t_pairs(...range_t(y))).reduce((a, b) => a.concat(b)) );
 }
-
 
 
 
@@ -31,7 +30,7 @@ var e = (function () {
   var them = 10;
   var adv_us = 0;
   var adv_them = 0;
-  var dice_available = [6, 8, 12, 20]; // ADD 4, 12, 20, 100!!!!!!!
+  var dice_available = [6, 8, 12, 20]; // ADD 12, 20, 100!!!!!!!  110 values in 5 dice includeing d100
   var enc = {};
   enc.change_n = x => Number.isInteger(x) && x > 0 && x < max_player_nbrs ?
     player_nbrs = x : player_nbrs = player_nbrs;
@@ -42,6 +41,19 @@ var e = (function () {
   enc.get_n = () => player_nbrs;
   enc.get_state = () => [player_nbrs, us, them, adv_us,adv_them];
   enc.get_dice = () => dice_available;
+
+
+
+  // work_in_progress
+  enc.get_max_n = () => max_player_nbrs;
+  enc.create_Map = function chances(x) {
+    if (x < 1) return "out";
+    console.log(x);
+    enc["n" + x] = () => x;
+    return chances(x - 1);
+  };
+
+
   return enc;
 }());
 
@@ -68,13 +80,22 @@ function prepare_player_numbers_section() {
     });
   });
 }
-// prepare_us_and_them_section
 
+//to remove
 // dice_roll_instructions
 function instruct() {
   let n = e.get_n();
   document.querySelector('#dice_roll_instructions').textContent = `Roll ${n}d6 target t.`;
 }
+function create_Map() {
+  let d = dice_chances(e.get_dice());
+  return d;
+}
+
+
+
+
+
 
 function main() {
   prepare_player_numbers_section();
@@ -82,20 +103,13 @@ function main() {
   // work_in_progress
   console.log("dice_available " + e.get_dice());
   console.log("return of calcualte odds fn is ");
-  console.log(every_dice(e.get_dice()));
+  console.log(dice_chances(e.get_dice()));
+
+  // create_Map
+  console.log("return of chance fn is ");
+  console.log(e.create_Map(e.get_max_n()));
 }
 main();
+
+// to remove
 instruct();
-
-
-
-//sanity check
-function test_31(x) {
-  return x;
-}
-console.log("sanity check ");
-var vvv = test_31(every_dice(e.get_dice())).map(([s,t]) => (1 - (((t-1)/s))));
-var vv = R.uniq(vvv);
-console.log(vv);
-//end of sanity check
-// PASS

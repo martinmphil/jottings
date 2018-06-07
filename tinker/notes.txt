@@ -1,5 +1,23 @@
 
 
+________________________________
+Test with n=1
+function dice(x) {
+  let u = R.uniqBy( ([s,t]) => (1 - (((t-1)/s))),
+    x.map(y => s_t_pairs(...range_t(y))).reduce((a, b) => a.concat(b)) );
+  return u.map( ([s,t]) => [`d${s}t${t}`, (1 - (((t-1)/s))**1)]);
+}
+______________________________________________________
+//sanity check
+function test_31(x) {
+  return x;
+}
+console.log("sanity check ");
+var vvv = test_31(every_dice(e.get_dice())).map(([s,t]) => (1 - (((t-1)/s))));
+var vv = R.uniq(vvv);
+console.log(vv);
+//end of sanity check
+// PASS
 ______________________________________________________
 
 let range = [...Array(s - 1).keys()].map(x => x + 2).reverse();
