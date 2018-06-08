@@ -1,5 +1,9 @@
 
 
+______________________________________________________
+function range_t(s) {
+  return [...Array(s - 1).keys()].map(x => x + 2).reverse();
+}
 ________________________________
 Test with n=1
 function dice(x) {

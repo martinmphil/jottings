@@ -1,18 +1,25 @@
 "use strict";
 // [2]
-function range_t(s) {
-  return [...Array(s - 1).keys()].map(x => x + 2).reverse();
-}
-
 function s_t_pairs(...args) {
   const s = args[0];
   return args.map(x => [s, x]);
+}
+
+function range_t(s) {
+  let result = [];
+  (function range_recur(x) {
+    if (x <= 1) return result;
+    result[x - 2] = x;
+    return range_recur(x - 1);
+  })(s);
+  return result.reverse();
 }
 
 function dice_chances(x) {
   return R.uniqBy( ([s,t]) => (1 - ((t-1)/s)),
     x.map(y => s_t_pairs(...range_t(y))).reduce((a, b) => a.concat(b)) );
 }
+
 
 
 
@@ -48,7 +55,7 @@ var e = (function () {
   enc.get_max_n = () => max_player_nbrs;
   enc.create_Map = function chances(x) {
     if (x < 1) return "out";
-    console.log(x);
+    //console.log(x);
     enc["n" + x] = () => x;
     return chances(x - 1);
   };
