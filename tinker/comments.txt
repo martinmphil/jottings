@@ -1,6 +1,6 @@
 [2] 
 
-// Pure functions presented at file start.
+// Pure functions with n players, s sided dice and target t.
 
 
 [1]
