@@ -20,9 +20,20 @@ body, p  {
   color: rgba(204, 163, 0, 0.8);
   float: right;
 }
-
-/* section holding buttons to select number of players */
-#playerNbrsSection{
+.gerneric_button {
+  border: solid;
+  border-color: rgba(0, 0, 0, 0.4);
+  border-radius: 0.4em;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.reset_button {
+  padding: 0.6em 1em;
+  opacity: 0.9;
+}
+/* JS alters class in div selecting number of players */
+#pNbrs{
   display: -webkit-flex; /* Safari */
   -webkit-flex-wrap: wrap; /* Safari 6.1+ */
   display: flex;
@@ -48,6 +59,57 @@ body, p  {
 .availBttn {
   background-color: #4CAF50; /* green */
   color: white;
+}
+
+#us_section {
+  background-color: #000066; /* dark blue */
+}
+#them_section {
+  background-color: #4d0019; /* dark red */
+}
+.us_and_them {
+    padding: 0.5em;
+}
+#us_input {
+  font-size: 150%;
+  width: 100%;
+  padding: 0.2em;
+}
+#them_input {
+  font-size: 150%;
+  width: 100%;
+  padding: 0.2em;
+}
+.grid3 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 18em;
+  margin: auto;
+}
+.casio {
+  font-size: 150%;
+  margin: 0.2em;
+  padding: 1em 0.8em;
+}
+.us_adv_disadv {
+    background-color: #66e0ff; /* light-blue */
+}
+.us_adv_disadv_legend {
+  font-size: 80%;
+  text-align: center;
+  color: #66e0ff; /* light-blue */
+}
+.show_adv {
+  width: 4em;
+  margin: auto;
+}
+.them_adv_disadv {
+    background-color: #f08080; /* LightCoral */
+}
+.them_adv_disadv_legend {
+  font-size: 80%;
+  text-align: center;
+  color:  #f08080; /* LightCoral */
 }
 
 /* style displaying dice instructions */

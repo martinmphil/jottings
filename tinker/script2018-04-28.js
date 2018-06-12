@@ -46,11 +46,14 @@ var e = (function () {
   enc.get_n = () => player_nbrs;
   enc.get_us = () => us;
   enc.get_them = () => them;
+  enc.get_adv_us = () => adv_us;
+  enc.get_adv_them = () => adv_them;
+  // [2]
   enc.force_ratio_recur = function chances(x = max_player_nbrs) {
     if (x < 1) return;
     let result = unique_prob_array(dice_available)
       .map ( ([y, z]) => [`${x}d${y} target ${z}`, force_ratio(x, y, z)] );
-    enc["n" + x] = result.filter( ([j, k]) => pos_finite_predicate(k) );
+    enc['a' + x] = result.filter( ([j, k]) => pos_finite_predicate(k) );
     return chances(x - 1);
   };
 
@@ -59,6 +62,19 @@ var e = (function () {
 
   return enc;
 }());
+
+function calculate_us_vs_them(us, them, adv_us, adv_them) {
+//NEEDS PROPER MATHS
+  return us / them;
+}
+
+function instructions(n, us_vs_them) {
+  let fr_array = e['a' + n].map( ([x,y]) => y );
+  console.log('inside instructions function ');
+  console.log(fr_array);
+    // perform proper look up
+  return e.a3[0][0];
+}
 
 function prepare_player_numbers_section() {
   document.querySelector('#pbttn' + e.get_n()).classList.remove('availBttn');
@@ -75,19 +91,24 @@ function prepare_player_numbers_section() {
 }
 
 function instruct() {
-  // remove
-  let i = e.n3[0][0];
-  document.querySelector('#dice_roll_instructions').textContent = `Roll ${i}.`;
+  let us_vs_them = calculate_us_vs_them(
+    e.get_us(), e.get_them(), e.get_adv_us(), e.get_adv_them()
+  );
+  let ndst = instructions(e.get_n(), us_vs_them);
+  document.querySelector('#dice_roll_instructions').textContent =
+    `Roll ${ndst}.`;
 }
 
+
+
 // remove
+//e.change_n(4);
 e.change_us(11);
 e.change_them(12);
 e.change_adv_us(1);
 e.change_adv_them(0.75);
-var theState = e.get_state();
-console.log("outside after change_them to twelve " + theState);
-console.log(theState);
+//var theState = e.get_state();
+//console.log(theState);
 
 
 
@@ -99,18 +120,18 @@ function main() {
 main();
 
 // remove
-var n1f = e.n3.map( ([x, y]) => y );
-console.log('n1f');
-console.log(n1f);
-var n1i = e.n3.map( ([x, y]) => x );
-console.log('n1i');
-console.log(n1i);
+var n1f = e.a3.map( ([x, y]) => y );
+//console.log('n1f');
+//console.log(n1f);
+var n1i = e.a3.map( ([x, y]) => x );
+//console.log('n1i');
+//console.log(n1i);
 
 function find_nearest_we_vs_they(n, us, them) {
-  let array_title = e['n' + n];
+  let array_title = e['a' + n];
   return array_title;
 }
 
-var vvv = find_nearest_we_vs_they(e.get_n(), e.get_us(), e.get_them());
-console.log('find_nearest_we_vs_they ');
+var vvv = calculate_us_vs_them(e.get_us(), e.get_them(), e.get_adv_us(), e.get_adv_them() );
+console.log('calculate_us_vs_them ');
 console.log(vvv);

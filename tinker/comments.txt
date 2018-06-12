@@ -1,25 +1,19 @@
-[2] 
+At start
 
-// Pure functions with n players, s sided dice and target t.
+// Pure functions with "n" players, "s" sided dice and target roll "t".
 
 
 [1]
 
 /*
 Impure functions below with
-enclosed state, "e" (assigned as expression) 
-for an impure anonymous function immediately executed, 
-returning globally-exposed object, "enc" 
-with enclosed variables: 
-number of players is "playerNbrs"; 
-friendly total is "us"; 
-enemy total is "them"; 
-advantages to us is "adv_us"; 
-advantages to them is "adv_them"; 
-array of polyhedral sides on dice at the table is "dice_available".
+closure state, "e" for: 
+protagonist total, "us"; 
+antagonist total, "them"; 
+advantages to us, "adv_us"; 
+advantages to them, "adv_them"; 
+array of polyhedral dice sides "dice_available".
 */
 
-
-//1000000=1e6 coefficient assisting floating point accuracy
-
-// we versus they for theory side
+[2]
+// fn returning lists of [instruction, force_ratio] in nested arrays for each n 
