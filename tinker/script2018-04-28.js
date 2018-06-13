@@ -64,16 +64,38 @@ var e = (function () {
 }());
 
 function calculate_us_vs_them(us, them, adv_us, adv_them) {
-//NEEDS PROPER MATHS
-  return us / them;
+  let force_multiplier = 1;
+  let delta_adv = adv_us - adv_them;
+  function logarithmic_scaling(delta){
+    return 2 * Math.log(Math.abs(delta) + 1)
+  }
+  delta_adv > 0 ? force_multiplier = logarithmic_scaling(delta_adv) :
+    delta_adv < 0 ? force_multiplier = ( 1 / logarithmic_scaling(delta_adv) ) :
+      force_multiplier = force_multiplier;
+  console.log('delta_adv ' + delta_adv);
+  console.log('log scaling ' + logarithmic_scaling(delta_adv));
+  console.log('force_multiplier ' + force_multiplier);
+  return (us / them) * force_multiplier;
 }
 
 function instructions(n, us_vs_them) {
   let fr_array = e['a' + n].map( ([x,y]) => y );
+  let difference_array = fr_array.map( x => Math.abs(x - us_vs_them) );
+  let least_difference = difference_array.reduce( (x, y) => Math.min(x, y) );
+  // index of least difference
+  let i = difference_array.indexOf(least_difference);
+//remove
+/*
   console.log('inside instructions function ');
   console.log(fr_array);
-    // perform proper look up
-  return e.a3[0][0];
+  console.log('inside instructions function difference_array');
+  console.log(difference_array);
+  console.log('inside instructions function least_difference');
+  console.log(least_difference);
+  console.log('inside instructions function index of least difference');
+  console.log(i);
+*/
+  return e['a' + n][i][0];
 }
 
 function prepare_player_numbers_section() {
@@ -103,10 +125,10 @@ function instruct() {
 
 // remove
 //e.change_n(4);
-e.change_us(11);
-e.change_them(12);
-e.change_adv_us(1);
-e.change_adv_them(0.75);
+e.change_us(33);
+e.change_them(22);
+e.change_adv_us(3);
+e.change_adv_them(2);
 //var theState = e.get_state();
 //console.log(theState);
 
