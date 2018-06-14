@@ -68,12 +68,18 @@ body, p  {
   background-color: #4d0019; /* dark red */
 }
 .us_and_them {
-    padding: 0.5em;
+  padding: 0.5em;
+}
+.us_and_them h2{
+  margin: 0.1em;
+  padding: 0.1em;
+  float: left;
 }
 #us_input {
   font-size: 150%;
   width: 100%;
   padding: 0.2em;
+  margin-top: 0.2em;
 }
 #them_input {
   font-size: 150%;

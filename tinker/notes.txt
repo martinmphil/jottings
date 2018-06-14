@@ -1,145 +1,18 @@
 
+uniqBy
+html
+<script src="ramda.min.js"></script>
 
+JS
+
+function s_t_longlist(x) {
+  return R.uniqBy( ([s,t]) => (1 - ((t-1)/s)),
+    x.map( y => dice_s_t_pairs(y) ).reduce((a, b) => a.concat(b)) );
+}
 ______________________________________________________
 function range_t(s) {
   return [...Array(s - 1).keys()].map(x => x + 2).reverse();
 }
-________________________________
-Test with n=1
-function dice(x) {
-  let u = R.uniqBy( ([s,t]) => (1 - (((t-1)/s))),
-    x.map(y => s_t_pairs(...range_t(y))).reduce((a, b) => a.concat(b)) );
-  return u.map( ([s,t]) => [`d${s}t${t}`, (1 - (((t-1)/s))**1)]);
-}
-______________________________________________________
-//sanity check
-function test_31(x) {
-  return x;
-}
-console.log("sanity check ");
-var vvv = test_31(every_dice(e.get_dice())).map(([s,t]) => (1 - (((t-1)/s))));
-var vv = R.uniq(vvv);
-console.log(vv);
-//end of sanity check
-// PASS
-______________________________________________________
-
-let range = [...Array(s - 1).keys()].map(x => x + 2).reverse();
-______________________________________________________
-function range_t(s) {
-  return [...Array(s - 1).keys()].map(x => x + 2);
-}
-function calculate_odds (x) {
-  return x.map(range_t);
-}
-
-var v = calculate_odds([6, 8, 12]);
-v;
-/*
-2,3,4,5,6,2,3,4,5,6,7,8,2,3,4,5,6,7,8,9,10,11,12
-*/
-______________________________________________________
-
-// fractionalTest
-let numer000 = 1;
-let denom000 = 2;
-
-let numer001 = 8;
-let denom001 = 16;
-
-function fractionalTest (j,k,l,m) {
-  let p = j/k;
-  let q = l/m;
-  return p * (1/q);
-}
-
-console.log(fractionalTest(numer000, denom000, numer001, denom001));
-
-// grab_my_value_from_arg_array
-function grab_my_value_from_arg_array ([x,y,...args] = []){
-  console.log(y);
-}
-grab_my_value_from_arg_array ([1,2,3]); //2
 
 
-
-
-
-
-
-/*
-https://github.com/getify/Functional-Light-JS/blob/master/manuscript/ch7.md/#chapter-7-closure-vs-object
-*/
-function outer() {
-    var x = 10;
-    var y = 12;
-    var z = 14;
-
-    return function inner(){
-        return [x,y,z];
-    }
-};
-
-var point = outer();
-
-
-// ----
-function outer() {
-    var name = "Kyle Simpson";
-    return middle();
-
-    // ********************
-
-    function middle() {
-        var street = "123 Easy St";
-        var city = "JS'ville";
-        var state = "ES";
-
-        return function inner(){
-            return [name,street,city,state];
-        };
-    }
-}
-
-var person = outer();
-//----
-
-// players_enclosure impure
-
-function players_enclosure() {
-  var n = 3;
-  // return object
-  return {
-    set_n : function (x) {n=x;},
-    get_n : () => n
-  };
-}
-
-//players_enclosure.set_n(4);
-//console.log(players_enclosure.get_n);
-
-
-
-//---
-
-  var para = document.createElement("p");
-  var node = document.createTextNode("This is new.");
-  para.appendChild(node);
-  var element = document.getElementById("col");
-  element.appendChild(para);
-}
-
-
-  //clear buttons
-  //document.querySelector(".selectedBttn").classList.add("unselectedBttn");
-  //document.querySelector(".selectedBttn").classList.remove("selectedBttn");
-  //console.log("oh " + document.querySelector('#pbttn3').value);
-  // add event listner
-  //var a = document.querySelector('#pbttn3');
-  //console.log('bttn value ' + a.value);
-  //var b = parseInt(a.value);
-  //a.addEventListener("click", function () {
-  //  e.change_n(b);
-  //  console.log('clicked ' + e.get_n());});
-  //console.log('b is ' + b);
 

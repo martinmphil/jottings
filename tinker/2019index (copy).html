@@ -24,7 +24,8 @@
   </div><!--close section holding buttons to select number of players-->
 
   <section id="us_section" class="us_and_them">
-    <h2>Us </h2>
+    <div>Us </div>
+    <input type="number" id="us_input" min="0" value="10">
     <div class="grid3">
       <input type="button" class="gerneric_button casio" value="7">
       <input type="button" class="gerneric_button casio" value="8">
@@ -41,11 +42,10 @@
       <span class="us_adv_disadv_legend adv_legend">Advantage</span>
       <input type="number" id="us_adv_input" class="show_adv us_adv_disadv" value="0">
       <span class="us_adv_disadv_legend disad_legend">Disadv.</span>
-    </div><!--close grid3-->
-    <input type="number" id="us_input" min="0" value="10">
+    <div><!--close grid3-->
   </section>
   <section id="them_section" class="us_and_them">
-    <h2>Them </h2>
+    <div>Them </div>
     <input type="number" id="them_input" min="0" value="10">
     <div class="grid3">
       <input type="button" class="gerneric_button casio" value="7">
@@ -63,7 +63,7 @@
       <span class="them_adv_disadv_legend adv_legend">Advantage</span>
       <input type="number" id="them_adv_input" class="show_adv them_adv_disadv" value="0">
       <span class="them_adv_disadv_legend disad_legend">Disadv.</span>
-    </div><!--close grid3-->
+    <div><!--close grid3-->
   </section>
 
   <!--display dice instructions-->

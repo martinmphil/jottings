@@ -18,15 +18,15 @@ function range_t(s) {
 function dice_s_t_pairs(x) {
   return range_t(x).map( y => [x, y] );
 }
-function unique_prob_array(x) {
-  return R.uniqBy( ([s,t]) => (1 - ((t-1)/s)),
-    x.map( y => dice_s_t_pairs(y) ).reduce((a, b) => a.concat(b)) );
+function s_t_longlist(x) {
+  return x.map( y => dice_s_t_pairs(y) ).reduce((a, b) => a.concat(b));
 }
 function pos_finite_predicate(x) {
   if (x > 0 && Number.isFinite(x)) {
     return true;
   }
 }
+
 // [1]
 var e = (function () {
   var max_player_nbrs = 9;
@@ -35,7 +35,7 @@ var e = (function () {
   var them = 10;
   var adv_us = 0;
   var adv_them = 0;
-  var dice_available = [6, 8, 12, 20]; // 6, 8, 12, 20, 100  n9 110 values
+  var dice_available = [6, 8, 12, 20, 100]; // 6, 8, 12, 20, 100  n9 110 values
   var enc = {};
   enc.change_n = x => Number.isInteger(x) && x > 0 && x < max_player_nbrs ?
     player_nbrs = x : player_nbrs = player_nbrs;
@@ -51,7 +51,7 @@ var e = (function () {
   // [2]
   enc.force_ratio_recur = function chances(x = max_player_nbrs) {
     if (x < 1) return;
-    let result = unique_prob_array(dice_available)
+    let result = s_t_longlist(dice_available)
       .map ( ([y, z]) => [`${x}d${y} target ${z}`, force_ratio(x, y, z)] );
     enc['a' + x] = result.filter( ([j, k]) => pos_finite_predicate(k) );
     return chances(x - 1);
@@ -72,9 +72,6 @@ function calculate_us_vs_them(us, them, adv_us, adv_them) {
   delta_adv > 0 ? force_multiplier = logarithmic_scaling(delta_adv) :
     delta_adv < 0 ? force_multiplier = ( 1 / logarithmic_scaling(delta_adv) ) :
       force_multiplier = force_multiplier;
-  console.log('delta_adv ' + delta_adv);
-  console.log('log scaling ' + logarithmic_scaling(delta_adv));
-  console.log('force_multiplier ' + force_multiplier);
   return (us / them) * force_multiplier;
 }
 
@@ -84,17 +81,6 @@ function instructions(n, us_vs_them) {
   let least_difference = difference_array.reduce( (x, y) => Math.min(x, y) );
   // index of least difference
   let i = difference_array.indexOf(least_difference);
-//remove
-/*
-  console.log('inside instructions function ');
-  console.log(fr_array);
-  console.log('inside instructions function difference_array');
-  console.log(difference_array);
-  console.log('inside instructions function least_difference');
-  console.log(least_difference);
-  console.log('inside instructions function index of least difference');
-  console.log(i);
-*/
   return e['a' + n][i][0];
 }
 
@@ -142,18 +128,4 @@ function main() {
 main();
 
 // remove
-var n1f = e.a3.map( ([x, y]) => y );
-//console.log('n1f');
-//console.log(n1f);
-var n1i = e.a3.map( ([x, y]) => x );
-//console.log('n1i');
-//console.log(n1i);
-
-function find_nearest_we_vs_they(n, us, them) {
-  let array_title = e['a' + n];
-  return array_title;
-}
-
-var vvv = calculate_us_vs_them(e.get_us(), e.get_them(), e.get_adv_us(), e.get_adv_them() );
-console.log('calculate_us_vs_them ');
-console.log(vvv);
+console.log('performance '+ performance.now());
