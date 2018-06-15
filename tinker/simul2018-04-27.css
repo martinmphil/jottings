@@ -63,17 +63,19 @@ body, p  {
 
 #us_section {
   background-color: #000066; /* dark blue */
+  text-align: center;
 }
 #them_section {
   background-color: #4d0019; /* dark red */
+  text-align: center;
 }
 .us_and_them {
   padding: 0.5em;
 }
-.us_and_them h2{
+.us_and_them h2, h3{
   margin: 0.1em;
   padding: 0.1em;
-  float: left;
+  text-align: left;
 }
 #us_input {
   font-size: 150%;
@@ -85,38 +87,52 @@ body, p  {
   font-size: 150%;
   width: 100%;
   padding: 0.2em;
+  margin-top: 0.2em;
 }
-.grid3 {
-  display: grid;
-  grid-template-columns: auto auto auto;
+.keypad {
   width: 18em;
   margin: auto;
 }
 .casio {
   font-size: 150%;
-  margin: 0.2em;
-  padding: 1em 0.8em;
+  width: 2em;
+  height: 2em;
+  margin: 0.1em;
+}
+.spacer{
+    opacity: 0;
+}
+.clear_button {
+  opacity: 0.8;
+}
+.adv_heading {
+  text-align: left;
+}
+.show_adv {
+  font-size: 120%;
+  width: 4em;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+}
+.us_adv_row{
+  font-size: 80%;
+  color: #66e0ff; /* light-blue */
+}
+.them_adv_row{
+  font-size: 80%;
+  color:  #f08080; /* LightCoral */
 }
 .us_adv_disadv {
     background-color: #66e0ff; /* light-blue */
 }
-.us_adv_disadv_legend {
-  font-size: 80%;
-  text-align: center;
-  color: #66e0ff; /* light-blue */
-}
-.show_adv {
-  width: 4em;
-  margin: auto;
-}
 .them_adv_disadv {
     background-color: #f08080; /* LightCoral */
 }
-.them_adv_disadv_legend {
-  font-size: 80%;
-  text-align: center;
-  color:  #f08080; /* LightCoral */
-}
+
+
+
+
+
 
 /* style displaying dice instructions */
 #dice_roll_instructions {

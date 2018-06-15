@@ -25,45 +25,67 @@
 
   <section id="us_section" class="us_and_them">
     <h2>Us </h2>
-    <div class="grid3">
-      <input type="button" class="gerneric_button casio" value="7">
-      <input type="button" class="gerneric_button casio" value="8">
-      <input type="button" class="gerneric_button casio" value="9">
-      <input type="button" class="gerneric_button casio" value="4">
-      <input type="button" class="gerneric_button casio" value="5">
-      <input type="button" class="gerneric_button casio" value="6">
-      <input type="button" class="gerneric_button casio" value="1">
-      <input type="button" class="gerneric_button casio" value="2">
-      <input type="button" class="gerneric_button casio" value="3">
-      <input type="button" class="gerneric_button casio us_adv_disadv" value="A">
-      <input type="button" class="gerneric_button casio" value="0">
-      <input type="button" class="gerneric_button casio us_adv_disadv" value="D">
-      <span class="us_adv_disadv_legend adv_legend">Advantage</span>
-      <input type="number" id="us_adv_input" class="show_adv us_adv_disadv" value="0">
-      <span class="us_adv_disadv_legend disad_legend">Disadv.</span>
-    </div><!--close grid3-->
     <input type="number" id="us_input" min="0" value="10">
+    <div class="keypad">
+      <div class="keypad_row">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="7">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="8">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="9">
+      </div>
+      <div class="keypad_row">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="4">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="5">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="6">
+      </div>
+      <div class="keypad_row">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="1">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="2">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="3">
+      </div>
+      <div class="keypad_row">
+        <input type="button" class="casio spacer" value=" ">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="0">
+        <input type="button" class="gerneric_button casio clear_button" value="C">
+      </div>
+      <div class="us_adv_row">
+        <div class="adv_heading">Advantages</div>
+        <input type="button" class="gerneric_button casio us_adv_disadv" value="+">
+        <input type="number" id="us_adv_input" class="show_adv us_adv_disadv" value="0">
+        <input type="button" class="gerneric_button casio us_adv_disadv" value="-">
+      </div>
+    </div><!--close keypad-->
   </section>
   <section id="them_section" class="us_and_them">
     <h2>Them </h2>
     <input type="number" id="them_input" min="0" value="10">
-    <div class="grid3">
-      <input type="button" class="gerneric_button casio" value="7">
-      <input type="button" class="gerneric_button casio" value="8">
-      <input type="button" class="gerneric_button casio" value="9">
-      <input type="button" class="gerneric_button casio" value="4">
-      <input type="button" class="gerneric_button casio" value="5">
-      <input type="button" class="gerneric_button casio" value="6">
-      <input type="button" class="gerneric_button casio" value="1">
-      <input type="button" class="gerneric_button casio" value="2">
-      <input type="button" class="gerneric_button casio" value="3">
-      <input type="button" class="gerneric_button casio them_adv_disadv" value="A">
-      <input type="button" class="gerneric_button casio" value="0">
-      <input type="button" class="gerneric_button casio them_adv_disadv" value="D">
-      <span class="them_adv_disadv_legend adv_legend">Advantage</span>
-      <input type="number" id="them_adv_input" class="show_adv them_adv_disadv" value="0">
-      <span class="them_adv_disadv_legend disad_legend">Disadv.</span>
-    </div><!--close grid3-->
+    <div class="keypad">
+      <div class="keypad_row">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="7">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="8">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="9">
+      </div>
+      <div class="keypad_row">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="4">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="5">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="6">
+      </div>
+      <div class="keypad_row">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="1">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="2">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="3">
+      </div>
+      <div class="keypad_row">
+        <input type="button" class="casio spacer" value=" ">
+        <input type="button" class="gerneric_button casio nbr_keypad" value="0">
+        <input type="button" class="gerneric_button casio clear_button" value="C">
+      </div>
+      <div class="them_adv_row">
+        <div class="adv_heading">Advantages</div>
+        <input type="button" class="gerneric_button casio them_adv_disadv" value="+">
+        <input type="number" id="them_adv_input" class="show_adv them_adv_disadv" value="0">
+        <input type="button" class="gerneric_button casio them_adv_disadv" value="-">
+      </div>
+    </div><!--close keypad-->
   </section>
 
   <!--display dice instructions-->

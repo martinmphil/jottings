@@ -84,6 +84,15 @@ function instructions(n, us_vs_them) {
   return e['a' + n][i][0];
 }
 
+function instruct() {
+  let us_vs_them = calculate_us_vs_them(
+    e.get_us(), e.get_them(), e.get_adv_us(), e.get_adv_them()
+  );
+  let ndst = instructions(e.get_n(), us_vs_them);
+  document.querySelector('#dice_roll_instructions').textContent =
+    `Roll ${ndst}.`;
+}
+
 function prepare_player_numbers_section() {
   document.querySelector('#pbttn' + e.get_n()).classList.remove('availBttn');
   document.querySelector('#pbttn' + e.get_n()).classList.add('pickedBttn');
@@ -98,16 +107,17 @@ function prepare_player_numbers_section() {
   });
 }
 
-function instruct() {
-  let us_vs_them = calculate_us_vs_them(
-    e.get_us(), e.get_them(), e.get_adv_us(), e.get_adv_them()
-  );
-  let ndst = instructions(e.get_n(), us_vs_them);
-  document.querySelector('#dice_roll_instructions').textContent =
-    `Roll ${ndst}.`;
+function prepare_keypads() {
+  document.querySelectorAll('.nbr_keypad').forEach( i => {
+    i.addEventListener('click', () => {
+        keypad_button_fn(i.value);
+      })
+  })
 }
 
-
+function keypad_button_fn(x) {
+  console.log('keypad_button_fn ' + x);
+}
 
 // remove
 //e.change_n(4);
@@ -123,6 +133,7 @@ e.change_adv_them(2);
 function main() {
   e.force_ratio_recur();
   prepare_player_numbers_section();
+  prepare_keypads()
   instruct();
 }
 main();
