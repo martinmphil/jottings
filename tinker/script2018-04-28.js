@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 function force_ratio(n, s, t) {
   let p = (1 - (((t-1)/s)**n));
   let result;
@@ -84,7 +84,6 @@ function instructions(n, us_vs_them) {
   let i = difference_array.indexOf(least_difference);
   return e['a' + n][i][0];
 }
-
 function instruct() {
   let us_vs_them = calculate_us_vs_them(
     e.get_us(), e.get_them(), e.get_us_adv(), e.get_them_adv()
@@ -109,7 +108,6 @@ function reset_button(){
   document.querySelector('#them_adv_input').value = e.reset.ta;
   instruct();
 }
-
 function prepare_player_numbers_section() {
   document.querySelector('#pbttn' + e.get_n()).classList.remove('availBttn');
   document.querySelector('#pbttn' + e.get_n()).classList.add('pickedBttn');
@@ -124,33 +122,44 @@ function prepare_player_numbers_section() {
     });
   });
 }
-
 function prepare_keypads() {
   document.querySelectorAll('.us_nbr_keypad').forEach( i => {
     i.addEventListener('click', () => {
         us_keypad_button_fn(i.value);
-      })
-  })
+      });
+  });
+  document.querySelectorAll('.them_nbr_keypad').forEach( i => {
+    i.addEventListener('click', () => {
+        them_keypad_button_fn(i.value);
+      });
+  });
 }
-
 function us_keypad_button_fn(x) {
   let el = document.querySelector('#us_input');
   let result_string = el.value + x;
-  el.value = result_string;
   e.change_us(Number.parseFloat(result_string));
+  el.value = result_string;
   instruct();
-  //remove
-  console.log('keypad_button_fn ' + x);
-  console.log('el ' + el.value);
-  console.log(Number.parseFloat(result_string));
 }
-
+function them_keypad_button_fn(x) {
+  let el = document.querySelector('#them_input');
+  let result_string = el.value + x;
+  e.change_them(Number.parseFloat(result_string));
+  el.value = result_string;
+  instruct();
+}
 function us_clear_button() {
   let el = document.querySelector('#us_input');
-  let result_value = Number.parseFloat(el.value) * 2;
-  e.change_us(result_value);
-  el.value = result_value;
-  console.log('inside clear button' + el.value);
+  let result_string =  el.value.slice(0, -1);
+  e.change_us(Number.parseFloat(result_string));
+  el.value = result_string;
+  instruct();
+}
+function them_clear_button() {
+  let el = document.querySelector('#them_input');
+  let result_string =  el.value.slice(0, -1);
+  e.change_them(Number.parseFloat(result_string));
+  el.value = result_string;
   instruct();
 }
 // remove
@@ -203,9 +212,10 @@ function main() {
   them_input();
   us_adv_input();
   them_adv_input();
-  instruct();
   document.querySelector('#reset_button').addEventListener( 'click', reset_button );
   document.querySelector('#us_clear_button').addEventListener( 'click', us_clear_button )
+  document.querySelector('#them_clear_button').addEventListener( 'click', them_clear_button )
+  instruct();
 }
 main();
 
