@@ -38,6 +38,7 @@ body, p  {
   -webkit-flex-wrap: wrap; /* Safari 6.1+ */
   display: flex;
   flex-wrap: wrap-reverse;
+  justify-content: center;
 }
 /* buttons to select number of players */
 .playerNbrsBttn {
