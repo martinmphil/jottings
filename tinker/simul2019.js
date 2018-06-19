@@ -89,6 +89,11 @@ function instruct() {
   let ndst = instructions(e.get_n(), us_vs_them);
   document.querySelector('#dice_roll_instructions').textContent =
     `Roll ${ndst}.`;
+  document.querySelector('#we_they_summary').innerHTML =
+    `<span class="us_adv_row">${e.get_us()}
+    <small>(adv ${e.get_us_adv()})</small></span>
+    <span class="them_adv_row">${e.get_them()}
+    <small>(adv ${e.get_them_adv()})</small></span>`;
 }
 function reset_button(){
   e.change_n(e.reset.n);
@@ -240,6 +245,6 @@ function main() {
     .addEventListener( 'click', us_clear_button );
   document.querySelector('#them_clear_button')
     .addEventListener( 'click', them_clear_button );
-  instruct();
+  reset_button();
 }
 main();

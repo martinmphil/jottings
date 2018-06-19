@@ -13,7 +13,6 @@ body, p  {
   padding-left: 4%;
   padding-right: 4%;
 }
-
 .top_right_link_back {
   font-size:small;
   text-decoration: none;
@@ -61,7 +60,6 @@ body, p  {
   background-color: #4CAF50; /* green */
   color: white;
 }
-
 #blue_and_red_sections {
   margin: auto;
   text-align: center;
@@ -132,25 +130,22 @@ body, p  {
   color:  #f08080; /* LightCoral */
 }
 .us_adv_disadv {
-    background-color: #66e0ff; /* light-blue */
+  background-color: #66e0ff; /* light-blue */
 }
 .them_adv_disadv {
-    background-color: #f08080; /* LightCoral */
+  background-color: #f08080; /* LightCoral */
 }
-
-
-
-
-
-
 /* style displaying dice instructions */
 #dice_roll_instructions {
   margin: 0.2em;
   font-size: 300%;
   text-align: center;
 }
-
-
+#we_they_summary {
+  margin: 0.1em;
+  opacity: 0.8;
+  text-align: center;
+}
 /* responsive web design */
 @media only screen and (min-width: 768px) {
   /* For desktop: */
