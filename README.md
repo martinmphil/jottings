@@ -1,2 +1,2 @@
 # jottings
-preparatory code
+preliminary code
