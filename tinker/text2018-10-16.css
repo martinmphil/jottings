@@ -1,0 +1,26 @@
+/* width & height includes padding + border for responsive web design */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color:black;
+  color:white;
+}
+a {
+  color:#b3dbff;
+}
+a:visited {
+  color: #ffe6ff;
+}
+
+
+
+/* responsive web design */
+@media only screen and (min-width: 40em) {
+  /* For desktop: */
+  body {
+    width: 40em;
+    margin: auto;
+  }
+}
