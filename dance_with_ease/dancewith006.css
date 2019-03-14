@@ -1,0 +1,96 @@
+body {
+  background-color:#ffffcc;
+}
+
+a {
+  color:#0000ee;
+}
+
+.art-deco-link-home {
+  font-family: 'Limelight', serif;
+  font-size: 120%;
+}
+
+#navigation-drawer-toggle-bttn {
+  float: right;
+  cursor: pointer;
+  color:#0000ee;
+  font-size: 120%;
+}
+.navigation-drawer-hidden {
+  display: none;
+}
+#navigation-drawer{
+  margin-left: auto;
+  margin-right: 0;
+  max-width: 8em;
+}
+.options-menu-nav-bttn {
+  text-align: center;
+  border: solid;
+  border-width: thin;
+  border-color: #0000ee;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  width: 7em;
+}
+
+#wrapper {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* three main sections article, nav and aside */
+article {
+  width: 30em;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid thin black;
+}
+nav {
+  border: solid thin black;
+}
+aside {
+  border: solid thin black;
+}
+
+
+
+
+
+
+
+.dancing-couple-svg-logo {
+  width: 0, auto;
+}
+
+/* width & height includes padding + border for responsive web design */
+* {
+  box-sizing: border-box;
+}
+/* responsive web design */
+@media only screen and (min-width: 50em) {
+  /* For desktop: */
+  #wrapper {
+    flex-direction: row;
+  }
+  aside {
+    order: 10;
+    flex: auto;
+    min-width: 10em;
+  }
+  article {
+    order: 20;
+    flex: auto;
+    width: 30em;
+    padding: 0em 1em;
+  }
+  nav {
+    order: 30;
+    flex: auto;
+    min-width: 10em;
+  }
+}
