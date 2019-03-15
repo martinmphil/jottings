@@ -1,3 +1,7 @@
+/* width & height includes padding + border for responsive web design */
+* {
+  box-sizing: border-box;
+}
 body {
   background-color:#ffffcc;
 }
@@ -6,26 +10,43 @@ a {
   color:#0000ee;
 }
 
+/* header */
+header {
+  margin-bottom: 1em;
+}
 .art-deco-link-home {
   font-family: 'Limelight', serif;
   font-size: 120%;
 }
-
+.site-search-link {
+  display: none;
+  float: right;
+}
 #navigation-drawer-toggle-bttn {
   float: right;
   cursor: pointer;
   color:#0000ee;
-  font-size: 120%;
+  font-size: 133%;
 }
 .navigation-drawer-hidden {
   display: none;
 }
-#navigation-drawer{
-  margin-left: auto;
-  margin-right: 0;
-  max-width: 8em;
+#navigation-drawer {
+  max-width: 9em;
+  clear: both;
+  float: right;
 }
-.options-menu-nav-bttn {
+#close-navigation-drawer-bttn {
+  /* margin-top: 0.5em; */
+  color:#0000ee;
+  font-size: 133%;
+}
+.nav-drawer-bttn {
+  display: flex;
+  justify-content: end;
+}
+#navigation-drawer a {
+  display: block;
   text-align: center;
   border: solid;
   border-width: thin;
@@ -34,46 +55,67 @@ a {
   padding: 0.5em;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
   width: 7em;
 }
 
+/* wrapper */
 #wrapper {
   margin: auto;
   display: flex;
   flex-direction: column;
 }
 
-/* three main sections article, nav and aside */
+/* article */
 article {
-  width: 30em;
+  max-width: 30em;
   margin-left: auto;
   margin-right: auto;
-  border: solid thin black;
 }
+
+/* nav */
 nav {
-  border: solid thin black;
+  text-align: center;
 }
+nav a {
+  display: block;
+  background-color: rgb(204, 231, 255);
+  border: solid;
+  border-color: rgb(0, 0, 102);
+  border-radius: 0.5em;
+  padding: 0.7em;
+  margin: 1em auto;
+  cursor: pointer;
+  width: 8em;
+  box-shadow: 0 0.5em 0.4em 0 rgba(0,0,102,0.4), 0 0.4em 0.5em 0 rgba(0,0,102,0.3);
+}
+
+
+
+/* aside */
 aside {
-  border: solid thin black;
+  margin-top: 0.5em;
 }
-
-
-
-
-
-
 
 .dancing-couple-svg-logo {
   width: 0, auto;
 }
 
-/* width & height includes padding + border for responsive web design */
-* {
-  box-sizing: border-box;
-}
+
+
 /* responsive web design */
 @media only screen and (min-width: 50em) {
   /* For desktop: */
+  #navigation-drawer-toggle-bttn {
+    display: none;
+  }
+  .navigation-drawer {
+    display: none;
+  }
+  .site-search-link {
+  display: inline;
+  }
   #wrapper {
     flex-direction: row;
   }
