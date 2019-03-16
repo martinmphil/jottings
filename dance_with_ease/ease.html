@@ -22,38 +22,32 @@
     <strong>DanceWith.co.uk works best with JavaScript enabled. Please enable JavaScript.</strong>
   </noscript>
 
+    <div id="navigation-drawer" class="navigation-drawer">
+      <button
+        id="navigation-drawer-toggle-bttn"
+        type="button"
+        name="navigation-drawer-toggle"
+        @click="showNavigationDrawer = !showNavigationDrawer"
+      >
+        <span v-if="!showNavigationDrawer" class="symbol-navigation-drawer-toggle-bttn">≡</span>
+        <span v-else>×</span>
+      </button>
+      <div v-if="showNavigationDrawer" class="links-inside-navigation-drawer">
+        <a href="sitecontent.html">Contents</a>
+        <a href="history.html">History</a>
+        <a href="links.html">Links</a>
+        <a href="video.html">Video</a>
+        <a href="health.html">Health</a>
+        <a href="sitecontent.html">Search</a>
+        <a href="index.html">Home</a>
+      </div>
+    </div>
+
   <header>
     <a class="art-deco-link-home" href="index.html">
       DanceWith<small><small>.co.uk</small></small>
     </a>
     <span class="site-search-link"><a href="sitecontent.html">Search</a></span>
-    <button
-      id="navigation-drawer-toggle-bttn"
-      type="button"
-      name="navigation-drawer-toggle"
-    >
-      ≡
-    </button>
-    <div id="navigation-drawer" class="navigation-drawer-hidden">
-      <div class="nav-drawer-bttn">
-        <button
-          id="close-navigation-drawer-bttn"
-          type="button"
-          name="close-navigation-drawer"
-          
-        >
-          ×
-        </button>
-      </div>
-      <a href="sitecontent.html">Contents</a>
-      <a href="history.html">History</a>
-      <a href="links.html">Links</a>
-      <a href="video.html">Video</a>
-      <a href="health.html">Health</a>
-      <a href="sitecontent.html">Search</a>
-      <a href="index.html">Home</a>
-    </div>
-
   </header>
 
   <div id="wrapper">
@@ -164,6 +158,7 @@
         <strong>dancing till the end of a song with you and your partner
           enjoying yourselves</strong>.
       </p>
+      <hr>
     </article>
 
     <nav>
@@ -188,7 +183,6 @@
   <!-- close wrapper div -->
 
   <footer>
-    <hr />
     <p>
       "Dance, even if you have nowhere to do it but your living room."
       <small><sup><a href="./history/1970-2000.html#living-room">[1]</a></sup></small>
@@ -196,6 +190,8 @@
     <p>2005 Information may become moot.</p>
   </footer>
 
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="dancewith006.js"></script>
 </body>
 </html>
