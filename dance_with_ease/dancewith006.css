@@ -2,6 +2,7 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   background-color:#ffffcc;
 }
@@ -12,71 +13,50 @@ a {
 
 /* header */
 header {
-  margin-bottom: 1em;
+  margin-bottom: 0.1em;
 }
+
 .art-deco-link-home {
   font-family: 'Limelight', serif;
   font-size: 120%;
 }
-.site-search-link {
-  display: none;
-  float: right;
-}
 
 /* navigation-drawer */
 .navigation-drawer {
-  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
+
 #navigation-drawer-toggle-bttn {
   float: right;
   width: 3em;
+  height: 2em;
   text-align: center;
   font-size: 120%;
   color:#0000ee;
+  cursor: pointer;
+  margin-bottom: 0.5em;
 }
+
 .links-inside-navigation-drawer a {
   display: block;
-}
-
-
-
-
-
-/* .navigation-drawer-hidden {
-  display: none;
-} */
-/* #navigation-drawer-toggle-bttn {
-  float: right;
-  cursor: pointer;
-  color:#0000ee;
-  font-size: 133%;
-}
-#navigation-drawer {
-  max-width: 9em;
-  clear: both;
-  float: right;
-}
-#close-navigation-drawer-bttn {
-  color:#0000ee;
-  font-size: 133%;
-}
-.nav-drawer-bttn {
-  display: flex;
-  justify-content: end;
-}
-#navigation-drawer a {
+  background-color: rgb(204, 231, 255);
   text-align: center;
-  border: solid;
-  border-width: thin;
-  border-color: #0000ee;
-  border-radius: 0.5em;
-  padding: 0.5em;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  margin-left: auto;
-  margin-right: auto;
-  width: 7em;
-} */
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 
 /* wrapper */
 #wrapper {
@@ -96,6 +76,7 @@ article {
 nav {
   text-align: center;
 }
+
 nav a {
   display: block;
   background-color: rgb(204, 231, 255);
@@ -121,6 +102,8 @@ aside {
 /* footer */
 footer {
   text-align: center;
+  font-size: 85%;
+  opacity: 0.8;
 }
 
 
@@ -146,7 +129,7 @@ footer {
   article {
     order: 20;
     flex: 2 1 auto;
-    max-width: 40em;
+    width: 40em;
     padding: 0em 1em;
   }
   nav {

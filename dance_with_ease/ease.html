@@ -32,22 +32,23 @@
         <span v-if="!showNavigationDrawer" class="symbol-navigation-drawer-toggle-bttn">≡</span>
         <span v-else>×</span>
       </button>
-      <div v-if="showNavigationDrawer" class="links-inside-navigation-drawer">
-        <a href="sitecontent.html">Contents</a>
-        <a href="history.html">History</a>
-        <a href="links.html">Links</a>
-        <a href="video.html">Video</a>
-        <a href="health.html">Health</a>
-        <a href="sitecontent.html">Search</a>
-        <a href="index.html">Home</a>
-      </div>
+      <transition name="fade">
+        <div v-if="showNavigationDrawer" class="links-inside-navigation-drawer">
+          <a href="sitecontent.html">Search</a>
+          <a href="history.html">History</a>
+          <a href="links.html">Links</a>
+          <a href="video.html">Video</a>
+          <a href="health.html">Health</a>
+          <a href="sitecontent.html">Contents</a>
+          <a href="index.html">Home</a>
+        </div>
+      </transition>
     </div>
 
   <header>
     <a class="art-deco-link-home" href="index.html">
       DanceWith<small><small>.co.uk</small></small>
     </a>
-    <span class="site-search-link"><a href="sitecontent.html">Search</a></span>
   </header>
 
   <div id="wrapper">
@@ -163,13 +164,13 @@
 
     <nav>
       <p>Navigation links:-</p>
-      <a href="sitecontent.html">Contents</a>
-      <a href="history.html">History</a>
-      <a href="links.html">Links</a>
-      <a href="video.html">Video</a>
-      <a href="health.html">Health</a>
-      <a href="sitecontent.html">Search</a>
-      <a href="index.html">Home</a>
+          <a href="sitecontent.html">Search</a>
+          <a href="history.html">History</a>
+          <a href="links.html">Links</a>
+          <a href="video.html">Video</a>
+          <a href="health.html">Health</a>
+          <a href="sitecontent.html">Contents</a>
+          <a href="index.html">Home</a>
     </nav>
 
     <aside>
@@ -187,11 +188,11 @@
       "Dance, even if you have nowhere to do it but your living room."
       <small><sup><a href="./history/1970-2000.html#living-room">[1]</a></sup></small>
     </p>
-    <p>2005 Information may become moot.</p>
+    <p><small>Information may become moot.</small></p>
+    <p>2005</p>
   </footer>
 
-  <!-- development version, includes helpful console warnings -->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="dancewith006.js"></script>
 </body>
 </html>
