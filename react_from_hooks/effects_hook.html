@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<meta charset="utf-8">
+<!--mobile 1st responsive style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./fromhooks.css">
+<title>Effects</title>
+<body>
+<noscript>
+  <strong>This site works best with JavaScript enabled. Please enable JavaScript.</strong>
+</noscript>
+
+<article>
+  <h1>Effects hook</h1>
+  <p>
+    Named after <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">side effects</a>.
+  </p>
+  <p>
+    A single component can call effect hooks many times.
+  </p>
+  <p>
+    useEffect() takes a function as an argument.
+  </p>
+  <p>
+    By default, effects execute after every render.
+  </p>
+  <p>
+    An optional return function is called to "clean up" after an effect,
+    such as unsubscribing event listeners. Eg
+  </p>
+
+  <pre class="prettyprint lang-js">
+    <code>
+useEffect(() => {
+  const handleResize = () => setWidth(window.innerWidth);
+  window.addEventListener('resize', handleResize);
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+});
+    </code>
+  </pre>
+
+
+
+
+
+
+</article>
+
+
+<aside>
+  <pre>
+    <code>
+// Code example
+
+import React, { useState, useEffect } from 'react'
+
+function Example() {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    &lt;div&gt;
+      //... component html ...
+    &lt;/div&gt;
+  )
+}
+    </code>
+  </pre>
+</aside>
+
+<nav>
+  <ul>
+    <li><a href="./index.html">Index Page</a></li>
+  </ul>
+</nav>
+
+<!-- github.com/google/code-prettify -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
+<script src="./fromhooks.js"></script>
+</body>
+</html>
