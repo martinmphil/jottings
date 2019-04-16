@@ -31,6 +31,8 @@ aside {
 
 pre {
   padding: 0.2em;
+  background-color:#333;
+  color: white;
 }
 
 aside pre {
@@ -64,6 +66,7 @@ nav li a {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: flex-start;
   }
   nav {
     order: 10;
