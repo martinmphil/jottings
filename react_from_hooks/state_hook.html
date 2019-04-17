@@ -18,21 +18,94 @@
     State records changes in a component, eg counting button clicks.
   </p>
   <p>
-    A single component can call state hooks many times.
-  </p>
-
-  <h2>Function return</h2>
-  <p>
-    The state hook function returns a pair of values in an array, like [x,y].
+    First import useState from React with the following line of code:
   </p>
   <p>
+    import React, { useState } from 'react'
+  </p>
+  <p>
+    "useState" accepts the initial state value as an argument.
+  </p>
+  <p>
+    Eg "0" or "Bilbo" in the two separate lines of code below:
+  </p>
+  <p>
+    <pre>
+      <code>
+const [count, setCount] = useState(0)
+      </code>
+    </pre>
+  </p>
+  <p>
+    <pre>
+      <code>
+const [name, setName] = useState('Bilbo')
+      </code>
+    </pre>
+  </p>
+  <p>
+    Function return: the state hook function returns a pair of values in an array, like [x,y].
     Hence we assign the hook function to a pair of variables in an array.
   </p>
   <p>
-    Eg
+    To store multiple data objects, a single component may call state hooks many times.
+  </p>
+  <h2>Reading state</h2>
+  <p>
+    State information can be simply referenced by name inside curly brackets,
+    eg "{count}" in the example below.
   </p>
   <p>
-    const [count, setCount] = useState(0);
+    <pre>
+      <code>
+function my_component() {
+
+  const [count, setCount] = useState(0)
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+    &lt;/div&gt;
+  )
+}
+      </code>
+    </pre>
+  </p>
+  <h2>Setting state</h2>
+  <p>
+    To set a state varibale to a new value, call the setter function you assigned with useState
+    and pass in the new state value as an argument.
+  </p>
+  <p>Eg</p>
+  <p>
+    <pre>
+      <code>
+&lt;button onClick={() => setCount(count + 1)}&gt;
+  Click me
+&lt;/button&gt;
+      </code>
+    </pre>
+  </p>
+  <p>
+    Or
+  </p>
+  <p>
+    <pre>
+      <code>
+const [name, setName] = useState('Bilbo')
+
+function handleNameChange(e) {
+  setName(e.target.value)
+}
+
+return (
+  &lt;input
+    value={name}
+    onChange={handleNameChange}
+  /&gt;
+)
+      </code>
+    </pre>
   </p>
 
 </article>
@@ -44,7 +117,7 @@
 
 import React, { useState } from 'react'
 
-function Example() {
+function my_component() {
 
   const [count, setCount] = useState(0)
 

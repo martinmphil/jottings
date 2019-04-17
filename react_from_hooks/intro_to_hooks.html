@@ -13,6 +13,14 @@
 <article>
   <h1>Introduction to React hooks</h1>
   <p>
+    First setup your development enviroment as described in
+    <a href="https://reactjs.org/docs/getting-started.html">the React docs</a>.
+  </p>
+  <hr>
+  <p>
+    React hooks work from within function components.
+  </p>
+  <p>
     Function components can hook into component lifecycle and component state.
   </p>
   <p>
@@ -22,11 +30,13 @@
     State can record the changing condition of a component, eg counting button clicks.
   </p>
   <p>
-    Hooks must be declared and assigned at the beginning of a function component
+    React tracks the order in which hooks are called.
+    Hence hooks must be assigned at the top level of a function component,
     ie outside any loops, conditions, or nested functions.
+    For best practice assign hooks at the beginning of function components.
   </p>
   <p>
-    Only call Hooks from a function component.
+    Only call hooks from within a React function component.
   </p>
   <p>
     Hooks can be used many times in a single component.

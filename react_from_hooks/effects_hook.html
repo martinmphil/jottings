@@ -16,35 +16,49 @@
     Named after <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">side effects</a>.
   </p>
   <p>
-    A single component can call effect hooks many times.
-  </p>
-  <p>
-    useEffect() takes a function as an argument.
+    Effect hooks call the react function, "useEffect", from within a function component.
   </p>
   <p>
     By default, effects execute after every render.
   </p>
   <p>
-    An optional return function is called to "clean up" after an effect,
+    A single component can call effect hooks many times.
+  </p>
+  <p>
+    useEffect() takes a function as an argument.
+  </p>
+  <h2>Return function</h2>
+  <p>
+    An optional return function can be called to "clean up" after an effect,
     such as unsubscribing event listeners. Eg
   </p>
-
   <pre class="prettyprint lang-js">
     <code>
 useEffect(() => {
-  const handleResize = () => setWidth(window.innerWidth);
-  window.addEventListener('resize', handleResize);
+  const handleResize = () => setWidth(window.innerWidth)
+  window.addEventListener('resize', handleResize)
   return () => {
-    window.removeEventListener('resize', handleResize);
-  };
-});
+    window.removeEventListener('resize', handleResize)
+  }
+})
     </code>
   </pre>
-
-
-
-
-
+  <h2>Second argument</h2>
+  <p>
+    Optionally, an effect may check for changes in specific props or state by passing them in as
+    an arrayed second argument. In the example below, the effect skips unless "count" changes.
+  </p>
+  <pre>
+    <code>
+useEffect(() => {
+  document.title = `You clicked ${count} times`
+}, [count])
+    </code>
+  </pre>
+  <p>
+    Passing in an empty array, ie "[]", as a second argument to useEffect
+    ensures the effect and clean-up only occures when a component mounts and unmounts.
+  </p>
 
 </article>
 
@@ -56,12 +70,12 @@ useEffect(() => {
 
 import React, { useState, useEffect } from 'react'
 
-function Example() {
+function my_component() {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
     // Update the document title using the browser API
-    document.title = `You clicked ${count} times`;
+    document.title = `You clicked ${count} times`
   });
 
   return (

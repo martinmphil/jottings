@@ -18,6 +18,29 @@
     <a href="https://en.wikipedia.org/wiki/Lint_(software)">linters</a>
     to debug hook functions.
   </p>
+  <p>
+    In the following example, any other function component can call "useWindowWidth()"
+    as a hook.
+  </p>
+  <p>
+    <pre class="prettyprint lang-js">
+     <code>
+function useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth)
+  
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  })
+  
+  return width
+}
+      </code>
+    </pre>
+  </p>
 
 </article>
 
@@ -27,20 +50,18 @@
     <code>
 // Code example
 
-function useWindowWidth() {
-  const [width, setWidth] = useState(window.innerWidth);
-  
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  });
-  
-  return width;
-}
+import React, { useState } from 'react'
 
+function my_component() {
+
+  const width = useWidth()
+
+  return (
+    &lt;div&gt;
+      //component utilising {width}
+    &lt;/div&gt;
+  )
+}
     </code>
   </pre>
 </aside>
