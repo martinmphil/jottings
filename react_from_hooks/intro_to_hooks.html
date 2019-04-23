@@ -21,6 +21,12 @@
     React hooks work from within function components.
   </p>
   <p>
+    Only call hooks inside a React function component.
+  </p>
+  <p>
+    Hooks can be used many times in a single component.
+  </p>
+  <p>
     Function components can hook into component lifecycle and component state.
   </p>
   <p>
@@ -36,10 +42,20 @@
     For best practice assign hooks at the beginning of function components.
   </p>
   <p>
-    Only call hooks from within a React function component.
-  </p>
-  <p>
-    Hooks can be used many times in a single component.
+    <pre>
+      <code>
+function MyComponent() {
+
+  const [count, setCount] = useState(0)
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+    &lt;/div&gt;
+  )
+}
+      </code>
+    </pre>
   </p>
 
 </article>

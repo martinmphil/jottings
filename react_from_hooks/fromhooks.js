@@ -1,8 +1,7 @@
 function main () {
   let a = `
     <li><a href="./intro_to_hooks.html">Intro</a></li>
-    <li><a href="./jsx.html">JSX</a></li>
-    <li><a href="./component.html">Component</a></li>
+    <li><a href="./react_basics.html">React basics</a></li>
     <li><a href="./props.html">Props</a></li>
     <li><a href="./function_component.html">Function component</a></li>
     <li><a href="./state_hook.html">State hook</a></li>
