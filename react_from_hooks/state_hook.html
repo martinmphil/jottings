@@ -20,25 +20,26 @@
   <p>
     First import useState from React with the following line of code:
   </p>
-  <p>
-    import React, { useState } from 'react'
-  </p>
+  <pre>
+import React, { useState } from 'react'
+  </pre>
   <p>
     "useState" accepts the initial state value as an argument.
   </p>
   <p>
     Eg "0" or "Bilbo" in the two separate lines of code below:
   </p>
-    <pre>
-      <code>
-const [count, setCount] = useState(0)
-
-const [name, setName] = useState('Bilbo')
-      </code>
-    </pre>
+  <code>
+    const [count, setCount] = useState(0) <br>
+    <br>
+    const [name, setName] = useState('Bilbo') <br>
+  </code>
+  <h2>
+    Function return
+  </h2>
   <p>
-    Function return: the state hook function returns a pair of values in an array, like [x,y].
-    Hence we assign the hook function to a pair of variables in an array.
+    The state hook function returns a pair of values in an array, like [x,y].
+    Hence assigning the hook function to a pair of variables in an array.
   </p>
   <p>
     To store multiple data objects, a single component may call state hooks many times.
@@ -48,57 +49,54 @@ const [name, setName] = useState('Bilbo')
     State information can be simply referenced by name inside curly brackets,
     eg "{count}" in the example below.
   </p>
-  <p>
-    <pre>
-      <code>
-function MyComponent() {
 
-  const [count, setCount] = useState(0)
-
-  return (
-    &lt;div&gt;
-      &lt;p&gt;You clicked {count} times&lt;/p&gt;
-    &lt;/div&gt;
-  )
-}
-      </code>
-    </pre>
-  </p>
+  <code>
+    function MyComponent() { <br>
+    <br>
+    &nbsp;&nbsp; const [count, setCount] = useState(0) <br>
+    <br>
+    &nbsp;&nbsp; return ( <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; &lt;div&gt; <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;p&gt;You clicked {count} times&lt;/p&gt; <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; &lt;/div&gt; <br>
+    &nbsp;&nbsp; ) <br>
+    }
+  </code>
   <h2>Setting state</h2>
   <p>
     To set a state varibale to a new value, call the setter function you assigned with useState
     and pass in the new state value as an argument.
   </p>
   <p>Eg</p>
-  <p>
-    <pre>
-      <code>
-&lt;button onClick={() => setCount(count + 1)}&gt;
-  Click me
-&lt;/button&gt;
-      </code>
-    </pre>
-  </p>
+  <code>
+    &lt;button onClick={() => setCount(count + 1)}&gt; <br>
+    &nbsp;&nbsp; Please click <br>
+    &lt;/button&gt;
+  </code>
   <p>
     Or
   </p>
+  <code>
+    const [name, setName] = useState('Bilbo') <br>
+    <br>
+    function handleNameChange(e) { <br>
+    &nbsp;&nbsp; setName(e.target.value) <br>
+    } <br>
+    <br>
+    return ( <br>
+    &nbsp;&nbsp; &lt;input <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; value={name} <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; onChange={handleNameChange} <br>
+    &nbsp;&nbsp;/&gt; <br>
+    ) <br>
+  </code>
+
+  <h2>Single page example</h2>
   <p>
-    <pre>
-      <code>
-const [name, setName] = useState('Bilbo')
-
-function handleNameChange(e) {
-  setName(e.target.value)
-}
-
-return (
-  &lt;input
-    value={name}
-    onChange={handleNameChange}
-  /&gt;
-)
-      </code>
-    </pre>
+    Rather than importing useState, employing 
+    "<strong>React</strong>.useState" can create a
+    <a href="./pure_func_basics_example.html">single page example</a>.
+    (Please see source code after clicking link.)
   </p>
 
 </article>

@@ -12,13 +12,62 @@
 
 <article>
   <h1>Props</h1>
-  <p>Props is short for "properties".</p>
-  <p>Props input information into a react component from a parent.</p>
-  <p>Props are fixed by the parent component.</p>
-  <p>Modifiable data is stored as state rather than props.</p>
+  <p>
+    Props is short for "properties".
+  </p>
+  <p>
+    Props are fixed by the parent component.
+  </p>
+  <p>
+    Modifiable data is stored as 
+    <a href="./state_hook.html">state</a>
+    rather than props.
+  </p>
+  <p>
+    Props input information into a react component from a parent
+    via custom html attributes, eg 
+  </p>
+  <pre>
+&lt;Welcome name="Gandalf"/&gt;
+  </pre>
+  <p>
+    or
+  </p>
+  <code>
+    &lt;!DOCTYPE html&gt; <br>
+    &lt;html lang='en-GB'&gt; <br>
+    &lt;meta charset='utf-8'&gt; <br>
+    &lt;title&gt;Pure func&lt;/title&gt; <br>
+    &lt;script src="https://unpkg.com/react@16/umd/react.development.js"&gt; <br>
+    &lt;/script&gt; <br>
+    &lt;script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"&gt; <br>
+    &lt;/script&gt; <br>
+    &lt;script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"&gt; <br>
+    &lt;/script&gt; <br>
+    &lt;body&gt; <br>
+      &lt;div id="div1"&gt;&lt;/div&gt; <br>
+      &lt;div id="div2"&gt;&lt;/div&gt; <br>
+      &lt;script type="text/babel"&gt; <br>
+    <br>
+        function MyComp(props) { <br>
+          return (&lt;h1&gt;To the {props.direction}&lt;/h1&gt;) <br>
+        } <br>
+    <br>
+        ReactDOM.render( <br>
+          &lt;MyComp direction="top"/&gt;, <br>
+          document.getElementById('div1') <br>
+        ) <br>
+    <br>
+        ReactDOM.render( <br>
+          &lt;MyComp direction="bottom"/&gt;, <br>
+          document.getElementById('div2') <br>
+        ) <br>
+      &lt;/script&gt; <br>
+    &lt;/body&gt; <br>
+    &lt;/html&gt; <br>
+  </code>
 
 </article>
-
 
 <aside>
   <pre>

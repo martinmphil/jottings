@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<title>Pure func basics</title>
+<script
+  src="https://unpkg.com/react@16/umd/react.development.js"
+  crossorigin>
+</script>
+<script
+  src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+  crossorigin>
+</script>
+<!-- babel processes JSX on-the-fly -->
+<script
+  src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"
+  crossorigin>
+</script>
+<body>
+<div id="App"></div>
+
+<script type="text/babel">
+  
+  function PureFunc() {
+
+    const [value, setValue] = React.useState(0)
+
+    const [text, setText] = React.useState('text')
+
+    function handleChange(e) {setText(e.target.value)}
+
+    return (
+      <div>
+        <p>
+          Clicked {value} times
+        </p>
+        <button onClick={() => setValue(value + 1)}>
+          Please click here
+        </button>
+        <br />
+        <hr />
+        <p>Text entered below reads: {text} </p>
+        <input
+          value={text}
+          onChange={handleChange}
+        />
+      </div>
+    )
+  }
+
+  ReactDOM.render(
+    <PureFunc />,
+    document.querySelector('#App')
+  )
+
+</script>
+</body>
+</html>

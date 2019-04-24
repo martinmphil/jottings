@@ -22,25 +22,19 @@
     In the following example, any other function component can call "useWindowWidth()"
     as a hook.
   </p>
-  <p>
-    <pre class="prettyprint lang-js">
-     <code>
-function useWindowWidth() {
-  const [width, setWidth] = useState(window.innerWidth)
-  
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth)
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  })
-  
-  return width
-}
-      </code>
-    </pre>
-  </p>
+  <code>
+    function useWindowWidth() { <br>
+    &nbsp;&nbsp; const [width, setWidth] = useState(window.innerWidth) <br>
+    &nbsp;&nbsp; useEffect(() => { <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; const handleResize = () => setWidth(window.innerWidth) <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; window.addEventListener('resize', handleResize) <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; return () => { <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; window.removeEventListener('resize', handleResize) <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; } <br>
+    &nbsp;&nbsp; }) <br>
+    &nbsp;&nbsp; return width<br>
+    } <br>
+  </code>
 
 </article>
 

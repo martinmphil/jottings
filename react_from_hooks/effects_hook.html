@@ -32,29 +32,25 @@
     An optional return function can be called to "clean up" after an effect,
     such as unsubscribing event listeners. Eg
   </p>
-  <pre class="prettyprint lang-js">
-    <code>
-useEffect(() => {
-  const handleResize = () => setWidth(window.innerWidth)
-  window.addEventListener('resize', handleResize)
-  return () => {
-    window.removeEventListener('resize', handleResize)
-  }
-})
-    </code>
-  </pre>
+  <code>
+    useEffect(() => { <br>
+    &nbsp;&nbsp; const handleResize = () => setWidth(window.innerWidth) <br>
+    &nbsp;&nbsp; window.addEventListener('resize', handleResize) <br>
+    &nbsp;&nbsp; return () => { <br>
+    &nbsp;&nbsp;&nbsp;&nbsp; window.removeEventListener('resize', handleResize) <br>
+    &nbsp;&nbsp; } <br>
+    }) <br>
+  </code>
   <h2>Second argument</h2>
   <p>
     Optionally, an effect may check for changes in specific props or state by passing them in as
     an arrayed second argument. In the example below, the effect skips unless "count" changes.
   </p>
-  <pre>
-    <code>
-useEffect(() => {
-  document.title = `You clicked ${count} times`
-}, [count])
-    </code>
-  </pre>
+  <code>
+    useEffect(() => { <br>
+    &nbsp;&nbsp; document.title = `You clicked ${count} times` <br>
+    }, [count]) <br>
+  </code>
   <p>
     Passing in an empty array, ie "[]", as a second argument to useEffect
     ensures the effect and clean-up only occures when a component mounts and unmounts.
@@ -74,7 +70,6 @@ function MyComponent() {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
-    // Update the document title using the browser API
     document.title = `You clicked ${count} times`
   });
 
