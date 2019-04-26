@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<title>Map example</title>
+<script
+  src="https://unpkg.com/react@16/umd/react.development.js"
+  crossorigin>
+</script>
+<script
+  src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+  crossorigin>
+</script>
+<!-- babel processes JSX on-the-fly -->
+<script
+  src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"
+  crossorigin>
+</script>
+<body>
+<div id="App"></div>
+
+<script type="text/babel">
+  
+  function PureFunc() {
+
+    let innerPlanets = [
+      'Mercury', 'Venus', 'Earth', 'Mars'
+    ]
+
+    let planetsList = innerPlanets.map( (planet, index) =>
+      <li key={index + 1}>{planet}</li>
+    )
+
+    let elements = [
+      {elementName: 'Hydrogen', group: 1},
+      {elementName: 'Helium', group: 18},
+      {elementName: 'Lithium', group: 1},
+      {elementName: 'Beryllium', group: 2},
+      {elementName: 'Boron', group: 13},
+      {elementName: 'Carbon', group: 14},
+      {elementName: 'Nitrogen', group: 15},
+      {elementName: 'Oxygen', group: 16},
+      {elementName: 'Fluorine', group: 17},
+      {elementName: 'Neon', group: 18}
+    ]
+
+    let groupOneElements = elements.filter( element => element.group == 1 )
+    let groupOneElementsList = groupOneElements.map( (element, index) =>
+      <li key={index +1}>{element.elementName}</li>
+    )
+
+    return (
+      <div>
+        <h1>Inner planets</h1>
+        <ul>
+          {planetsList}
+        </ul>
+        <h1>Group one elements</h1>
+        <ul>
+          {groupOneElementsList}
+        </ul>
+      </div>
+    )
+  }
+
+  ReactDOM.render(
+    <PureFunc />,
+    document.querySelector('#App')
+  )
+
+</script>
+</body>
+</html>
