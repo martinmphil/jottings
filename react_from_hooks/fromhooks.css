@@ -57,6 +57,24 @@ nav li a {
   margin-bottom: 1em;
 }
 
+.contents_page {
+  text-align: center;
+  border: solid;
+  border-width: thin;
+  border-color: grey;
+  border-radius: 1em;
+  padding: 1em;
+  margin-top: 1em;
+}
+.contents_page ul {
+  list-style-type: none;
+  padding: 0;
+}
+.contents_page li a {
+  display: block;
+  margin-bottom: 1em;
+}
+
 /* responsive web design */
 @media only screen and (min-width: 50em) {
   /* For desktop: */
