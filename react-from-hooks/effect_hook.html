@@ -5,16 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="./fromhooks.css">
 <meta name="description" content="React from Hooks">
-<meta name="keywords" content="Effects Hooks,React.js,JavaScript">
+<meta name="keywords" content="Effect hooks,React.js,JavaScript">
 <meta name="author" content="martin.mphil@gmail.com">
 <title>Effects</title>
 <body>
-<noscript>
-  <strong>This site works best with JavaScript enabled. Please enable JavaScript.</strong>
-</noscript>
 
 <article>
-  <h1>Effects hook</h1>
+  <h1>Effect hook</h1>
   <p>
     Named after <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">side effects</a>.
   </p>
@@ -22,7 +19,7 @@
     Effect hooks call the react function, "useEffect", from within a function component.
   </p>
   <p>
-    By default, effects execute after every render.
+    By default effects execute after every render.
   </p>
   <p>
     A single component can call effect hooks many times.
@@ -30,13 +27,20 @@
   <p>
     useEffect() takes a function as an argument.
   </p>
+    <code>
+    useEffect( () => { <br>
+    &nbsp;&nbsp; const handleResize = () => setWidth(window.innerWidth) <br>
+    &nbsp;&nbsp; window.addEventListener('resize', handleResize) <br>
+    &nbsp;&nbsp; ... <br>
+    }) <br>
+  </code>
   <h3>Return function</h3>
   <p>
     An optional return function can be called to "clean up" after an effect,
     such as unsubscribing event listeners. Eg
   </p>
   <code>
-    useEffect(() => { <br>
+    useEffect( () => { <br>
     &nbsp;&nbsp; const handleResize = () => setWidth(window.innerWidth) <br>
     &nbsp;&nbsp; window.addEventListener('resize', handleResize) <br>
     &nbsp;&nbsp; return () => { <br>
@@ -46,17 +50,17 @@
   </code>
   <h3>Second argument</h3>
   <p>
-    Optionally, an effect may check for changes in specific props or state by passing them in as
-    an arrayed second argument. In the example below, the effect skips unless "count" changes.
+    Optionally an effect may check for changes in specific props or state by passing them in as
+    an arrayed second argument. In the example below the effect skips unless "count" changes.
   </p>
   <code>
     useEffect(() => { <br>
     &nbsp;&nbsp; document.title = `You clicked ${count} times` <br>
-    }, [count]) <br>
+    }, <strong>[count]</strong>) <br>
   </code>
   <p>
-    Passing in an empty array, ie "[]", as a second argument to useEffect
-    ensures the effect and clean-up only occures when a component mounts and unmounts.
+    Supplying an empty array (ie "[]") as a second argument to useEffect
+    ensures the effect and clean-up only occur when a component mounts and unmounts.
   </p>
 
 </article>
@@ -89,11 +93,16 @@ function MyComponent() {
 <nav>
   <ul>
     <li><a href="./index.html">Index Page</a></li>
+    <li><a href="./intro_to_hooks.html">Intro</a></li>
+    <li><a href="./react_basics.html">React basics</a></li>
+    <li><a href="./props.html">Props</a></li>
+    <li><a href="./function_component.html">Function component</a></li>
+    <li><a href="./state_hook.html">State hook</a></li>
+    <li>Effect hook</li>
+    <li><a href="./custom_hook.html">Custom hook</a></li>
+    <li><a href="./sources.html">Sources</a></li>
   </ul>
 </nav>
 
-<!-- github.com/google/code-prettify -->
-<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
-<script src="./fromhooks.js"></script>
 </body>
 </html>

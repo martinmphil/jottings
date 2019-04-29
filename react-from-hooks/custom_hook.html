@@ -9,26 +9,23 @@
 <meta name="author" content="martin.mphil@gmail.com">
 <title>Custom hooks</title>
 <body>
-<noscript>
-  <strong>This site works best with JavaScript enabled. Please enable JavaScript.</strong>
-</noscript>
 
 <article>
   <h1>Custom hooks</h1>
   <p>
-    By convention, names for custom hooks begin with the letters "use", eg "useWindowWidth()".
+    By convention names for custom hooks begin with the letters "use", eg "useWindowWidth()".
     Starting custom hook names with "use" allows react
     <a href="https://en.wikipedia.org/wiki/Lint_(software)">linters</a>
     to debug hook functions.
   </p>
   <p>
-    In the following example, any other function component can call "useWindowWidth()"
-    as a hook.
+    In the following example any other function component may call "useWindowWidth()"
+    as a custom hook.
   </p>
   <code>
     function useWindowWidth() { <br>
     &nbsp;&nbsp; const [width, setWidth] = useState(window.innerWidth) <br>
-    &nbsp;&nbsp; useEffect(() => { <br>
+    &nbsp;&nbsp; useEffect( () => { <br>
     &nbsp;&nbsp;&nbsp;&nbsp; const handleResize = () => setWidth(window.innerWidth) <br>
     &nbsp;&nbsp;&nbsp;&nbsp; window.addEventListener('resize', handleResize) <br>
     &nbsp;&nbsp;&nbsp;&nbsp; return () => { <br>
@@ -38,9 +35,7 @@
     &nbsp;&nbsp; return width<br>
     } <br>
   </code>
-
 </article>
-
 
 <aside>
   <pre class="prettyprint lang-js">
@@ -66,11 +61,20 @@ function MyComponent() {
 <nav>
   <ul>
     <li><a href="./index.html">Index Page</a></li>
+    <li><a href="./intro_to_hooks.html">Intro</a></li>
+    <li><a href="./react_basics.html">React basics</a></li>
+    <li><a href="./props.html">Props</a></li>
+    <li><a href="./function_component.html">Function component</a></li>
+    <li><a href="./state_hook.html">State hook</a></li>
+    <li><a href="./effect_hook.html">Effect hook</a></li>
+    <li>Custom hook</li>
+    <li><a href="./sources.html">Sources</a></li>
   </ul>
 </nav>
 
 <!-- github.com/google/code-prettify -->
-<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
-<script src="./fromhooks.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"
+></script>
 </body>
 </html>

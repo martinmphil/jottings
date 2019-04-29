@@ -9,38 +9,31 @@
 <meta name="author" content="martin.mphil@gmail.com">
 <title>Function components</title>
 <body>
-<noscript>
-  <strong>This site works best with JavaScript enabled. Please enable JavaScript.</strong>
-</noscript>
 
 <article>
   <h1>Function component</h1>
   <p>
-    Function components accept props as an argument and returns 
+    Function components accept props as an argument and return 
     <a href="./react_basics.html#JSX_section">JSX</a> code.
   </p>
   <p>
     Function component names should start with a capital letter, eg MyComponent.
   </p>
-
-  <pre>
-    <code>
-const MyComponent = (props) => {
-  ...
-  return &lt;div /&gt;
-}
-    </code>
-  </pre>
-
-  <pre>
-    <code>
-function MyComponent(props) {
-  ...
-  return &lt;div /&gt;
-}
-    </code>
-  </pre>
-
+  <code>
+    const MyComponent = (props) => { <br>
+    &nbsp;&nbsp; ... <br>
+    &nbsp;&nbsp; return &lt;div /&gt; <br>
+    } <br>
+  </code>
+  <p>
+    or
+  </p>
+  <code>
+    function MyComponent(props) { <br>
+    &nbsp;&nbsp; ... <br>
+    &nbsp;&nbsp; return &lt;div /&gt; <br>
+    } <br>
+  </code>
 </article>
 
 
@@ -60,11 +53,16 @@ function Welcome(props) {
 <nav>
   <ul>
     <li><a href="./index.html">Index Page</a></li>
+    <li><a href="./intro_to_hooks.html">Intro</a></li>
+    <li><a href="./react_basics.html">React basics</a></li>
+    <li><a href="./props.html">Props</a></li>
+    <li>Function component</li>
+    <li><a href="./state_hook.html">State hook</a></li>
+    <li><a href="./effect_hook.html">Effect hook</a></li>
+    <li><a href="./custom_hook.html">Custom hook</a></li>
+    <li><a href="./sources.html">Sources</a></li>
   </ul>
 </nav>
 
-<!-- github.com/google/code-prettify -->
-<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
-<script src="./fromhooks.js"></script>
 </body>
 </html>

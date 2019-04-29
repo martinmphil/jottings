@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<meta charset="utf-8">
+<!--mobile 1st responsive style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./fromhooks.css">
+<meta name="description" content="React from Hooks">
+<meta name="keywords" content="React.js,JavaScript">
+<meta name="author" content="martin.mphil@gmail.com">
+<title>React basics</title>
+<body>
+
+<article>
+  <h1>React basics</h1>
+  <h3>Components</h3>
+  <p>
+    Components usually form reusable bite-sized pieces of code that
+    <a href="https://en.wikipedia.org/wiki/Return_statement">return</a>
+    html (which subsequently renders on a page).
+  </p>
+  <p>
+    Components represent building blocks for constructing user interfaces.
+  </p>
+  <h3>Render function</h3>
+  <p>
+    React renders components in a webpage by calling the ReactDOM.render() function,
+    <br>
+    <small>
+      &nbsp; (where DOM stands for 
+      <a href="https://en.wikipedia.org/wiki/Document_Object_Model">Document Object Model</a>).
+    </small>
+  </p>
+  <p>
+    For example:
+  </p>
+  <code>
+    ReactDOM.render(&lt;ComponentToRender /&gt;, targetNode)    
+  </code>
+  <p>
+    Or
+  </p>
+  <code>
+    ReactDOM.render(jsxToRender, targetNode)
+  </code>
+  <h3 id="JSX_section">JSX</h3>
+  <p>
+    The rendered component can be described in
+    <a href="https://en.wikipedia.org/wiki/React_(JavaScript_library)#JSX">JSX</a> code.
+    <br>
+    <small>
+      &nbsp; (where JSX stands for JavaScript
+      <a href="https://en.wikipedia.org/wiki/XML">XML</a>.
+    </small>
+  </p>
+  <p>
+    JSX code normally nests returned html code inside a single html element,
+    eg &lt;div&gt;...&lt;/div&gt;
+  </p>
+  <p>
+    Curly braces {} can execute JavaScript expressions within JSX code.
+  </p>
+  <p>
+    Since JavaScript reserves the word "class", JSX code defines an HTML element's class with
+    the className attribute, eg className='myClassName'.
+  </p>
+  <p>
+    Similarly, use 
+    <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>
+    for attributes like onChange and onClick.
+  </p>
+  <h3>Example</h3>
+  <p>
+    For an example of a single file React component using map() and filter() functions, see
+    <a href="./pure_func_map_example.html" target="_blank">pure_func_map_example.html</a>
+    and view source code.
+  </p>
+</article>
+
+<aside>
+  <pre class="prettyprint lang-js">
+    <code>
+// Code example
+
+import React, { useState } from 'react'
+
+    </code>
+  </pre>
+</aside>
+
+<nav>
+  <ul>
+    <li><a href="./index.html">Index Page</a></li>
+    <li><a href="./intro_to_hooks.html">Intro</a></li>
+    <li>React basics</li>
+    <li><a href="./props.html">Props</a></li>
+    <li><a href="./function_component.html">Function component</a></li>
+    <li><a href="./state_hook.html">State hook</a></li>
+    <li><a href="./effect_hook.html">Effect hook</a></li>
+    <li><a href="./custom_hook.html">Custom hook</a></li>
+    <li><a href="./sources.html">Sources</a></li>
+  </ul>
+</nav>
+
+<!-- github.com/google/code-prettify -->
+<script
+  src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"
+></script>
+</body>
+</html>

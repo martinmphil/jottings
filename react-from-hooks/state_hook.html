@@ -9,23 +9,21 @@
 <meta name="author" content="martin.mphil@gmail.com">
 <title>State</title>
 <body>
-<noscript>
-  <strong>This site works best with JavaScript enabled. Please enable JavaScript.</strong>
-</noscript>
 
 <article>
   <h1>State hook</h1>
   <p>
     Named after
-    <a href="https://en.wikipedia.org/wiki/State_(computer_science)">state in computer science</a>.
-    State records changes in a component, eg counting button clicks.
+    <a href="https://en.wikipedia.org/wiki/State_(computer_science)">state</a>
+    in computer science, state can record changes in a component
+    such as counting button clicks or user input.
   </p>
   <p>
     First import useState from React with the following line of code:
   </p>
-  <pre>
-import React, { useState } from 'react'
-  </pre>
+  <code>
+    import React, { useState } from 'react'
+  </code>
   <p>
     "useState" accepts the initial state value as an argument.
   </p>
@@ -39,15 +37,15 @@ import React, { useState } from 'react'
   </code>
   <h3>Function return</h3>
   <p>
-    The state hook function returns a pair of values in an array, like [x,y].
-    Hence assigning the hook function to a pair of variables in an array.
+    The state hook function returns a pair of values in an array like [x,y].
+    Hence programs assign hook functions to pairs of variables in an array.
   </p>
   <p>
-    To store multiple data objects, a single component may call state hooks many times.
+    A component may call state hooks many times to store multiple data objects.
   </p>
   <h3>Reading state</h3>
   <p>
-    State information can be simply referenced by name inside curly brackets,
+    JSX code can simply reference state information by name inside curly brackets,
     eg "{count}" in the example below.
   </p>
 
@@ -65,7 +63,7 @@ import React, { useState } from 'react'
   </code>
   <h3>Setting state</h3>
   <p>
-    To set a state varibale to a new value, call the setter function you assigned with useState
+    To set a state variable to a new value, call the setter function assigned with useState
     and pass in the new state value as an argument.
   </p>
   <p>Eg</p>
@@ -96,7 +94,7 @@ import React, { useState } from 'react'
   <p>
     Rather than importing useState, employing 
     "<strong>React</strong>.useState" can create a
-    <a href="./pure_func_basic_example.html" target="_blank">single page example</a>.
+    <a href="./pure_func_basic_example.html" target="_blank">single file example</a>.
     (Please see source code after clicking link.)
   </p>
 
@@ -126,11 +124,20 @@ function MyComponent() {
 <nav>
   <ul>
     <li><a href="./index.html">Index Page</a></li>
+    <li><a href="./intro_to_hooks.html">Intro</a></li>
+    <li><a href="./react_basics.html">React basics</a></li>
+    <li><a href="./props.html">Props</a></li>
+    <li><a href="./function_component.html">Function component</a></li>
+    <li>State hook</li>
+    <li><a href="./effect_hook.html">Effect hook</a></li>
+    <li><a href="./custom_hook.html">Custom hook</a></li>
+    <li><a href="./sources.html">Sources</a></li>
   </ul>
 </nav>
 
 <!-- github.com/google/code-prettify -->
-<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
-<script src="./fromhooks.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"
+></script>
 </body>
 </html>
