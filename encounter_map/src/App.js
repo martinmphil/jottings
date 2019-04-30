@@ -7,6 +7,10 @@ function App() {
 
   let [turn, setTurn] = useState('red')
 
+  function handleDotActive(event) {
+    setTurn(event.target.id)
+  }
+
   function moveDot(hue, x, y) {
     let id = '#' + hue + 'Dot'
     let dot = document.querySelector(id)
@@ -18,18 +22,18 @@ function App() {
   function handleDotMove(event) {
     if (turn === 'red') {
       moveDot('red', event.clientX, event.clientY)
-      setTurn('blue')
+      // setTurn('blue')
     }
     if (turn === 'blue') {
       moveDot('blue', event.clientX, event.clientY)
-      setTurn('red')
+      // setTurn('red')
     }
   }
 
   return (
     <div className="App" onClick={handleDotMove}>
-      <img src={redSvg} id="redDot" alt="red dot"/>
-      <img src={blueSvg} id="blueDot" alt="blue dot"/>
+      <img src={redSvg} id="redDot" alt="red dot" onClick={handleDotActive}/>
+      <img src={blueSvg} id="blueDot" alt="blue dot" onClick={handleDotActive}/>
     </div>
   );
 }
