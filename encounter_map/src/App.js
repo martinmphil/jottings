@@ -7,25 +7,27 @@ function App() {
 
   let [turn, setTurn] = useState('red')
 
-  function handleTap(event) {
+  function moveDot(hue, x, y) {
+    let id = '#' + hue + 'Dot'
+    let dot = document.querySelector(id)
+    dot.style.position = 'absolute'
+    dot.style.left = (x - 20) + 'px'
+    dot.style.top = (y - 20) + 'px'
+  }
+
+  function handleDotMove(event) {
     if (turn === 'red') {
-      let dot = document.querySelector('#redDot')
-      dot.style.position = 'absolute'
-      dot.style.left = (event.clientX - 20) + 'px'
-      dot.style.top = (event.clientY - 20) + 'px'
+      moveDot('red', event.clientX, event.clientY)
       setTurn('blue')
     }
     if (turn === 'blue') {
-      let dot = document.querySelector('#blueDot')
-      dot.style.position = 'absolute'
-      dot.style.left = (event.clientX - 20) + 'px'
-      dot.style.top = (event.clientY - 20) + 'px'
+      moveDot('blue', event.clientX, event.clientY)
       setTurn('red')
     }
   }
 
   return (
-    <div className="App" onClick={handleTap}>
+    <div className="App" onClick={handleDotMove}>
       <img src={redSvg} id="redDot" alt="red dot"/>
       <img src={blueSvg} id="blueDot" alt="blue dot"/>
     </div>
