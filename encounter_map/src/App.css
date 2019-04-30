@@ -1,0 +1,11 @@
+.App {
+  background-color: rgb(101, 150, 69);
+  min-height: 100vh;
+  background-image: url("./assets/castle_map.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dot {
+  min-height: 100vh
+}
