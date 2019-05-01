@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import redSvg from './assets/red_dot.svg'
 import orangeSvg from './assets/orange_dot.svg'
@@ -9,6 +9,15 @@ import purpleSvg from './assets/purple_dot.svg'
 function App() {
 
   let [turn, setTurn] = useState('red')
+
+  useEffect( () => {
+    let id = '#' + turn + 'Dot'
+    let dot = document.querySelector(id)
+    dot.classList.add('active')
+    return () => {
+      dot.classList.remove('active')
+    }
+  })
 
   let turnOrder = ['red', 'orange', 'yellow', 'blue', 'purple']
 
@@ -33,7 +42,6 @@ function App() {
   function handleDotMove(event) {
     if (turn === 'red') {
       moveDot('red', event.clientX, event.clientY)
-      // setTurn('blue')
     }
     if (turn === 'orange') {
       moveDot('orange', event.clientX, event.clientY)
@@ -51,13 +59,13 @@ function App() {
 
   return (
     <div className="App" onClick={handleDotMove}>
-      <img src={redSvg} id="redDot" className="dot" alt="red dot" />
+      <img src={redSvg} id="redDot" className="dot active" alt="red dot" />
       <img src={orangeSvg} id="orangeDot" className="dot" alt="blue dot" />
       <img src={yellowSvg} id="yellowDot" className="dot" alt="blue dot" />
       <img src={blueSvg} id="blueDot" className="dot" alt="blue dot" />
       <img src={purpleSvg} id="purpleDot" className="dot" alt="blue dot" />
     </div>
-  );
+  )
 }
 
 export default App;

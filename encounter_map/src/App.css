@@ -7,5 +7,23 @@
 }
 
 .dot {
-  width: 2%;
+  width: 4%;
+  min-width: 20px;
+}
+
+.active {
+  border-radius: 50%;
+  animation-duration: 1s;
+  animation-name: shadow-pulse;
+  animation-iteration-count: 3;
+}
+
+@keyframes shadow-pulse
+{
+     0% {
+          box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
+     }
+     100% {
+          box-shadow: 0 0 10px 20px rgba(255, 255, 255, 0.2);
+     }
 }
