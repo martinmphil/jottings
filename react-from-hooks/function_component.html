@@ -10,59 +10,91 @@
 <title>Function components</title>
 <body>
 
-<article>
-  <h1>Function component</h1>
-  <p>
-    Function components accept props as an argument and return 
-    <a href="./react_basics.html#JSX_section">JSX</a> code.
-  </p>
-  <p>
-    Function component names should start with a capital letter, eg MyComponent.
-  </p>
-  <code>
-    const MyComponent = (props) => { <br>
-    &nbsp;&nbsp; ... <br>
-    &nbsp;&nbsp; return &lt;div /&gt; <br>
-    } <br>
-  </code>
-  <p>
-    or
-  </p>
-  <code>
-    function MyComponent(props) { <br>
-    &nbsp;&nbsp; ... <br>
-    &nbsp;&nbsp; return &lt;div /&gt; <br>
-    } <br>
-  </code>
-</article>
+<header>
+  <a href="index.html">
+    <img src="./assets/react_from_hooks_logo.svg" alt="react from hooks logo">
+  </a>
 
+  <script>
+    (function() {
+      var cx = '015544895799920346562:cucbbfyxmr4';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+  <gcse:search></gcse:search>
 
-<aside>
-  <pre>
+</header>
+
+<div class="flex_wrapper">
+
+  <main>
+    <h1>Function component</h1>
+    <p>
+      Function components accept props as an argument and return 
+      <a href="./react_basics.html#JSX_section">JSX</a> code.
+    </p>
+    <p>
+      Function component names should start with a capital letter, eg MyComponent.
+    </p>
     <code>
+      const MyComponent = (props) => { <br>
+      &nbsp;&nbsp; ... <br>
+      &nbsp;&nbsp; return &lt;div /&gt; <br>
+      } <br>
+    </code>
+    <p>
+      or
+    </p>
+    <code>
+      function MyComponent(props) { <br>
+      &nbsp;&nbsp; ... <br>
+      &nbsp;&nbsp; return &lt;div /&gt; <br>
+      } <br>
+    </code>
+    <p class="jump_adjacent">
+      <a href="./props.html">prev</a>
+      <a href="./state_hook.html">next</a>
+    </p>
+  </main>
+
+  <aside>
+    <pre>
+      <code>
 // Code example
 
 function Welcome(props) {
   return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;
 }
+      </code>
+    </pre>
+  </aside>
 
-    </code>
-  </pre>
-</aside>
+  <nav>
+    <ul>
+      <li><a href="./index.html">Home page</a></li>
+      <li><a href="./intro_to_hooks.html">Intro</a></li>
+      <li><a href="./react_basics.html">React basics</a></li>
+      <li><a href="./props.html">Props</a></li>
+      <li>Function component</li>
+      <li><a href="./state_hook.html">State hook</a></li>
+      <li><a href="./effect_hook.html">Effect hook</a></li>
+      <li><a href="./custom_hook.html">Custom hook</a></li>
+      <li><a href="./sources.html">Sources</a></li>
+    </ul>
+  </nav>
 
-<nav>
-  <ul>
-    <li><a href="./index.html">Index Page</a></li>
-    <li><a href="./intro_to_hooks.html">Intro</a></li>
-    <li><a href="./react_basics.html">React basics</a></li>
-    <li><a href="./props.html">Props</a></li>
-    <li>Function component</li>
-    <li><a href="./state_hook.html">State hook</a></li>
-    <li><a href="./effect_hook.html">Effect hook</a></li>
-    <li><a href="./custom_hook.html">Custom hook</a></li>
-    <li><a href="./sources.html">Sources</a></li>
-  </ul>
-</nav>
+</div> <!-- close flex_wrapper -->
+
+<footer>
+  <p><a href="./index.html">React from Hooks</a></p>
+  <p class="date">2019</p>
+  <p class="moot">Infomation may become moot</p>
+</footer>
 
 </body>
 </html>

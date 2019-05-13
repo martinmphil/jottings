@@ -10,67 +10,104 @@
 <title>Custom hooks</title>
 <body>
 
-<article>
-  <h1>Custom hooks</h1>
-  <p>
-    By convention names for custom hooks begin with the letters "use", eg "useWindowWidth()".
-    Starting custom hook names with "use" allows react
-    <a href="https://en.wikipedia.org/wiki/Lint_(software)">linters</a>
-    to debug hook functions.
-  </p>
-  <p>
-    In the following example any other function component may call "useWindowWidth()"
-    as a custom hook.
-  </p>
-  <code>
-    function useWindowWidth() { <br>
-    &nbsp;&nbsp; const [width, setWidth] = useState(window.innerWidth) <br>
-    &nbsp;&nbsp; useEffect( () => { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp; const handleResize = () => setWidth(window.innerWidth) <br>
-    &nbsp;&nbsp;&nbsp;&nbsp; window.addEventListener('resize', handleResize) <br>
-    &nbsp;&nbsp;&nbsp;&nbsp; return () => { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; window.removeEventListener('resize', handleResize) <br>
-    &nbsp;&nbsp;&nbsp;&nbsp; } <br>
-    &nbsp;&nbsp; }) <br>
-    &nbsp;&nbsp; return width<br>
-    } <br>
-  </code>
-</article>
+<header>
+  <a href="index.html">
+    <img src="./assets/react_from_hooks_logo.svg" alt="react from hooks logo">
+  </a>
 
-<aside>
-  <pre class="prettyprint lang-js">
+  <script>
+    (function() {
+      var cx = '015544895799920346562:cucbbfyxmr4';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+  <gcse:search></gcse:search>
+
+</header>
+
+<div class="flex_wrapper">
+
+  <main>
+    <h1>Custom hooks</h1>
+    <p>
+      By convention names for custom hooks begin with the letters "use", eg "useWindowWidth()".
+      Starting custom hook names with "use" allows react
+      <a href="https://en.wikipedia.org/wiki/Lint_(software)">linters</a>
+      to debug hook functions.
+    </p>
+    <p>
+      In the following example any other function component may call "useWindowWidth()"
+      as a custom hook.
+    </p>
     <code>
-// Code example
-
-import React, { useState } from 'react'
-
-function MyComponent() {
-
-  const width = useWidth()
-
-  return (
-    &lt;div&gt;
-      //component utilising {width}
-    &lt;/div&gt;
-  )
-}
+      function useWindowWidth() { <br>
+      &nbsp; const [width, setWidth] = useState(window.innerWidth) <br>
+      &nbsp; useEffect( () => { <br>
+      &nbsp;&nbsp; const handleResize = () => setWidth(window.innerWidth) <br>
+      &nbsp;&nbsp; window.addEventListener( <br>
+      &nbsp;&nbsp;&nbsp; 'resize', handleResize <br>
+      &nbsp;&nbsp; ) <br>
+      &nbsp;&nbsp; return () => { <br>
+      &nbsp;&nbsp;&nbsp; window.removeEventListener( <br>
+      &nbsp;&nbsp;&nbsp;&nbsp; 'resize', handleResize <br>
+      &nbsp;&nbsp; )} <br>
+      &nbsp; }) <br>
+      &nbsp; return width<br>
+      } <br>
     </code>
-  </pre>
-</aside>
+    <p class="jump_adjacent">
+      <a href="./effect_hook.html">prev</a>
+      <a href="./sources.html">next</a>
+    </p>
+  </main>
 
-<nav>
-  <ul>
-    <li><a href="./index.html">Index Page</a></li>
-    <li><a href="./intro_to_hooks.html">Intro</a></li>
-    <li><a href="./react_basics.html">React basics</a></li>
-    <li><a href="./props.html">Props</a></li>
-    <li><a href="./function_component.html">Function component</a></li>
-    <li><a href="./state_hook.html">State hook</a></li>
-    <li><a href="./effect_hook.html">Effect hook</a></li>
-    <li>Custom hook</li>
-    <li><a href="./sources.html">Sources</a></li>
-  </ul>
-</nav>
+  <aside>
+    <pre class="prettyprint lang-js">
+      <code>
+  // Code example
+
+  import React, { useState } from 'react'
+
+  function MyComponent() {
+
+    const width = useWidth()
+
+    return (
+      &lt;div&gt;
+        //component utilising {width}
+      &lt;/div&gt;
+    )
+  }
+      </code>
+    </pre>
+  </aside>
+
+  <nav>
+    <ul>
+      <li><a href="./index.html">Home page</a></li>
+      <li><a href="./intro_to_hooks.html">Intro</a></li>
+      <li><a href="./react_basics.html">React basics</a></li>
+      <li><a href="./props.html">Props</a></li>
+      <li><a href="./function_component.html">Function component</a></li>
+      <li><a href="./state_hook.html">State hook</a></li>
+      <li><a href="./effect_hook.html">Effect hook</a></li>
+      <li>Custom hook</li>
+      <li><a href="./sources.html">Sources</a></li>
+    </ul>
+  </nav>
+
+</div> <!-- close flex_wrapper -->
+
+<footer>
+  <p><a href="./index.html">React from Hooks</a></p>
+  <p class="date">2019</p>
+  <p class="moot">Infomation may become moot</p>
+</footer>
 
 <!-- github.com/google/code-prettify -->
 <script

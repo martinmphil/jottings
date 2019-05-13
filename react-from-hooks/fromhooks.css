@@ -11,16 +11,58 @@ a {
   color:#0000ee;
 }
 
-/* wrapper */
-body {
+pre {
+  padding: 0.2em;
+  font-size: 80%;
+}
+
+code {
+  font-size: 80%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+header img {
+  height: 4em;
+}
+
+header .google_custom_search_box {
+  display: inline-block;
+  width: 16em;
+}
+
+.flex_wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-article {
+main {
   max-width: 40em;
-  padding: 2em; 
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.jump_adjacent {
+  display: flex;
+  justify-content: space-between;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 2em;
+}
+
+.jump_adjacent a {
+   text-decoration: none;
+   padding: 0.2em;
+   border: solid;
+   border-width: thin;
+   border-radius: 0.2em;
+   border-color: darkgrey;
+   background: lightgrey;
 }
 
 aside {
@@ -29,12 +71,9 @@ aside {
   padding: 0.2em;
 }
 
-pre {
-  padding: 0.2em;
-}
-
-aside pre {
-  font-size: 80%;
+aside .react_from_hooks_logo {
+  width: 16em;
+  display: block;
 }
 
 nav {
@@ -57,14 +96,30 @@ nav li {
   margin-bottom: 1em;
 }
 
-.contents_page {
+footer {
   text-align: center;
+  margin: 2em;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer .moot, .date {
+  font-size: 75%;
+  opacity: 0.6;
+}
+
+.contents_page_wrapper {
+  text-align: center;
+}
+.contents_page {
+  display: inline-block;
   border: solid;
   border-width: thin;
   border-color: grey;
   border-radius: 1em;
   padding: 1em;
-  margin-top: 1em;
 }
 .contents_page ul {
   list-style-type: none;
@@ -75,10 +130,14 @@ nav li {
   margin-bottom: 1em;
 }
 
+.contents_page img {
+  width: 80%;
+}
+
 /* responsive web design */
 @media only screen and (min-width: 50em) {
   /* For desktop: */
-  body {
+  .flex_wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -88,7 +147,7 @@ nav li {
     order: 10;
     margin: initial;
   }
-  article {
+  main {
     order: 20;
   }
   aside {

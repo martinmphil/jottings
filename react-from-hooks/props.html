@@ -10,91 +10,106 @@
 <title>Props</title>
 <body>
 
-<article>
-  <h1>Props</h1>
-  <p>
-    Props is short for "properties".
-  </p>
-  <p>
-    Components can store their own modifiable data as 
-    <a href="./state_hook.html">state</a>
-    rather than props.
-  </p>
-  <p>
-    Parent components control prop values, and pass them down to their children.
-  </p>
-  <p>
-    Props input information into a react component from a parent
-    via custom html attributes, eg 
-  </p>
-  <code>
-    &lt;CastComponent character="Gandalf" /&gt;
-  </code>
-  <p>
-    or
-  </p>
-  <code>
-    &lt;!DOCTYPE html&gt; <br>
-    &lt;html lang='en-GB'&gt; <br>
-    &lt;meta charset='utf-8'&gt; <br>
-    &lt;title&gt;Pure func&lt;/title&gt; <br>
-    &lt;script src="https://unpkg.com/react@16/umd/react.development.js"&gt; <br>
-    &lt;/script&gt; <br>
-    &lt;script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"&gt; <br>
-    &lt;/script&gt; <br>
-    &lt;script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"&gt; <br>
-    &lt;/script&gt; <br>
-    &lt;body&gt; <br>
-    &lt;div id="div1"&gt;&lt;/div&gt; <br>
-    &lt;div id="div2"&gt;&lt;/div&gt; <br>
-    &lt;script type="text/babel"&gt; <br>
-    <br>
-    function MyComp(props) { <br>
-    &nbsp;&nbsp; return (&lt;h1&gt;To the {props.direction}&lt;/h1&gt;) <br>
-    } <br>
-    <br>
-    ReactDOM.render( <br>
-    &nbsp;&nbsp; &lt;MyComp direction="top"/&gt;, <br>
-    &nbsp;&nbsp; document.getElementById('div1') <br>
-    ) <br>
-    <br>
-    ReactDOM.render( <br>
-    &nbsp;&nbsp; &lt;MyComp direction="bottom"/&gt;, <br>
-    &nbsp;&nbsp; document.getElementById('div2') <br>
-    ) <br>
-    &lt;/script&gt; <br>
-    &lt;/body&gt; <br>
-    &lt;/html&gt; <br>
-  </code>
+<header>
+  <a href="index.html">
+    <img src="./assets/react_from_hooks_logo.svg" alt="react from hooks logo">
+  </a>
 
-</article>
+  <script>
+    (function() {
+      var cx = '015544895799920346562:cucbbfyxmr4';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+  <gcse:search></gcse:search>
 
-<aside>
-  <pre>
+</header>
+
+<div class="flex_wrapper">
+
+  <main>
+    <h1>Props</h1>
+    <p>
+      Props is short for "properties".
+    </p>
+    <p>
+      Components can store their own modifiable data as 
+      <a href="./state_hook.html">state</a>
+      rather than props.
+    </p>
+    <p>
+      Parent components control prop values, and pass them down to their children.
+    </p>
+    <p>
+      Props input information into a react component from a parent
+      via custom html attributes, eg 
+    </p>
     <code>
+      &lt;CastComponent character="Gandalf" /&gt;
+    </code>
+    <p>
+      or
+    </p>
+    <code>
+      function MyComp(props) { <br>
+      &nbsp; return ( <br>
+      &nbsp;&nbsp; &lt;h1&gt;To the {props.direction}&lt;/h1&gt; <br>
+      )} <br>
+      <br>
+      ReactDOM.render( <br>
+      &nbsp; &lt;MyComp direction="top"/&gt;, <br>
+      &nbsp; ...querySelector('#a') <br>
+      ) <br>
+      <br>
+      ReactDOM.render( <br>
+      &nbsp; &lt;MyComp direction="bottom"/&gt;, <br>
+      &nbsp; ...querySelector('#b') <br>
+      ) <br>
+    </code>
+    <p class="jump_adjacent">
+      <a href="./react_basics.html">prev</a>
+      <a href="./function_component.html">next</a>
+    </p>
+  </main>
+
+  <aside>
+    <pre>
+      <code>
 // Code example
 
 function Welcome(props) {
-  return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;
+  return &lt;h1&gt;Hi {props.name}&lt;/h1&gt;
 }
+      </code>
+    </pre>
+  </aside>
 
-    </code>
-  </pre>
-</aside>
+  <nav>
+    <ul>
+      <li><a href="./index.html">Home page</a></li>
+      <li><a href="./intro_to_hooks.html">Intro</a></li>
+      <li><a href="./react_basics.html">React basics</a></li>
+      <li>Props</li>
+      <li><a href="./function_component.html">Function component</a></li>
+      <li><a href="./state_hook.html">State hook</a></li>
+      <li><a href="./effect_hook.html">Effect hook</a></li>
+      <li><a href="./custom_hook.html">Custom hook</a></li>
+      <li><a href="./sources.html">Sources</a></li>
+    </ul>
+  </nav>
 
-<nav>
-  <ul>
-    <li><a href="./index.html">Index Page</a></li>
-    <li><a href="./intro_to_hooks.html">Intro</a></li>
-    <li><a href="./react_basics.html">React basics</a></li>
-    <li>Props</li>
-    <li><a href="./function_component.html">Function component</a></li>
-    <li><a href="./state_hook.html">State hook</a></li>
-    <li><a href="./effect_hook.html">Effect hook</a></li>
-    <li><a href="./custom_hook.html">Custom hook</a></li>
-    <li><a href="./sources.html">Sources</a></li>
-  </ul>
-</nav>
+</div> <!-- close flex_wrapper -->
+
+<footer>
+  <p><a href="./index.html">React from Hooks</a></p>
+  <p class="date">2019</p>
+  <p class="moot">Infomation may become moot</p>
+</footer>
 
 </body>
 </html>

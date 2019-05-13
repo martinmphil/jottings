@@ -10,99 +10,127 @@
 <title>Effects</title>
 <body>
 
-<article>
-  <h1>Effect hook</h1>
-  <p>
-    Named after <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">side effects</a>.
-  </p>
-  <p>
-    Effect hooks call the react function, "useEffect", from within a function component.
-  </p>
-  <p>
-    By default effects execute after every render.
-  </p>
-  <p>
-    A single component can call effect hooks many times.
-  </p>
-  <p>
-    useEffect() takes a function as an argument.
-  </p>
-    <code>
-    useEffect( () => { <br>
-    &nbsp;&nbsp; const handleResize = () => setWidth(window.innerWidth) <br>
-    &nbsp;&nbsp; window.addEventListener('resize', handleResize) <br>
-    &nbsp;&nbsp; ... <br>
-    }) <br>
-  </code>
-  <h3>Return function</h3>
-  <p>
-    An optional return function can be called to "clean up" after an effect,
-    such as unsubscribing event listeners. Eg
-  </p>
-  <code>
-    useEffect( () => { <br>
-    &nbsp;&nbsp; const handleResize = () => setWidth(window.innerWidth) <br>
-    &nbsp;&nbsp; window.addEventListener('resize', handleResize) <br>
-    &nbsp;&nbsp; return () => { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp; window.removeEventListener('resize', handleResize) <br>
-    &nbsp;&nbsp; } <br>
-    }) <br>
-  </code>
-  <h3>Second argument</h3>
-  <p>
-    Optionally an effect may check for changes in specific props or state by passing them in as
-    an arrayed second argument. In the example below the effect skips unless "count" changes.
-  </p>
-  <code>
-    useEffect(() => { <br>
-    &nbsp;&nbsp; document.title = `You clicked ${count} times` <br>
-    }, <strong>[count]</strong>) <br>
-  </code>
-  <p>
-    Supplying an empty array (ie "[]") as a second argument to useEffect
-    ensures the effect and clean-up only occur when a component mounts and unmounts.
-  </p>
+<header>
+  <a href="index.html">
+    <img src="./assets/react_from_hooks_logo.svg" alt="react from hooks logo">
+  </a>
 
-</article>
+  <script>
+    (function() {
+      var cx = '015544895799920346562:cucbbfyxmr4';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+  <gcse:search></gcse:search>
 
+</header>
 
-<aside>
-  <pre>
-    <code>
-// Code example
+<div class="flex_wrapper">
 
-import React, { useState, useEffect } from 'react'
-
-function MyComponent() {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    document.title = `You clicked ${count} times`
-  });
-
-  return (
-    &lt;div&gt;
-      //... component html ...
-    &lt;/div&gt;
-  )
-}
+  <main>
+    <h1>Effect hook</h1>
+    <p>
+      Named after <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">side effects</a>.
+    </p>
+    <p>
+      Effect hooks call the react function, "useEffect", from within a function component.
+    </p>
+    <p>
+      By default effects execute after every render.
+    </p>
+    <p>
+      A single component can call effect hooks many times.
+    </p>
+    <p>
+      useEffect() takes a function as an argument.
+    </p>
+      <code>
+      useEffect( () => { <br>
+      &nbsp; const handleResize = () => <br>
+      &nbsp; setWidth( <br>
+      &nbsp;&nbsp; window.innerWidth <br>
+      &nbsp;) <br>
+      &nbsp; window.addEventListener( <br>
+      &nbsp; &nbsp; 'resize', handleResize <br>
+      &nbsp;) <br>
+      &nbsp; ... <br>
+      }) <br>
     </code>
-  </pre>
-</aside>
+    <h2>Return function</h2>
+    <p>
+      An optional return function can be called to "clean up" after an effect,
+      such as unsubscribing event listeners. Eg
+    </p>
+    <code>
+      useEffect( () => { <br>
+      &nbsp; const handleResize = () => <br>
+      &nbsp; setWidth( <br>
+      &nbsp;&nbsp; window.innerWidth <br>
+      &nbsp;) <br>
+      &nbsp; window.addEventListener( <br>
+      &nbsp; &nbsp; 'resize', handleResize <br>
+      &nbsp;) <br>
+      &nbsp; return () => { <br>
+      &nbsp;&nbsp; window.removeEventListener( <br>
+      &nbsp;&nbsp;&nbsp; 'resize', handleResize <br>
+      &nbsp; )} <br>
+      }) <br>
+    </code>
+    <h2>Second argument</h2>
+    <p>
+      Optionally an effect may check for changes in specific props or state by passing them in as
+      an arrayed second argument. In the example below the effect skips unless "count" changes.
+    </p>
+    <code>
+      useEffect(() => { <br>
+      &nbsp;&nbsp; document.title = `You clicked ${count} times` <br>
+      }, <strong>[count]</strong>) <br>
+    </code>
+    <p>
+      Supplying an empty array (ie "[]") as a second argument to useEffect
+      ensures the effect and clean-up only occur when a component mounts and unmounts.
+    </p>
+    <p class="jump_adjacent">
+      <a href="./state_hook.html">prev</a>
+      <a href="./custom_hook.html">next</a>
+    </p>
+  </main>
 
-<nav>
-  <ul>
-    <li><a href="./index.html">Index Page</a></li>
-    <li><a href="./intro_to_hooks.html">Intro</a></li>
-    <li><a href="./react_basics.html">React basics</a></li>
-    <li><a href="./props.html">Props</a></li>
-    <li><a href="./function_component.html">Function component</a></li>
-    <li><a href="./state_hook.html">State hook</a></li>
-    <li>Effect hook</li>
-    <li><a href="./custom_hook.html">Custom hook</a></li>
-    <li><a href="./sources.html">Sources</a></li>
-  </ul>
-</nav>
+  <aside style="background-color:transparent;">
+    <p>
+      <code style="color:DarkSlateBlue;">
+        import React, { useEffect } from 'react'
+      </code>
+    </p>
+    <img class="react_from_hooks_logo" src="./assets/react_from_hooks_logo.svg" alt="react logo">
+  </aside>
+
+  <nav>
+    <ul>
+      <li><a href="./index.html">Home page</a></li>
+      <li><a href="./intro_to_hooks.html">Intro</a></li>
+      <li><a href="./react_basics.html">React basics</a></li>
+      <li><a href="./props.html">Props</a></li>
+      <li><a href="./function_component.html">Function component</a></li>
+      <li><a href="./state_hook.html">State hook</a></li>
+      <li>Effect hook</li>
+      <li><a href="./custom_hook.html">Custom hook</a></li>
+      <li><a href="./sources.html">Sources</a></li>
+    </ul>
+  </nav>
+
+</div> <!-- close flex_wrapper -->
+
+<footer>
+  <p><a href="./index.html">React from Hooks</a></p>
+  <p class="date">2019</p>
+  <p class="moot">Infomation may become moot</p>
+</footer>
 
 </body>
 </html>
