@@ -1,29 +1,22 @@
-.App {
-  background-color: rgb(101, 150, 69);
-  min-height: 100vh;
-  background-image: url("./assets/castle_map.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.dot {
-  width: 4%;
-  min-width: 20px;
+svg {
+  position: absolute;
+  top: 0;
+  left:0;
 }
 
 .active {
   border-radius: 50%;
   animation-duration: 1s;
-  animation-name: shadow-pulse;
+  animation-name: pulse;
   animation-iteration-count: 3;
 }
 
-@keyframes shadow-pulse
+@keyframes pulse
 {
      0% {
-          box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
+          opacity: 1;
      }
      100% {
-          box-shadow: 0 0 10px 20px rgba(255, 255, 255, 0.2);
+          opacity: 0.1;
      }
 }

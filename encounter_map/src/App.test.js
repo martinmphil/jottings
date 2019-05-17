@@ -15,11 +15,12 @@ afterEach(() => {
   container = null
 })
 
-it('renders redDot svg image', () => {
+it('renders svg', () => {
   act(() => {
     ReactDOM.render(<App />, container);
   })
-  const rd = container.querySelector('#redDot')
-  expect(rd).toHaveProperty('src')
-  expect(rd.src).toMatch(/.svg/)
+  const svg = container.querySelector('svg')
+  expect(svg.getAttribute('width')).toEqual('100%')
+  expect(svg.getAttribute('xmlns')).toMatch(/svg/)
+  expect(svg.getAttribute('id')).toMatch(/mainMap/)
 })

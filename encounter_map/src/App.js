@@ -1,70 +1,67 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import redSvg from './assets/red_dot.svg'
-import orangeSvg from './assets/orange_dot.svg'
-import yellowSvg from './assets/yellow_dot.svg'
-import blueSvg from './assets/blue_dot.svg'
-import purpleSvg from './assets/purple_dot.svg'
 
 function App() {
 
-  let [turn, setTurn] = useState('red')
+  const [turn, setTurn] = useState('selectingAgent')
+
+  const [agency, setAgency] = useState('')
 
   useEffect( () => {
-    let id = '#' + turn + 'Dot'
-    let dot = document.querySelector(id)
-    dot.classList.add('active')
-    return () => {
-      dot.classList.remove('active')
+    if (agency !== ''){
+      document.getElementById(agency).classList.add('active')
+      return () => {
+        document.getElementById(agency).classList.remove('active')
+      }
     }
   })
 
-  let turnOrder = ['red', 'orange', 'yellow', 'blue', 'purple']
+  useEffect( () => {
+    window.addEventListener('click', movingAgent)
+    return () => {
+      window.removeEventListener('click', movingAgent)
+    }
+  })
 
-  function advanceTurnOrder(hue) {
-    let i = turnOrder.indexOf(hue)
-    if ( (i + 1) === turnOrder.length) {
-      setTurn(turnOrder[0])
-    } else {
-      setTurn(turnOrder[i + 1])
+  function selectAgent(e) {
+    if (turn === 'selectingAgent') {
+      setAgency(e.currentTarget.id)
+      setTurn('movingAgent')
     }
   }
 
-  function moveDot(hue, x, y) {
-    let id = '#' + hue + 'Dot'
-    let dot = document.querySelector(id)
-    dot.style.position = 'absolute'
-    dot.style.left = (x - 20) + 'px'
-    dot.style.top = (y - 20) + 'px'
-    advanceTurnOrder(hue)
-  }
-
-  function handleDotMove(event) {
-    if (turn === 'red') {
-      moveDot('red', event.clientX, event.clientY)
-    }
-    if (turn === 'orange') {
-      moveDot('orange', event.clientX, event.clientY)
-    }
-    if (turn === 'yellow') {
-      moveDot('yellow', event.clientX, event.clientY)
-    }
-    if (turn === 'blue') {
-      moveDot('blue', event.clientX, event.clientY)
-    }
-    if (turn === 'purple') {
-      moveDot('purple', event.clientX, event.clientY)
+  function movingAgent(e) {
+    if (turn === 'movingAgent') {
+      let agent = document.getElementById(agency)
+      agent.setAttributeNS(null,"cx",e.clientX)
+      agent.setAttributeNS(null,"cy",e.clientY)
+      setTurn('selectingAgent')
     }
   }
 
   return (
-    <div className="App" onClick={handleDotMove}>
-      <img src={redSvg} id="redDot" className="dot active" alt="red dot" />
-      <img src={orangeSvg} id="orangeDot" className="dot" alt="blue dot" />
-      <img src={yellowSvg} id="yellowDot" className="dot" alt="blue dot" />
-      <img src={blueSvg} id="blueDot" className="dot" alt="blue dot" />
-      <img src={purpleSvg} id="purpleDot" className="dot" alt="blue dot" />
-    </div>
+    <svg
+      id="mainMap" width="100%" height="100%"
+      xmlns="http://www.w3.org/2000/svg"
+      // React converts camel case JSX attr to xmlns:xlink in HTML
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+
+      <rect id="backgroundField" x="0" y="0" width="100%" height="100%" fill="green"/>
+
+      <circle id="blueAgent" onClick={selectAgent} transform="translate(20,20)" className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="blue" />
+
+      <circle id="orangeAgent" onClick={selectAgent} transform="translate(40,40)" className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="orange" />
+
+      <g id="groupTest" fill="white" stroke="purple" strokeWidth="5" onClick={selectAgent}>
+        <circle cx="140" cy="140" r="25" />
+        <circle cx="160" cy="160" r="25" />
+      </g>
+
+
+
+
+    </svg>
   )
 }
 
