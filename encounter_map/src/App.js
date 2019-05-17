@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { ReactComponent as CastleMap } from './assets/castle_map.svg'
 
 function App() {
 
@@ -49,9 +50,17 @@ function App() {
 
       <rect id="backgroundField" x="0" y="0" width="100%" height="100%" fill="green"/>
 
+      <CastleMap />
+
       <circle id="blueAgent" onClick={selectAgent} transform="translate(20,20)" className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="blue" />
 
       <circle id="orangeAgent" onClick={selectAgent} transform="translate(40,40)" className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="orange" />
+
+      <circle id="purpleAgent" onClick={selectAgent} transform="translate(60,60)" className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="purple" />
+
+      <circle id="redAgent" onClick={selectAgent} transform="translate(80,80)" className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="red" />
+
+      <circle id="yellowAgent" onClick={selectAgent} transform="translate(100,100)" className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="yellow" />
 
       <g id="groupTest" onClick={selectAgent} transform="translate(40,40)"
         visibility="hidden" fill="white" stroke="purple" strokeWidth="5"
