@@ -25,6 +25,7 @@ function App() {
 
   function selectAgent(e) {
     if (turn === 'selectingAgent') {
+      // currentTarget for group svg id
       setAgency(e.currentTarget.id)
       setTurn('movingAgent')
     }
@@ -33,8 +34,7 @@ function App() {
   function movingAgent(e) {
     if (turn === 'movingAgent') {
       let agent = document.getElementById(agency)
-      agent.setAttributeNS(null,"cx",e.clientX)
-      agent.setAttributeNS(null,"cy",e.clientY)
+      agent.setAttributeNS(null,"transform",`translate(${e.clientX},${e.clientY})`)
       setTurn('selectingAgent')
     }
   }
@@ -53,9 +53,11 @@ function App() {
 
       <circle id="orangeAgent" onClick={selectAgent} transform="translate(40,40)" className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="orange" />
 
-      <g id="groupTest" fill="white" stroke="purple" strokeWidth="5" onClick={selectAgent}>
-        <circle cx="140" cy="140" r="25" />
-        <circle cx="160" cy="160" r="25" />
+      <g id="groupTest" onClick={selectAgent} transform="translate(40,40)"
+        visibility="hidden" fill="white" stroke="purple" strokeWidth="5"
+      >
+        <circle cx="0" cy="0" r="25" />
+        <circle cx="10" cy="10" r="25" />
       </g>
 
 
