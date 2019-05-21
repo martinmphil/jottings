@@ -1,25 +1,19 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import { ReactComponent as CastleMap } from './assets/castle_map.svg'
-import DeltaMarker from './assets/DeltaMarker'
-import IMarker from './assets/IletterMarker'
-import DaggerMarker from './assets/DaggerMarker'
-import ShieldMarker from './assets/ShieldMarker'
-import EyeMarker from './assets/EyeMarker'
-import AxeMarker from './assets/AxeMarker'
-import MaulMarker from './assets/MaulMarker'
-import PhaistosianMarker from './assets/PhaistosianMarker'
-import PlumedHeadMarker from './assets/PlumedHeadMarker'
-import SplitBoughMarker from './assets/SplitBoughMarker'
-import LightningMarker from './assets/LightningMarker'
-import SwordsMarker from './assets/SwordsMarker'
-import ArrowMarker from './assets/ArrowMarker'
 
 function App() {
 
   const [turn, setTurn] = useState('selectingAgent')
 
   const [agency, setAgency] = useState('')
+
+  // establish marker size
+  // useEffect( () => {
+  //   const nodeList = document.querySelectorAll('.boundaryCircle')
+  //   nodeList.forEach(j => j.setAttribute('r', '16'))
+  // }, [])
 
   useEffect( () => {
     window.addEventListener('click', movingAgent)
@@ -28,19 +22,8 @@ function App() {
     }
   })
 
-  function selectAgent(e) {
-    if (turn === 'selectingAgent') {
-      // currentTarget for group svg id
-      setAgency(e.currentTarget.id)
-      e.currentTarget.classList.add('active')
-      setTurn('movingAgent')
-    }
-  }
-
-  function openArea (x,y) {
+  function openArea (x,y,otherAgentList) {
     let result = true
-    const fullAgentList = Array.from( document.querySelectorAll('.agentMarker') )
-    const otherAgentList = fullAgentList.filter(j => j.id !== agency)
     otherAgentList.forEach(
       function(el) {
         let a = el.getBoundingClientRect()
@@ -58,11 +41,22 @@ function App() {
   }
 
   function movingAgent(e) {
-    if (turn === 'movingAgent' && openArea(e.clientX,e.clientY)) {
+    const fullAgentList = Array.from( document.querySelectorAll('.agentMarker') )
+    const otherAgentList = fullAgentList.filter(j => j.id !== agency)
+    if (turn === 'movingAgent' && openArea(e.clientX,e.clientY,otherAgentList)) {
       let agent = document.getElementById(agency)
       agent.setAttributeNS(null,"transform",`translate(${e.clientX},${e.clientY})`)
       agent.classList.remove('active')
       setTurn('selectingAgent')
+    }
+  }
+
+  function selectAgent(e) {
+    if (turn === 'selectingAgent') {
+      // currentTarget for group svg id
+      setAgency(e.currentTarget.id)
+      e.currentTarget.classList.add('active')
+      setTurn('movingAgent')
     }
   }
 
@@ -78,132 +72,123 @@ function App() {
 
       <CastleMap />
 
-      <circle id="blueAgent" transform="translate(20,20)" onClick={selectAgent} className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="blue" />
+      <circle id="blueAgent" transform="translate(60,20)" onClick={selectAgent}
+       className="agentMarker boundaryCircle" r="16" cx="0" cy="0" stroke="black"
+       fill="blue"
+      />
 
-      <circle id="orangeAgent" transform="translate(40,40)" onClick={selectAgent} className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="orange" />
+      <circle id="orangeAgent" transform="translate(100,20)" onClick={selectAgent}
+        className="agentMarker boundaryCircle" r="16" cx="0" cy="0" stroke="black"
+        fill="orange"
+      />
 
-      <circle id="purpleAgent" transform="translate(60,60)" onClick={selectAgent} className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="purple" />
+      <circle id="purpleAgent" transform="translate(140,20)" onClick={selectAgent}
+        className="agentMarker boundaryCircle" r="16" cx="0" cy="0" stroke="black"
+        fill="purple"
+      />
 
-      <circle id="redAgent" transform="translate(80,80)" onClick={selectAgent} className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="red" />
+      <circle id="redAgent" transform="translate(180,20)" onClick={selectAgent}
+        className="agentMarker boundaryCircle" r="16" cx="0" cy="0" stroke="black"
+        fill="red"
+      />
 
-      <circle id="yellowAgent" transform="translate(100,100)" onClick={selectAgent} className="agentMarker" cx="0" cy="0" r="10" stroke="black" fill="yellow" />
+      <circle id="yellowAgent" transform="translate(220,20)" onClick={selectAgent}
+        className="agentMarker boundaryCircle" r="16" cx="0" cy="0" stroke="black"
+        fill="yellow"
+      />
 
 
-      <g id="whiteQueenMarker" transform="translate(300,300)" className="agentMarker" onClick={selectAgent}>
-        <circle r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
-        <text x="0" y="0" textAnchor="middle" dominantBaseline="central" fill="white">♕</text>
+      <g id="daggerMarker" transform="translate(20,60)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">🗡</text>
       </g>
 
-      <DaggerMarker
-        id="daggerOnBlack"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(10,40)"
-      />
-
-      <ShieldMarker 
-        id="shieldOnBlack"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(10,65)"
-      />
-
-      <SwordsMarker
-        id="reticleMarker"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(10,90)"
-      />
-
-      <ArrowMarker
-        id="ArrowMarker"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(10,115)"
-      />
-      
-      <EyeMarker
-        id="eyeballOnBlack"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(100,320)"
-      />
-
-      <AxeMarker
-        id="axeOnBlack"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(10,140)"
-      />
-      <MaulMarker
-        id="maulOnBlack"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(10,165)"
-      />
-
-      <PhaistosianMarker
-        id="phaistosianMarker"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(10,190)"
-      />
-
-      <PlumedHeadMarker
-        id="plumedHeadMMarker"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(10,215)"
-      />
-
-      <SplitBoughMarker
-        id="splitBowMMarker"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(10,245)"
-      />
-
-      <LightningMarker
-        id="lightningMarker"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(10,270)"
-      />
-
-      
-
-    
-      
-
-      <DeltaMarker
-        id="deltaOnBlack"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(110,395)"
-      />
-
-      
-
-
-    
-
-      <IMarker
-        id="charaIOnBlack"
-        onClick={selectAgent}
-        className="agentMarker"
-        transform="translate(10,360)"
-      />
-
-      
-
-      <g id="groupTest" onClick={selectAgent} transform="translate(40,40)"
-        visibility="hidden" fill="white" stroke="purple" strokeWidth="5"
-      >
-        <circle cx="0" cy="0" r="25" />
-        <circle cx="10" cy="10" r="25" />
+      <g id="arrowMarker" transform="translate(20,100)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">➸</text>
       </g>
 
-      
+      <g id="swordMarker" transform="translate(20,140)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">⚔</text>
+      </g>
+
+      <g id="axeMarker" transform="translate(20,180)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">𐇞</text>
+      </g>
+
+      <g id="doubleArrowMarker" transform="translate(20,220)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">↟</text>
+      </g>
+
+      <g id="starMarker" transform="translate(20,260)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">★</text>
+      </g>
+
+      <g id="phaistosianMarker" transform="translate(20,300)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">𐇐</text>
+      </g>
+
+      <g id="pickAxeMarker" transform="translate(20,340)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">⛏</text>
+      </g>
+
+      <g id="skullMarker" transform="translate(20,380)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">☠</text>
+      </g>
+
+
+      <g id="sixPipMarker" transform="translate(60,60)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">⚅</text>
+      </g>
+
+      <g id="fivePipMarker" transform="translate(60,100)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">⚄</text>
+      </g>
+
+      <g id="fourPipMarker" transform="translate(60,140)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">⚃</text>
+      </g>
+
+      <g id="threePipMarker" transform="translate(60,180)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">⚂</text>
+      </g>
+
+      <g id="twoPipMarker" transform="translate(60,220)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">⚁</text>
+      </g>
+
+      <g id="onePipMarker" transform="translate(60,260)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">⚀</text>
+      </g>
+
+
+      <g id="deltaMarker" transform="translate(60,300)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">Δ</text>
+      </g>
+
+      <g id="iLetterMarker" transform="translate(60,340)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">I</text>
+      </g>
+
+      <g id="flagMarker" transform="translate(60,380)" className="agentMarker" onClick={selectAgent}>
+        <circle className="boundaryCircle" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">🚩</text>
+      </g>
 
     </svg>
   )
