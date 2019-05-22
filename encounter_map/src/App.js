@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import { ReactComponent as CastleMap } from './assets/castle_map.svg'
+import { ReactComponent as RiverMap } from './assets/river_map.svg'
 
 function App() {
 
@@ -68,9 +68,9 @@ function App() {
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
 
-      <rect id="backgroundField" x="0" y="0" width="100%" height="100%" fill="green"/>
+      <rect id="backgroundField" x="0" y="0" width="100%" height="100%" fill="#008000"/>
 
-      <CastleMap />
+      <RiverMap />
 
       <circle id="blueAgent" transform="translate(60,20)" onClick={selectAgent}
        className="agentMarker boundaryCircle" r="16" cx="0" cy="0" stroke="black"
