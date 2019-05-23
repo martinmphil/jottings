@@ -24,3 +24,17 @@ it('renders svg', () => {
   expect(svg.getAttribute('xmlns')).toMatch(/svg/)
   expect(svg.getAttribute('id')).toMatch(/mainMap/)
 })
+
+it('has active class only on picked dot', () => {
+  act(() => {
+    ReactDOM.render(<App />, container);
+  })
+  const agentP = container.querySelector('#purpleAgent')
+  const agentY = container.querySelector('#yellowAgent')
+  act(() => {
+    agentP.dispatchEvent(new MouseEvent('click', {bubbles: true}))
+  })
+  expect(agentP.getAttribute('class')).toMatch(/agentMarker dotBoundary active/)
+  expect(agentY.getAttribute('class')).toMatch(/agentMarker dotBoundary/)
+  expect(agentY.getAttribute('class')).not.toMatch(/active/)
+})
