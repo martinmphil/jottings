@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import { ReactComponent as RiverMap } from './assets/river_map.svg'
 
@@ -9,47 +9,34 @@ function App() {
 
   const [agency, setAgency] = useState('')
 
-  // establish marker size
-  // useEffect( () => {
-  //   const nodeList = document.querySelectorAll('.dotBoundary')
-  //   nodeList.forEach(j => j.setAttribute('r', '16'))
-  // }, [])
+  function handleDotMove(e) {
 
-  useEffect( () => {
-
-    function handleDotMove(e) {
-      const fullAgentList = Array.from( document.querySelectorAll('.agentMarker') )
-      const otherAgentList = fullAgentList.filter(j => j.id !== agency)
-      if (turn === 'movingAgent' && openArea(e.clientX,e.clientY,otherAgentList)) {
-        let agent = document.getElementById(agency)
-        agent.setAttributeNS(null,"transform",`translate(${e.clientX},${e.clientY})`)
-        agent.classList.remove('active')
-        setTurn('selectingAgent')
-      }
-    }
-
-    window.addEventListener('click', handleDotMove)
-    return () => {
-      window.removeEventListener('click', handleDotMove)
-    }
-  })
-
-  function openArea (x,y,obstacleList) {
-    let result = true
-    obstacleList.forEach(
-      function(el) {
-        let a = el.getBoundingClientRect()
-        let x1 = a.left - 4
-        let x2 = a.right + 4
-        let y1 = a.top - 4
-        let y2 = a.bottom + 4
-        if (x > x1 && x < x2 && y > y1 && y < y2) {
-          // alert('Collision')
-          result = false
+    function openArea (x,y,obstacleList) {
+      let result = true
+      obstacleList.forEach(
+        function(el) {
+          let a = el.getBoundingClientRect()
+          let x1 = a.left - 4
+          let x2 = a.right + 4
+          let y1 = a.top - 4
+          let y2 = a.bottom + 4
+          if (x > x1 && x < x2 && y > y1 && y < y2) {
+            // alert('Collision')
+            result = false
+          }
         }
-      }
-    )
-    return result
+      )
+      return result
+    }
+
+    const fullAgentList = Array.from( document.querySelectorAll('.agentMarker') )
+    const otherAgentList = fullAgentList.filter(j => j.id !== agency)
+    if (turn === 'movingAgent' && openArea(e.clientX,e.clientY,otherAgentList)) {
+      let agent = document.getElementById(agency)
+      agent.setAttributeNS(null,"transform",`translate(${e.clientX},${e.clientY})`)
+      agent.classList.remove('active')
+      setTurn('selectingAgent')
+    }
   }
 
   function handleDotPick(e) {
@@ -62,7 +49,7 @@ function App() {
   }
 
   return (
-    <svg
+    <svg onClick={handleDotMove}
       id="mainMap" width="100%" height="100%"
       xmlns="http://www.w3.org/2000/svg"
       // React converts camel case JSX attr to xmlns:xlink in HTML
