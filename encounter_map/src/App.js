@@ -2,40 +2,37 @@
 import React, { useState } from 'react'
 import './App.css'
 import { ReactComponent as RiverMap } from './assets/river_map.svg'
+import { ReactComponent as WhiteChessKnight } from './assets/white_chess_knight.svg'
 
 function App() {
 
   const [turn, setTurn] = useState('selectingAgent')
-
   const [agency, setAgency] = useState('')
 
   function handleDotMove(e) {
-
-    function openArea (x,y,obstacleList) {
-      let result = true
-      obstacleList.forEach(
-        function(el) {
-          let a = el.getBoundingClientRect()
-          let x1 = a.left - 4
-          let x2 = a.right + 4
-          let y1 = a.top - 4
-          let y2 = a.bottom + 4
-          if (x > x1 && x < x2 && y > y1 && y < y2) {
-            // alert('Collision')
-            result = false
-          }
+    if (turn === 'movingAgent') {
+      const x = e.clientX
+      const y = e.clientY
+      let openGround = true
+      const fullAgentList = Array.from( document.querySelectorAll('.agentMarker') )
+      const obstacleList = fullAgentList.filter(j => j.id !== agency)
+      obstacleList.forEach(k => {
+        let a = k.getBoundingClientRect()
+        let x1 = a.left - 4
+        let x2 = a.right + 4
+        let y1 = a.top - 4
+        let y2 = a.bottom + 4
+        if (x > x1 && x < x2 && y > y1 && y < y2) {
+          // alert('Collision')
+          openGround = false
         }
-      )
-      return result
-    }
-
-    const fullAgentList = Array.from( document.querySelectorAll('.agentMarker') )
-    const otherAgentList = fullAgentList.filter(j => j.id !== agency)
-    if (turn === 'movingAgent' && openArea(e.clientX,e.clientY,otherAgentList)) {
-      let agent = document.getElementById(agency)
-      agent.setAttributeNS(null,"transform",`translate(${e.clientX},${e.clientY})`)
-      agent.classList.remove('active')
-      setTurn('selectingAgent')
+      })
+      if (openGround) {
+        let agent = document.getElementById(agency)
+        agent.setAttributeNS(null,"transform",`translate(${x},${y})`)
+        agent.classList.remove('active')
+        setTurn('selectingAgent')
+      }
     }
   }
 
@@ -176,6 +173,12 @@ function App() {
       <g id="flagMarker" transform="translate(60,380)" className="agentMarker" onClick={handleDotPick}>
         <circle className="dotBoundary" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
         <text x="0" y="0" textAnchor="middle" dominantBaseline="middle" fill="white">🚩</text>
+      </g>
+
+
+      <g id="knightMarker" transform="translate(20,420)" className="agentMarker" onClick={handleDotPick}>
+        <circle className="dotBoundary" r="16" cy="0" cx="0" fill="black" stroke="black" strokeWidth="1" />
+        <WhiteChessKnight />
       </g>
 
     </svg>
