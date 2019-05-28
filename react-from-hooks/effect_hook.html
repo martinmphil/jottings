@@ -54,10 +54,10 @@
       &nbsp; const handleResize = () => <br>
       &nbsp; setWidth( <br>
       &nbsp;&nbsp; window.innerWidth <br>
-      &nbsp;) <br>
+      &nbsp; ) <br>
       &nbsp; window.addEventListener( <br>
       &nbsp; &nbsp; 'resize', handleResize <br>
-      &nbsp;) <br>
+      &nbsp; ) <br>
       &nbsp; ... <br>
       }) <br>
     </code>
@@ -71,10 +71,10 @@
       &nbsp; const handleResize = () => <br>
       &nbsp; setWidth( <br>
       &nbsp;&nbsp; window.innerWidth <br>
-      &nbsp;) <br>
+      &nbsp; ) <br>
       &nbsp; window.addEventListener( <br>
       &nbsp; &nbsp; 'resize', handleResize <br>
-      &nbsp;) <br>
+      &nbsp; ) <br>
       &nbsp; return () => { <br>
       &nbsp;&nbsp; window.removeEventListener( <br>
       &nbsp;&nbsp;&nbsp; 'resize', handleResize <br>
@@ -101,13 +101,44 @@
     </p>
   </main>
 
-  <aside style="background-color:transparent;">
-    <p>
-      <code style="color:DarkSlateBlue;">
-        import React, { useEffect } from 'react'
+  <aside>
+    <pre >
+      <code class="prettyprint lang-js">
+// import React,
+// { useState, useEffect }
+// from 'react'
+
+const [clock, setClock] =
+ useState( new Date() )
+
+useEffect( () => {
+
+ const tick = () => {
+  setClock( new Date() )
+ }
+
+ const go = setInterval(
+  () => tick(),
+  1000
+ )
+
+ return () => {
+  clearInterval(go)
+ }
+})
+
+return (
       </code>
-    </p>
-    <img class="react_from_hooks_logo" src="./assets/react_from_hooks_logo.svg" alt="react logo">
+      <code>
+ &lt;div&gt;
+  Clock time is:- 
+  {clock.toLocaleTimeString()}
+ &lt;/div&gt;
+
+
+)
+      </code>
+    </pre>
   </aside>
 
   <nav>
@@ -129,8 +160,13 @@
 <footer>
   <p><a href="./index.html">React from Hooks</a></p>
   <p class="date">2019</p>
-  <p class="moot">Infomation may become moot</p>
+  <p class="moot">Information may become moot</p>
 </footer>
+
+<!-- github.com/google/code-prettify -->
+<script
+  src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"
+></script>
 
 </body>
 </html>

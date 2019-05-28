@@ -44,8 +44,8 @@
     ]
 
     let groupOneElements = elements.filter( element => element.group == 1 )
-    let groupOneElementsList = groupOneElements.map( (element, index) =>
-      <li key={index +1}>{element.elementName}</li>
+    let groupOneElementsList = groupOneElements.map( (element) =>
+      <li key={element.elementName}>{element.elementName}</li>
     )
 
     return (

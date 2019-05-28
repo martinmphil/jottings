@@ -85,8 +85,11 @@
     </code>
     <h2>Setting state</h2>
     <p>
-      To set a state variable to a new value, call the setter function assigned with useState
-      and pass in the new state value as an argument.
+      When a state value changes, React will re-render that component.
+    </p>
+    <p>
+      Setting a state to a new value involves calling the setter function assigned with useState
+      and providing the new state value as an argument.
     </p>
     <p>Eg</p>
     <code>
@@ -111,7 +114,59 @@
       &nbsp;&nbsp;/&gt; <br>
       ) <br>
     </code>
+    <h2>Controlling user input</h2>
+    <p>
+      Controlled components can
+      <a
+        href="https://reactjs.org/docs/introducing-jsx.html#jsx-prevents-injection-attacks"
+        target="_blank"
+      >
+        escape
+      </a>
+      user input into plain strings and supply state setters with new values
+      eg with an onChange attribute function call (see below).
+    </p>
+    <pre>
+      <code>
+const [name, setName] = useState('')
 
+const handleChange = e => {
+ setName(e.target.value)
+}
+
+return (
+ &lt;form&gt;
+  &lt;input
+   value={name}
+   type="text"
+   onChange={handleChange}
+  /&gt;
+ &lt;/form&gt;
+)
+      </code>
+    </pre>
+    <p>
+      Arrow functions can set the state with values taken from event (e).
+    </p>
+    <p>
+      See setName in the onChange attribute below.
+    </p>
+    <pre>
+      <code>
+const [name, setName] = useState('')
+return (
+ &lt;form&gt;
+  &lt;input
+   value={name}
+   type="text"
+   onChange={
+    e => setName(e.target.value)
+   }
+  /&gt;
+ &lt;/form&gt;
+)
+      </code>
+    </pre>
     <h2>Single file example</h2>
     <p>
       Rather than importing useState, employing 
@@ -165,7 +220,7 @@
 <footer>
   <p><a href="./index.html">React from Hooks</a></p>
   <p class="date">2019</p>
-  <p class="moot">Infomation may become moot</p>
+  <p class="moot">Information may become moot</p>
 </footer>
 
 <!-- github.com/google/code-prettify -->
