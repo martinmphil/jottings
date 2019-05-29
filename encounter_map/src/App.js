@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React, { useState } from 'react'
 import './App.css'
-import { ReactComponent as RiverMap } from './assets/river_map.svg'
+import { ReactComponent as MoatMap } from './assets/moat_map001.svg'
 import { ReactComponent as WhiteChessKnight } from './assets/white_chess_knight.svg'
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
 
       <rect id="backgroundField" x="0" y="0" width="100%" height="100%" fill="#008000"/>
 
-      <RiverMap />
+      <MoatMap />
 
       <circle id="blueAgent" transform="translate(60,20)" onClick={handleDotPick}
        className="agentMarker dotBoundary" r="16" cx="0" cy="0" stroke="black"
