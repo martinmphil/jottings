@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<!--mobile 1st responsive style-->
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='./vuef.css'>
+<meta name="description" content="Vue.js 3 function api">
+<meta name="keywords" content="Vue.js 3, function api, JavaScript">
+<meta name="author" content="martin.mphil@gmail.com">
+<title>Displaying state</title>
+<style>
+  .P1 { color:#cdd3de; }
+  .P2 { color:#cdd3de; }
+  .P3 { color:#5fb3b3; }
+  .P4 { color:#5fb3b3; }
+  .P5 { color:#99c794; }
+  .P6 { color:#99c794; }
+  .T1 { color:#5fb3b3; }
+  .T2 { color:#6699cc; }
+  .T3 { color:#99c794; }
+  .T4 { color:#c594c5; }
+  .T5 { color:#f99157; }
+</style>
+<body>
+  <div class="grid">
+    <main>
+      <h1>Displaying state</h1>
+      <p>
+        While our app pauses in a <strong>loading</strong> state, we can use the v-if directive
+        to display a loading message.
+      </p>
+      <p>
+        Adding <strong>v-if="loading"</strong> as an attribute,
+        will conditionally render the paragraph element holding our loading message.
+      </p>
+      <p>
+        The return statement of the setup function must also include <strong>loading</strong>
+        to exposes our loading state to the component's template. 
+      </p>
+      <div class="code-extract">
+<p>Vue<span class="T1">.</span><span class="T2">component</span>(<span class="T1">'</span><span 
+class="T3">news-feed</span><span class="T1">',</span> <span class="T1">{</span></p><p><span 
+class="T2">  setup</span><span class="T1">(){</span></p><p><span 
+class="T4">    let</span> newsList <span class="T1">=</span> veuf<span class="T1">.</span><span 
+class="T2">value</span>([])<span class="T1">;</span></p><p class="P2"><span 
+class="T4">    let</span> topic <span class="T1">=</span> veuf<span class="T1">.</span><span 
+class="T2">value</span>(<span class="T1">'</span><span class="T3">vue</span><span 
+class="T1">'</span>)<span class="T1">;</span></p><p class="P2"><span 
+class="T4">    let</span> loading <span class="T1">=</span> veuf<span class="T1">.</span><span 
+class="T2">value</span>(<span class="T5">false</span>)<span class="T1">;</span></p><p> </p><p 
+class="P2"><span class="T4">    const</span> <span class="T2">getNews</span> <span 
+class="T1">=</span> <span class="T1">()</span> <span class="T4">=&gt;</span> <span 
+class="T1">{</span></p><p class="P2"><span class="T4">      </span>loading<span 
+class="T1">.</span>value <span class="T1">=</span> <span class="T5">true</span><span 
+class="T1">;</span></p><p class="P2"><span class="T4">      </span><span 
+class="T2">fetch</span>(</p><p class="P2"><span class="T4">        </span><span 
+class="T1">`</span><span class="T3">http://hn.algolia.com/api/v1/search?query=</span><span 
+class="T1">${</span>topic<span class="T1">.</span>value<span class="T1">}`</span></p><p 
+class="P2"><span class="T4">      </span>)</p><p class="P2"><span class="T4">        </span><span 
+class="T1">.</span><span class="T2">then</span>(<span class="T5">res</span> <span 
+class="T4">=&gt;</span> res<span class="T1">.</span><span class="T2">json</span>())</p><p 
+class="P2"><span class="T4">        </span><span class="T1">.</span><span 
+class="T2">then</span>(<span class="T5">myJson</span> <span class="T4">=&gt;</span> <span 
+class="T1">{</span></p><p class="P2"><span class="T4">          </span>newsList<span 
+class="T1">.</span>value <span class="T1">=</span> myJson<span class="T1">.</span>hits<span 
+class="T1">;</span></p><p class="P2"><span class="T4">          </span>loading<span 
+class="T1">.</span>value <span class="T1">=</span> <span class="T5">false</span><span 
+class="T1">;</span></p><p class="P2"><span class="T4">        </span><span 
+class="T1">}</span>)</p><p class="P4"><span class="T4">    </span>};</p><p class="P2"><span 
+class="T4">    </span>veuf<span class="T1">.</span><span class="T2">onCreated</span>( <span 
+class="T1">()</span> <span class="T4">=&gt;</span> <span class="T1">{</span></p><p class="P2"><span 
+class="T4">      </span><span class="T2">getNews</span>()</p><p class="P2"><span 
+class="T4">    </span><span class="T1">}</span>)<span class="T1">;</span></p><p class="P2"><span 
+class="T4">    return</span> <span class="T1">{</span></p><p class="P2"><span 
+class="T4">      </span>newsList<span class="T1">,</span></p><p class="P2"><span 
+class="T4">      </span>topic<span class="T1">,</span></p><p class="P2"><span 
+class="T4">      </span>getNews<span class="T1">,</span></p><p class="P2"><span 
+class="T4">      </span>loading</p><p class="P4"><span class="T4">    </span>}</p><p 
+class="P4"><span class="T4">  </span>},</p><p class="P1">  template<span 
+class="T1">:</span> <span class="T1">`</span></p><p class="P6"><span 
+class="T4">    </span>&lt;div&gt;</p><p class="P6"><span 
+class="T4">      </span>&lt;input v-model="topic" /&gt;</p><p class="P6"><span 
+class="T4">      </span>&lt;button</p><p class="P6"><span 
+class="T4">        </span>type="button"</p><p class="P6"><span 
+class="T4">        </span>v-on:click="getNews"</p><p class="P6"><span 
+class="T4">      </span>&gt;</p><p class="P6"><span class="T4">        </span>Search</p><p 
+class="P6"><span class="T4">      </span>&lt;/button&gt;</p><p class="P6"><span 
+class="T4">      </span>&lt;p v-if="loading"&gt;Loading...&lt;/p&gt;</p><p class="P6"><span 
+class="T4">      </span>&lt;ul&gt;</p><p class="P5">      &lt;li</p><p class="P6"><span 
+class="T4">        </span>v-for="item in newsList"</p><p class="P6"><span 
+class="T4">        </span>v-bind:key="item.objectID"</p><p class="P6"><span 
+class="T4">      </span>&gt;</p><p class="P6"><span 
+class="T4">          </span>&lt;a v-bind:href="item.url"&gt;</p><p class="P6"><span 
+class="T4">            </span>{{item.title}}</p><p class="P6"><span 
+class="T4">          </span>&lt;/a&gt;</p><p class="P6"><span 
+class="T4">        </span>&lt;/li&gt;</p><p class="P6"><span 
+class="T4">      </span>&lt;/ul&gt;</p><p class="P6"><span 
+class="T4">    </span>&lt;/div&gt;</p><p class="P3">  `</p><p><span class="T1">}</span>)</p>
+      </div>
+      <p>
+        Please feel free to visit
+        <a href="./code_examples/104_displaying_state.html" target="_blank">
+          the single html file illustrating how to display a loading state
+        </a>
+        and then view source to see the Vue code.
+      </p>
+      <hr>
+    </main>
+
+    <nav>
+      <p><a href="./index.html">Home</a></p>
+      <p><a href="./intro.html">Intro</a></p>
+      <p><a href="./basic_vue.html">Vue basics</a></p>
+      <p><a href="./fetch.html">Fetch</a></p>
+      <p><a href="./interaction.html">Interaction</a></p>
+      <p>Displaying state</p>
+      <p><a class="sources-page-ref" href="./sources.html">Sources</a></p>
+    </nav>
+
+    <aside>
+      <img src="./img/vue_logo_hooking_react.svg" alt="Vue logo hooking react"/>
+    </aside>
+
+  </div> <!-- close grid -->
+
+  <footer>
+    <p><a href="./index.html">Veuf</a></p>
+    <p>2019</p>
+    <p>Information may become moot</p>
+  </footer>
+
+</body>
+</html>

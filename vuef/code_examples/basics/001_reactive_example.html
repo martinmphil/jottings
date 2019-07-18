@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<title>Basic reactivity</title>
+<body>
+
+  <div id="app">
+    <div>{{msg}}</div>
+      To change the greeting above,
+      please open your browser’s JavaScript console on this page
+      and type:- <br /> &nbsp; app.msg="hello"
+  </div>
+
+<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-function-api/dist/vue-function-api.umd.js"></script>
+<script>
+
+  const veuf = window.vueFunctionApi
+
+  // vueFunctionApi can now be accessed with the prefix veuf
+  // eg veuf.value() creates a reactive property.
+
+  Vue.use(veuf.plugin)
+
+  var app = new Vue({
+    el: '#app',
+    setup() {
+
+      // veuf.value('Hi') sets msg to an initial value of 'Hi', 
+      // and the .value part makes msg reactive.
+      let msg = veuf.value('Hi')
+      return{msg}
+    }
+  })
+
+</script>
+</body>
+</html>

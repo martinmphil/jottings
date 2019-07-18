@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<title>Button counter</title>
+<body>
+
+  <div id="app" >
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <p>Notice how each component tracks its own changing state.</p>
+  </div>
+
+<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-function-api/dist/vue-function-api.umd.js"></script>
+<script>
+
+  const veuf = window.vueFunctionApi
+
+  Vue.use(veuf.plugin)
+
+  Vue.component('button-counter', {
+    setup(){
+      let count = veuf.value(0)
+      return {
+        count
+      }
+    },
+    template: `
+      <button v-on:click="count++">You clicked me {{ count }} times.</button>
+    `
+  })
+
+  var app = new Vue({
+    el: '#app',
+  })
+
+</script>
+</body>
+</html>

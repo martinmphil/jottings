@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<!--mobile 1st responsive style-->
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='./vuef.css'>
+<meta name="description" content="Vue.js 3 function api">
+<meta name="keywords" content="Vue.js 3, function api, JavaScript">
+<meta name="author" content="martin.mphil@gmail.com">
+<title>Interaction</title>
+<style>
+  .P1 { color:#cdd3de; }
+  .P2 { color:#5fb3b3; }
+  .P3 { color:#99c794; }
+  .P4 { color:#99c794; }
+  .T1 { color:#5fb3b3; }
+  .T2 { color:#6699cc; }
+  .T3 { color:#99c794; }
+  .T4 { color:#c594c5; }
+  .T5 { color:#f99157; }
+</style>
+<body>
+  <div class="grid">
+    <main>
+      <h1>Interaction</h1>
+      <p>
+        Creating a new reactive element, called <strong>topic</strong>, allows our component to
+        accept user input as a query subject.
+      </p>
+      <p>
+        Note that linking a query string to this reactive variable, <strong>topic</strong>,
+        necessitates adding the <strong>.value</strong> suffix to give <strong>topic.value</strong>
+        at the end of our fetch argument. 
+      </p>
+      <p>
+        The component template must now include the v-model directive linked to
+        <strong>topic</strong>.
+      </p>
+      <p>
+        Attaching <strong>v-on:click="getNews"</strong> to a button element will 
+        trigger our fetch function, but only if we include <strong>getNews</strong>
+        in the return statement of the setup function. 
+      </p>
+
+      <div class="code-extract">
+<p class="P1">Vue<span class="T1">.</span><span class="T2">component</span>(<span 
+class="T1">'</span><span class="T3">news-feed</span><span class="T1">',</span> <span 
+class="T1">{</span></p><p class="P1"><span class="T2">  setup</span><span 
+class="T1">(){</span></p><p class="P1"><span class="T4">    let</span> newsList <span 
+class="T1">=</span> veuf<span class="T1">.</span><span class="T2">value</span>([])<span 
+class="T1">;</span></p><p class="P1"><span class="T4">    let</span> topic <span 
+class="T1">=</span> veuf<span class="T1">.</span><span class="T2">value</span>(<span 
+class="T1">'</span><span class="T3">vue</span><span class="T1">'</span>)<span 
+class="T1">;</span></p><p> </p><p class="P1"><span class="T4">    const</span> <span 
+class="T2">getNews</span> <span class="T1">=</span> <span class="T1">()</span> <span 
+class="T4">=&gt;</span> <span class="T1">{</span></p><p class="P1"><span 
+class="T2">      fetch</span>(</p><p class="P1"><span class="T1">        `</span><span 
+class="T3">http://hn.algolia.com/api/v1/search?query=</span><span class="T1">${</span>topic<span 
+class="T1">.</span>value<span class="T1">}`</span></p><p class="P1">      )</p><p 
+class="P1"><span class="T1">        .</span><span class="T2">then</span>(<span 
+class="T5">res</span> <span class="T4">=&gt;</span> res<span class="T1">.</span><span 
+class="T2">json</span>())</p><p class="P1"><span class="T1">        .</span><span 
+class="T2">then</span>(<span class="T5">myJson</span> <span class="T4">=&gt;</span> <span 
+class="T1">{</span></p><p class="P1">          newsList<span class="T1">.</span>value <span 
+class="T1">=</span> myJson<span class="T1">.</span>hits</p><p class="P1"><span 
+class="T1">        }</span>)</p><p class="P2">    };</p><p class="P1">    veuf<span 
+class="T1">.</span><span class="T2">onCreated</span>( <span class="T1">()</span> <span 
+class="T4">=&gt;</span> <span class="T1">{</span></p><p class="P1"><span 
+class="T2">      getNews</span>()</p><p class="P1"><span class="T1">    }</span>)<span 
+class="T1">;</span></p><p class="P1"><span class="T4">    return</span> <span 
+class="T1">{</span></p><p class="P1">      newsList<span class="T1">,</span></p><p 
+class="P1">      topic<span class="T1">,</span></p><p class="P1">      getNews</p><p 
+class="P2">    }</p><p class="P2">  },</p><p class="P1">  template<span 
+class="T1">:</span> <span class="T1">`</span></p><p class="P3">    &lt;div&gt;</p><p 
+class="P3">      &lt;input v-model="topic" /&gt;</p><p class="P3">        &lt;button</p><p 
+class="P3">          type="button"</p><p class="P4">          v-on:click="getNews"</p><p 
+class="P4">        &gt;</p><p class="P4">          Search</p><p 
+class="P4">        &lt;/button&gt;</p><p class="P3">      &lt;ul&gt;</p><p 
+class="P3">        &lt;li</p><p class="P3">          v-for="item in newsList"</p><p 
+class="P4">          v-bind:key="item.objectID"</p><p class="P4">        &gt;</p><p 
+class="P4">          &lt;a v-bind:href="item.url"&gt;</p><p 
+class="P4">            {{item.title}}</p><p class="P4">          &lt;/a&gt;</p><p 
+class="P4">        &lt;/li&gt;</p><p class="P3">      &lt;/ul&gt;</p><p 
+class="P3">    &lt;/div&gt;</p><p class="P2">  `</p><p class="P1"><span class="T1">}</span>)</p>
+      </div>
+
+      <p>
+        Please feel free to visit
+        <a href="./code_examples/103_interaction.html" target="_blank">
+          the single html file illustrating a user input for query string
+        </a>
+        and then view source to see the Vue code.
+      </p>
+
+      <hr>
+    </main>
+
+    <nav>
+      <p><a href="./index.html">Home</a></p>
+      <p><a href="./intro.html">Intro</a></p>
+      <p><a href="./basic_vue.html">Vue basics</a></p>
+      <p><a href="./fetch.html">Fetch</a></p>
+      <p>Interaction</p>
+      <p><a href="./displaying_state.html">Displaying state</a></p>
+      <p><a class="sources-page-ref" href="./sources.html">Sources</a></p>
+    </nav>
+
+    <aside>
+      <img src="./img/vue_logo_hooking_react.svg" alt="Vue logo hooking react"/>
+    </aside>
+
+  </div> <!-- close grid -->
+
+  <footer>
+    <p><a href="./index.html">Veuf</a></p>
+    <p>2019</p>
+    <p>Information may become moot</p>
+  </footer>
+
+</body>
+</html>

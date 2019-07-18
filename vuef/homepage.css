@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+
+/* width & height includes padding + border for responsive web design */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+  background-color: hsl(269, 41%, 90%);
+  margin-top: 1em;
+}
+
+a {
+  color:#0000ee;
+}
+
+main {
+  background-color: hsl(60, 100%, 92%);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contents-page {
+  max-width: 24em;
+  text-align: center;
+  border: solid;
+  border-width: thin;
+  border-color: grey;
+  border-radius: 1em;
+  padding: 1em;
+}
+.contents-page ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contents-list-heading {
+  font-size: 1.2em;
+  font-weight: lighter;
+  opacity: 0.6;
+}
+.contents-list {
+  font-size: 1.2em;
+  font-weight: bold;
+  border: solid;
+  border-width: thin;
+  border-color: grey;
+  border-radius: 1em;
+  padding: 1em;
+  box-shadow: 0 1em 1.6em hsla(0, 0%, 0%, 0.15),
+    0 0.3em 0.6em hsla(0, 0%, 0%, 0.25);
+}
+.contents-list li a {
+  display: block;
+  margin-bottom: 1em;
+}
+.sources-link {
+  font-size: 1em;
+  font-weight: lighter;
+  opacity: 0.5;
+}
+
+.prerequisites {
+  font-size: 90%;
+  background-color: hsl(269, 41%, 90%);
+  border: solid;
+  border-width: thin;
+  border-color: grey;
+  border-radius: 1em;
+  box-shadow: inset 0 -0.2em 0 hsla(0, 0%, 100%, 0.4),
+    inset 0 0.2em 0.2em hsla(0, 0%, 0%, 0.4);
+}
+.prerequisites-heading {
+  margin-top: 0.4em;
+  font-size: 1.2em;
+  font-weight: lighter;
+  opacity: 0.6;
+}
+
+.hooking-react-contents-page, .f-of-g-contents-page {
+  max-width: 24em;
+  width: 80%;
+}
+
+/* responsive web design */
+@media only screen and (min-width: 44em) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 24em 1fr;
+  }
+  .hooking-react-contents-page {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  main {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    min-width: 24em;
+    align-self: flex-start;
+  }
+  .f-of-g-contents-page {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  .hooking-react-contents-page, .f-of-g-contents-page {
+    max-height: 80vh;
+    justify-self: center;
+  }
+}

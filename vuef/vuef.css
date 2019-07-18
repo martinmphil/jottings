@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+
+/* width & height includes padding + border for responsive web design */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+  background-color: hsl(269, 41%, 90%);
+  margin-top: 1em;
+}
+.grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a {
+  color:#0000ee;
+}
+
+main {
+  max-width: 40em;
+}
+
+main, nav {
+  background-color: hsl(60, 100%, 92%);
+  padding: 1em;
+  box-shadow: 0 1em 1.6em hsla(0, 0%, 0%, 0.15),
+    0 0.3em 0.6em hsla(0, 0%, 0%, 0.25);
+}
+
+nav {
+  border-radius: 0.8em;
+  margin-top: 1em;
+}
+
+nav a {
+  display: block;
+}
+
+.sources-page-ref {
+  font-weight: lighter;
+  opacity: 0.5;
+}
+
+aside {
+  width: 50%
+}
+
+.code-extract {
+  color: white;
+  background-color: hsl(202, 32%, 15%);
+  padding: 0.2em;
+}
+
+footer {
+  text-align: center;
+  color: hsl(214, 14%, 57%);
+}
+
+footer a {
+  font-size: 120%;
+  font-weight: bold;
+  opacity: 2;
+}
+
+
+/* responsive web design */
+@media only screen and (min-width: 54em) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 40em 1fr;
+    align-items: flex-start;
+  }
+  nav {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    width: 8em;
+    margin-right: 0.5em;
+  }
+  main {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  aside {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    width: 80%;
+  }
+  nav, aside {
+    justify-self: center;
+    text-align: center;
+    margin-top: 10vh;
+  }
+}

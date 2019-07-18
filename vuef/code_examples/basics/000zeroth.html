@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<title>Vuef zeroth</title>
+<body>
+  <div id = "app">
+    Please check your console logged the word "mounted".
+  </div>
+
+<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-function-api/dist/vue-function-api.umd.js"></script>
+<script>
+
+  // The above links to 'unpkg' Content Delivery Network (CDN) 
+  // will access Vue's function interface via 
+  // a window object called vueFunctionApi (see below).
+  const veuf = window.vueFunctionApi
+  Vue.use(veuf.plugin)
+
+  var app = new Vue({
+    el: '#app',
+    setup(){
+      veuf.onMounted(()=> {
+        console.log('mounted')
+      })
+    },
+  })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<!--mobile 1st responsive style-->
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='./vuef.css'>
+<meta name="description" content="Vue.js 3 function api">
+<meta name="keywords" content="Vue.js 3, function api, JavaScript">
+<meta name="author" content="martin.mphil@gmail.com">
+<title>Fetch</title>
+<style>
+  .P1 { color:#cdd3de; }
+  .P2 { color:#cdd3de; }
+  .P3 { color:#5fb3b3; }
+  .P4 { color:#5fb3b3; }
+  .P5 { color:#99c794; }
+  .P6 { color:#99c794; }
+  .T1 { color:#5fb3b3; }
+  .T2 { color:#eb606b; }
+  .T3 { color:#bb80b3; }
+  .T4 { color:#99c794; }
+  .T5 { color:#c594c5; }
+  .T6 { color:#6699cc; }
+  .T7 { color:#f99157; }
+</style>
+<body>
+  <div class="grid">
+    <main>
+      <h1>Fetch</h1>
+      <p>
+        See code below for a setup involving an asynchronous function call retrieving news items 
+        from <a href="https://news.ycombinator.com/" target="_blank">hacker news</a>
+        (with an arbitrary subject query of "vue"). 
+      </p>
+      <p>HTML</p>
+      <div class="code-extract">
+<p class="P1"><span class="T1">&lt;</span><span class="T2">div</span><span 
+class="T1"> </span><span class="T3">id</span><span class="T1">="</span><span 
+class="T4">app</span><span class="T1">" &gt;</span></p><p class="P1"><span 
+class="T1">  &lt;</span><span class="T2">p</span><span class="T1">&gt;</span>News items<span 
+class="T1">&lt;/</span><span class="T2">p</span><span class="T1">&gt;</span></p><p 
+class="P1"><span class="T1">  &lt;</span><span class="T2">ul</span><span 
+class="T1">&gt;</span></p><p class="P1"><span class="T1">    &lt;</span><span 
+class="T2">li</span><span class="T1"> </span><span class="T3">v-for</span><span 
+class="T1">="</span><span class="T4">item in newsList</span><span 
+class="T1">"&gt;</span></p><p class="P1"><span class="T1">      &lt;</span><span 
+class="T2">a</span><span class="T1"> </span><span class="T3">v-bind:href</span><span 
+class="T1">="</span><span class="T4">item.url</span><span class="T1">"&gt;</span></p><p 
+class="P1">        {{item.title}}</p><p class="P1"><span class="T1">      &lt;/</span><span 
+class="T2">a</span><span class="T1">&gt;</span></p><p class="P1"><span 
+class="T1">    &lt;/</span><span class="T2">li</span><span class="T1">&gt;</span></p><p 
+class="P1"><span class="T1">  &lt;/</span><span class="T2">ul</span><span 
+class="T1">&gt;</span></p><p class="P1"><span class="T1">&lt;/</span><span 
+class="T2">div</span><span class="T1">&gt;</span></p>
+      </div>
+      <p>JS</p>
+      <div class="code-extract">
+<p><span class="T5">const</span> veuf <span class="T1">=</span> window<span 
+class="T1">.</span>vueFunctionApi</p><p class="P1">Vue<span class="T1">.</span><span 
+class="T6">use</span>(veuf<span class="T1">.</span>plugin)</p><p class="P1"><span 
+class="T5">var</span> app <span class="T1">=</span> <span class="T1">new</span> Vue(<span 
+class="T1">{</span></p><p class="P1">  el<span class="T1">:</span> <span 
+class="T1">'</span><span class="T4">#app</span><span class="T1">',</span></p><p 
+class="P1"><span class="T6">  setup</span><span class="T1">(){</span></p><p class="P1"><span 
+class="T5">    let</span> newsList <span class="T1">=</span> veuf<span 
+class="T1">.</span><span class="T6">value</span>([])<span class="T1">;</span></p><p 
+class="P1"><span class="T5">    const</span> <span class="T6">getNews</span> <span 
+class="T1">=</span> <span class="T1">()</span> <span class="T5">=&gt;</span> <span 
+class="T1">{</span></p><p class="P1"><span class="T6">      fetch</span>(</p><p 
+class="P1"><span class="T1">        '</span><span 
+class="T4">http://hn.algolia.com/api/v1/search?query=vue</span><span 
+class="T1">'</span></p><p class="P1">      )</p><p class="P2"><span 
+class="T1">        .</span><span class="T6">then</span>(<span class="T7">res</span> <span 
+class="T5">=&gt;</span> res<span class="T1">.</span><span class="T6">json</span>())</p><p 
+class="P2"><span class="T1">        .</span><span class="T6">then</span>(<span 
+class="T7">myJson</span> <span class="T5">=&gt;</span> <span class="T1">{</span></p><p 
+class="P2"><span class="T1">          </span>newsList<span class="T1">.</span>value <span 
+class="T1">=</span> myJson<span class="T1">.</span>hits</p><p class="P2"><span 
+class="T1">        }</span>)</p><p class="P3">    };</p><p class="P1">    veuf<span 
+class="T1">.</span><span class="T6">onCreated</span>( <span class="T1">()</span> <span 
+class="T5">=&gt;</span> <span class="T1">{</span></p><p class="P1"><span 
+class="T6">      getNews</span>()</p><p class="P1"><span class="T1">    }</span>)<span 
+class="T1">;</span></p><p class="P1"><span class="T5">    return</span> <span 
+class="T1">{</span></p><p class="P1">    newsList</p><p class="P3">    }</p><p 
+class="P3">  }</p><p class="P1"><span class="T1">}</span>)</p>
+      </div>
+      <h2>Fetch component</h2>
+      <p>
+        We can also rewrite this same setup functionality as a reusable Vue component. 
+      </p>
+      <div class="code-extract">
+<p class="P1">Vue<span 
+class="T1">.</span><span class="T6">component</span>(<span class="T1">'</span><span 
+class="T4">news-feed</span><span class="T1">',</span> <span class="T1">{</span></p><p 
+class="P1"><span class="T6">  setup</span><span class="T1">(){</span></p><p 
+class="P1"><span class="T5">    let</span> newsList <span class="T1">=</span> veuf<span 
+class="T1">.</span><span class="T6">value</span>([])<span class="T1">;</span></p><p 
+class="P2"><span class="T5">    const</span> <span class="T6">getNews</span> <span 
+class="T1">=</span> <span class="T1">()</span> <span class="T5">=&gt;</span> <span 
+class="T1">{</span></p><p class="P2"><span class="T5">      </span><span 
+class="T6">fetch</span>(</p><p class="P2"><span class="T5">        </span><span 
+class="T1">'</span><span 
+class="T4">http://hn.algolia.com/api/v1/search?query=vue</span><span 
+class="T1">'</span></p><p class="P2"><span class="T5">      </span>)</p><p class="P2"><span 
+class="T5">        </span><span class="T1">.</span><span class="T6">then</span>(<span 
+class="T7">res</span> <span class="T5">=&gt;</span> res<span class="T1">.</span><span 
+class="T6">json</span>())</p><p class="P2"><span class="T5">        </span><span 
+class="T1">.</span><span class="T6">then</span>(<span class="T7">myJson</span> <span 
+class="T5">=&gt;</span> <span class="T1">{</span></p><p class="P2"><span 
+class="T5">          </span>newsList<span class="T1">.</span>value <span 
+class="T1">=</span> myJson<span class="T1">.</span>hits</p><p class="P2"><span 
+class="T5">        </span><span class="T1">}</span>)</p><p class="P3">    };</p><p 
+class="P2"><span class="T5">    </span>veuf<span class="T1">.</span><span 
+class="T6">onCreated</span>( <span class="T1">()</span> <span class="T5">=&gt;</span> <span 
+class="T1">{</span></p><p class="P1"><span class="T6">      getNews</span>()</p><p 
+class="P2"><span class="T5">    </span><span class="T1">}</span>)<span 
+class="T1">;</span></p><p class="P1"><span class="T5">    return</span> <span 
+class="T1">{</span></p><p class="P2"><span class="T5">      </span>newsList</p><p 
+class="P4"><span class="T5">    </span>}</p><p class="P3">  },</p><p class="P1">  template<span 
+class="T1">:</span> <span class="T1">`</span></p><p class="P6"><span 
+class="T5">    </span>&lt;ul&gt;</p><p class="P6"><span class="T5">      </span>&lt;li</p><p 
+class="P6"><span class="T5">        </span>v-for="item in newsList"</p><p class="P6"><span 
+class="T5">        </span>v-bind:key="item.objectID"</p><p class="P6"><span 
+class="T5">      </span>&gt;</p><p class="P6"><span 
+class="T5">        </span>&lt;a v-bind:href="item.url"&gt;</p><p class="P6"><span 
+class="T5">          </span>{{item.title}}</p><p class="P6"><span 
+class="T5">        </span>&lt;/a&gt;</p><p class="P6"><span 
+class="T5">      </span>&lt;/li&gt;</p><p class="P5">    &lt;/ul&gt;</p><p 
+class="P3">  `</p><p class="P1"><span class="T1">}</span>)</p>
+      </div>
+
+      <p>
+        Please feel free to visit
+        <a href="./code_examples/101_fetch.html" target="_blank">
+          the basic fetch example in a single html file
+        </a>
+        and
+        <a href="./code_examples/102_fetch_component.html" target="_blank">
+          the fetch component example in a single html file
+        </a>
+        and then view source to see the Vue code.
+      </p>
+      
+      <hr>
+
+    </main>
+
+    <nav>
+      <p><a href="./index.html">Home</a></p>
+      <p><a href="./intro.html">Intro</a></p>
+      <p><a href="./basic_vue.html">Vue basics</a></p>
+      <p>Fetch</p>
+      <p><a href="./interaction.html">Interaction</a></p>
+      <p><a href="./displaying_state.html">Displaying state</a></p>
+      <p><a class="sources-page-ref" href="./sources.html">Sources</a></p>
+    </nav>
+
+    <aside>
+      <img src="./img/vue_logo_hooking_react.svg" alt="Vue logo hooking react"/>
+    </aside>
+
+  </div> <!-- close grid -->
+
+  <footer>
+    <p><a href="./index.html">Veuf</a></p>
+    <p>2019</p>
+    <p>Information may become moot</p>
+  </footer>
+
+</body>
+</html>

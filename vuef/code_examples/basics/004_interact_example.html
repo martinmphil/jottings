@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<title>Interactivity</title>
+<body>
+
+  <div id="app">
+    <p>{{msg}}</p>
+    <button v-on:click="shout">SHOUT</button>
+    <button v-on:click="whisper">whisper</button>
+  </div>
+
+<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-function-api/dist/vue-function-api.umd.js"></script>
+<script>
+
+  const veuf = window.vueFunctionApi
+  Vue.use(veuf.plugin)
+
+  var app = new Vue({
+    el: '#app',
+    setup() {
+
+      // var and const can also declare variables.
+      // let seems aesthetically appealing
+      // because pressing buttons changes msg.
+      let msg = veuf.value('Sotto voce')
+
+      // Changing reactive values requires the .value suffix.
+      const shout = () => msg.value = msg.value.toUpperCase()
+      const whisper = () => msg.value = msg.value.toLowerCase()
+      return{
+        msg,
+        shout,
+        whisper
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

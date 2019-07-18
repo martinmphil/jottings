@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<title>Fetch</title>
+<link rel='stylesheet' href='./vuef.css'>
+
+<body>
+  <div id="app" >
+    <p>News items</p>
+    <ul>
+      <li v-for="item in newsList">
+        <a v-bind:href="item.url">
+          {{item.title}}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-function-api/dist/vue-function-api.umd.js"></script>
+<script>
+
+  const veuf = window.vueFunctionApi
+
+  Vue.use(veuf.plugin)
+
+  var app = new Vue({
+    el: '#app',
+    setup(){
+      let newsList = veuf.value([]);
+      const getNews = () => {
+        fetch(
+          'http://hn.algolia.com/api/v1/search?query=vue'
+        )
+          .then(res => res.json())
+          .then(myJson => {
+            newsList.value = myJson.hits
+          })
+      };
+      veuf.onCreated( () => {
+        getNews()
+      });
+      return {
+        newsList
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

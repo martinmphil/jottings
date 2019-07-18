@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<!--mobile 1st responsive style-->
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='./vuef.css'>
+<meta name="description" content="Vue.js 3 function api">
+<meta name="keywords" content="Vue.js 3, function api, JavaScript">
+<meta name="author" content="martin.mphil@gmail.com">
+<title>Vue basics</title>
+<style>
+  .T1 { color:#5fb3b3; }
+  .T12 { color:#cdd3de; }
+  .T13 { color:#6699cc; }
+  .T14 { color:#fac863; }
+  .T19 { color:#f99157; }
+  .T2 { color:#5fb3b3; }
+  .T3 { color:#5fb3b3; }
+  .T4 { color:#eb606b; }
+  .T5 { color:#eb606b; }
+  .T6 { color:#bb80b3; }
+  .T7 { color:#99c794; }
+  .T8 { color:#99c794; }
+  .T9 { color:#c594c5; }
+</style>
+<body>
+  <div class="grid">
+    <main>
+      <h1>Vue basics</h1>
+      <p>
+        The following code introduces basic Vue concepts in a way consistent with the 
+        Vue3 functional approach (cf <a href="https://vuejs.org/v2/guide/">Vue2 Intro</a>).
+      </p>
+      <p>
+        This page <a href="#basic-component-section">concludes</a> with Vue components
+        which forms the basis for the Vue's function based API.
+      </p>
+      <p>
+        Access to
+        <a href="https://github.com/vuejs/vue-function-api">the new Vue3 Function API</a>
+        is easily achieved with the following script tags
+        which link to 'unpkg' Content Delivery Network (CDN).
+      </p>
+      <p class="code-extract">
+        &lt;script src=&quot;https://unpkg.com/vue@2.6.10/dist/vue.js&quot;&gt;&lt;/script&gt;
+      <br />
+        &lt;script src=&quot;https://unpkg.com/vue-function-api/dist/vue-function-api.umd.js
+        &quot;&gt;<br/>&lt;/script&gt;
+      </p>
+      <p>
+        Linking to this CDN provides access to Vue's function based interface
+        through a window object called vueFunctionApi.
+      </p>
+      <p>
+        Setting const <strong>veuf = window.vueFunctionApi</strong> connects your code to the “vueFunctionApi”
+        via the prefix “veuf”.
+        To use this API, explicitly add <strong>Vue.use(veuf.plugin)</strong> to your app.
+      </p>
+
+<!-- code extracts start -->
+<h2>Vuef zeroth</h2>
+<p>
+  Please feel free to visit
+  <a href="./code_examples/basics/000zeroth.html" target="_blank">
+    this simple example in a single html file
+  </a>
+  and then view source to see the script tags containing its Vue code.
+</p>
+<p>HTML</p>
+<div class="code-extract">
+  <p>
+    <span class="T1">&lt;</span><span class="T4">div</span>
+    <span class="T6">id</span>
+    <span class="T1"> = "</span>
+    <span class="T7">app</span><span class="T1">"&gt;</span>
+  </p>
+  <p>  Please check your console logged the word "mounted".</p>
+  <p>
+    <span class="T1">&lt;/</span><span class="T4">div</span>
+    <span class="T1">&gt;</span>
+  </p>
+</div>
+<p>JS</p>
+<div class="code-extract">
+  <p>
+    <span class="T9">const</span>
+    <span class="T12"> veuf </span>
+    <span class="T3">=</span>
+    <span class="T12"> window</span>
+    <span class="T3">.</span>
+    <span class="T12">vueFunctionApi</span>
+  </p>
+  <p>
+    Vue<span class="T1">.</span>
+    <span class="T13">use</span>(veuf<span class="T1">.</span>plugin)
+  </p>
+  <p> </p>
+  <p><span class="T9">var</span> app <span class="T1">=</span> <span class="T1">new</span> Vue(<span class="T1">{</span>
+  </p>
+  <p>  el<span class="T1">:</span> <span class="T1">'</span><span class="T7">#app</span><span class="T1">',</span></p>
+  <p><span class="T13">  setup</span><span class="T1">(){</span></p>
+  <p>    veuf<span class="T1">.</span><span class="T13">onMounted</span>(<span class="T1">()</span><span
+      class="T9">=&gt;</span> <span class="T1">{</span></p>
+  <p><span class="T14">      console</span><span class="T1">.</span><span class="T13">log</span>(<span
+      class="T1">'</span><span class="T7">mounted</span><span class="T1">'</span>)</p>
+  <p><span class="T1">    }</span>)</p>
+  <p>  }</p>
+  <p><span class="T1">}</span>)</p>
+</div>
+
+<h2>Basic reactivity</h2>
+<p>
+  Please feel free to visit
+  <a href="./code_examples/basics/001_reactive_example.html" target="_blank">
+    this basic reactivity example in a single html file
+  </a>
+  and then view source to see the script tags containing its Vue code.
+</p>
+<p>Using veuf.value() creates a reactive property. The arguments supplied to the value function sets an
+  initial value. For example, msg = veuf.value('Hi') sets msg to an initial value of 'Hi', and the .value part makes msg
+  reactive.</p>
+<p>HTML</p>
+<div class="code-extract">
+  <p>
+    <span class="T1">&lt;</span><span class="T4">div</span>
+    <span class="T6">id</span>
+    <span class="T1"> = "</span>
+    <span class="T7">app</span><span class="T1">"&gt;</span>
+  </p>
+  <p>
+    &nbsp;&nbsp;
+    <span class="T1">&lt;</span><span class="T4">div</span><span class="T1">&gt;</span>
+    {{msg}}
+    <span class="T1">&lt;/</span><span class="T4">div</span><span class="T1">&gt;</span>
+  </p>
+  <p>
+    <span class="T1">&lt;/</span><span class="T4">div</span>
+    <span class="T1">&gt;</span>
+  </p>
+</div>
+<p>JS</p>
+<div class="code-extract">
+  <p><span class="T9">const</span> veuf <span class="T1">=</span> window<span class="T1">.</span>vueFunctionApi
+  </p>
+  <p>Vue<span class="T1">.</span><span class="T13">use</span>(veuf<span class="T1">.</span>plugin)</p>
+  <p> </p>
+  <p><span class="T9">var</span> app <span class="T1">=</span> <span class="T1">new</span> Vue(<span class="T1">{</span>
+  </p>
+  <p>  el<span class="T1">:</span> <span class="T1">'</span><span class="T7">#app</span><span class="T1">',</span></p>
+  <p><span class="T13">  setup</span><span class="T1">()</span> <span class="T1">{</span></p>
+  <p><span class="T9">    let</span> msg <span class="T1">=</span> veuf<span class="T1">.</span><span
+      class="T13">value</span>(<span class="T1">'</span><span class="T7">Hi</span><span class="T1">'</span>)</p>
+  <p><span class="T9">    return</span><span class="T1">{</span>msg<span class="T1">}</span></p>
+  <p>  }</p>
+  <p><span class="T1">}</span>)</p>
+</div>
+
+<h2>Binding</h2>
+<p>
+  Please feel free to visit
+  <a href="./code_examples/basics/002_bind_example.html" target="_blank">
+    this v-bind example in a single html file
+  </a>
+  and then view source to see the script tags containing its Vue code.
+</p>
+<p>
+  The v-bind directive binds HTML attribute to JS variables. In the following extract v-bind binds the msg
+  reactive value to the  title HTML attribute which appears when a mouse hovers over the associated element.
+</p>
+<p>HTML</p>
+<div class="code-extract">
+  <p>
+    <span class="T1">&lt;</span><span class="T4">div</span>
+    <span class="T6">id</span>
+    <span class="T1"> = "</span><span class="T7">app</span><span class="T1">"</span>
+    <span class="T1"> </span><span
+    class="T6">v-bind:title </span><span class="T1">= "</span><span class="T7">msg</span><span class="T1">"&gt;</span>
+  </p>
+  <p>&nbsp;&nbsp;  Hover mouse here to see dynamic binding.</p>
+  <p>
+    <span class="T1">&lt;/</span><span class="T4">div</span><span class="T1">&gt;</span>
+  </p>
+</div>
+<p>JS</p>
+<div class="code-extract">
+  <p><span class="T9">const</span> veuf <span class="T1">=</span> window<span class="T1">.</span>vueFunctionApi
+  </p>
+  <p>Vue<span class="T1">.</span><span class="T13">use</span>(veuf<span class="T1">.</span>plugin)</p>
+  <p> </p>
+  <p><span class="T9">var</span> app <span class="T1">=</span> <span class="T1">new</span> Vue(<span class="T1">{</span>
+  </p>
+  <p>  el<span class="T1">:</span> <span class="T1">'</span><span class="T7">#app</span><span class="T1">',</span></p>
+  <p><span class="T13">  setup</span><span class="T1">()</span> <span class="T1">{</span></p>
+  <p><span class="T9">    const</span> msg <span class="T1">=</span> veuf<span class="T1">.</span><span
+      class="T13">value</span>(<span class="T1">'</span><span class="T7">Page loaded on </span><span class="T1">' +</span>
+    <span class="T1">new</span> Date()<span class="T1">.</span><span class="T13">toLocaleString</span>())</p>
+  <p><span class="T9">    return</span><span class="T1">{</span>msg<span class="T1">}</span></p>
+  <p>  }</p>
+  <p><span class="T1">}</span>)</p>
+</div>
+
+<h2>Lists with v-for</h2>
+<p>
+  Please feel free to visit
+  <a href="./code_examples/basics/003_list_example.html" target="_blank">
+    this v-for example in a single html file
+  </a>
+  and then view source to see the script tags containing its Vue code.
+</p>
+<p>HTML</p>
+<div class="code-extract">
+  <p><span class="T1">&lt;</span><span class="T4">div</span><span class="T1"> </span><span
+    class="T6">id</span><span class="T1">="</span><span class="T7">app</span><span class="T1">"&gt;</span></p>
+  <p><span class="T1">  &lt;</span><span class="T4">ul</span><span class="T1">&gt;</span></p>
+  <p><span class="T1">    &lt;</span><span class="T4">li</span><span class="T1"> </span><span class="T6">v-for</span><span
+      class="T1">="</span><span class="T7">item in missionList</span><span class="T1">"&gt;</span>{{item}}<span
+      class="T1">&lt;/</span><span class="T4">li</span><span class="T1">&gt;</span></p>
+  <p><span class="T1">  &lt;/</span><span class="T4">ul</span><span class="T1">&gt;</span></p>
+  <p><span class="T1">&lt;/</span><span class="T4">div</span><span class="T1">&gt;</span></p>
+</div>
+<p>JS</p>
+<div class="code-extract">
+  <p><span class="T9">const</span> veuf <span class="T1">=</span> window<span class="T1">.</span>vueFunctionApi
+  </p>
+  <p>Vue<span class="T1">.</span><span class="T13">use</span>(veuf<span class="T1">.</span>plugin)</p>
+  <p> </p>
+  <p><span class="T9">var</span> app <span class="T1">=</span> <span class="T1">new</span> Vue(<span class="T1">{</span>
+  </p>
+  <p>  el<span class="T1">:</span> <span class="T1">'</span><span class="T7">#app</span><span class="T1">',</span></p>
+  <p><span class="T13">  setup</span><span class="T1">()</span> <span class="T1">{</span></p>
+  <p><span class="T9">    const</span> missionList <span class="T1">=</span> [</p>
+  <p><span class="T1">    '</span><span class="T7">Write plain HTML fallback page</span><span class="T1">',</span></p>
+  <p><span class="T1">    '</span><span class="T7">Create unit tests</span><span class="T1">',</span></p>
+  <p><span class="T1">    '</span><span class="T7">Add style</span><span class="T1">',</span></p>
+  <p><span class="T1">    '</span><span class="T7">Draft app docs</span><span class="T1">'</span></p>
+  <p>    ]</p>
+  <p><span class="T9">    return</span> <span class="T1">{</span>missionList<span class="T1">}</span></p>
+  <p>  }</p>
+  <p><span class="T2">}</span><span class="T12">)</span></p>
+</div>
+
+<h2>Interactivity</h2>
+<p>
+  Please feel free to visit
+  <a href="./code_examples/basics/004_interact_example.html" target="_blank">
+    this basic interactivity example in a single html file
+  </a>
+  and then view source to see the script tags containing its Vue code.
+</p>
+<p>Changing reactive values requires the <strong>.value</strong> suffix.</p>
+<p>HTML</p>
+<div class="code-extract">
+  <p><span class="T1">&lt;</span><span class="T4">div</span><span class="T1"> </span><span
+    class="T6">id</span><span class="T1">="</span><span class="T7">app</span><span class="T1">"&gt;</span></p>
+  <p><span class="T1">  &lt;</span><span class="T4">p</span><span class="T1">&gt;</span>{{msg}}<span
+      class="T1">&lt;/</span><span class="T4">p</span><span class="T1">&gt;</span></p>
+  <p><span class="T1">  &lt;</span><span class="T4">button</span><span class="T1"> </span><span
+      class="T6">v-on:click</span><span class="T1">="</span><span class="T7">shout</span><span
+      class="T1">"&gt;</span>Shout<span class="T1">&lt;/</span><span class="T4">button</span><span class="T1">&gt;</span>
+  </p>
+  <p><span class="T2">&lt;/</span><span class="T5">div</span><span class="T2">&gt;</span></p>
+</div>
+<p>JS</p>
+<div class="code-extract">
+  <p><span class="T9">const</span> veuf <span class="T1">=</span> window<span class="T1">.</span>vueFunctionApi
+  </p>
+  <p>Vue<span class="T1">.</span><span class="T13">use</span>(veuf<span class="T1">.</span>plugin)</p>
+  <p> </p>
+  <p><span class="T9">var</span> app <span class="T1">=</span> <span class="T1">new</span> Vue(<span class="T1">{</span>
+  </p>
+  <p>  el<span class="T1">:</span> <span class="T1">'</span><span class="T7">#app</span><span class="T1">',</span></p>
+  <p><span class="T13">  setup</span><span class="T1">()</span> <span class="T1">{</span></p>
+  <p><span class="T9">    let</span> msg <span class="T1">=</span> veuf<span class="T1">.</span><span
+      class="T13">value</span>(<span class="T1">'</span><span class="T7">Sotto voce</span><span class="T1">'</span>)</p>
+  <p><span class="T9">    const</span> <span class="T13">shout</span> <span class="T1">=</span> <span class="T1">()</span>
+    <span class="T9">=&gt;</span> msg<span class="T1">.</span>value <span class="T1">=</span> msg<span
+      class="T1">.</span>value<span class="T1">.</span><span class="T13">toUpperCase</span>()</p>
+  <p><span class="T9">    return</span><span class="T1">{</span></p>
+  <p>      msg<span class="T1">,</span></p>
+  <p>      shout<span class="T1">,</span></p>
+  <p>    }</p>
+  <p>  }</p>
+  <p><span class="T1">}</span>)</p>
+</div>
+<p>Both the keywords “var” and “const” can also declare variables, but “let” seems
+  more aesthetically appealing because pressing buttons changes msg.</p>
+
+<h2>v-model</h2>
+<p>
+  Please feel free to visit
+  <a href="./code_examples/basics/005_v-model_example.html" target="_blank">
+    this basic v-model example in a single html file
+  </a>
+  and then view source to see the script tags containing its Vue code.
+</p>
+<p>HTML</p>
+<div class="code-extract">
+  <p>
+    <span class="T1">&lt;</span><span class="T4">div</span>
+    <span class="T6">id</span>
+    <span class="T1">="</span><span class="T7">app</span><span class="T1">"&gt;</span></p>
+  <p>
+    &nbsp;&nbsp;
+    <span class="T1">&lt;</span><span class="T4">p</span><span class="T1">&gt;</span>{{msg}}<span
+      class="T1">&lt;/</span><span class="T4">p</span><span class="T1">&gt;</span></p>
+  <p>
+    &nbsp;&nbsp;
+    <span class="T1">&lt;</span><span class="T4">input</span><span class="T1"> </span><span
+      class="T6">v-model</span><span class="T1">="</span><span class="T7">msg</span><span class="T1">" /&gt;</span></p>
+  <p><span class="T1">&lt;/</span><span class="T4">div</span><span class="T1">&gt;</span></p>
+</div>
+<p>JS</p>
+<div class="code-extract">
+  <p><span class="T9">const</span> veuf <span class="T1">=</span> window<span class="T1">.</span>vueFunctionApi
+  </p>
+  <p>Vue<span class="T1">.</span><span class="T13">use</span>(veuf<span class="T1">.</span>plugin)</p>
+  <p> </p>
+  <p><span class="T9">var</span> app <span class="T1">=</span> <span class="T1">new</span> Vue(<span class="T1">{</span>
+  </p>
+  <p>  el<span class="T1">:</span> <span class="T1">'</span><span class="T7">#app</span><span class="T1">',</span></p>
+  <p><span class="T13">  setup</span><span class="T1">()</span> <span class="T1">{</span></p>
+  <p><span class="T9">    let</span> msg <span class="T1">=</span> veuf<span class="T1">.</span><span
+      class="T13">value</span>(<span class="T1">'</span><span class="T7">H</span><span class="T8">i</span><span
+      class="T1">'</span>)</p>
+  <p><span class="T9">    return</span><span class="T1">{</span>msg<span class="T1">}</span></p>
+  <p>  }</p>
+  <p><span class="T2">}</span><span class="T12">)</span></p>
+</div>
+
+<h2 id="basic-component-section">Basic component</h2>
+<p>HTML</p>
+<p>
+  Please feel free to visit
+  <a href="./code_examples/basics/006_component_example.html" target="_blank">
+    this basic component example in a single html file
+  </a>
+  and then view source to see the script tags containing its Vue code.
+</p>
+<div class="code-extract">
+  <p><span class="T1">&lt;</span><span class="T4">div</span><span class="T1"> </span><span
+    class="T6">id</span><span class="T1">="</span><span class="T7">app</span><span class="T1">"&gt;</span></p>
+  <p><span class="T1">  &lt;</span><span class="T4">ol</span><span class="T1">&gt;</span></p>
+  <p><span class="T1">    &lt;</span><span class="T4">todo-item</span></p>
+  <p><span class="T6">      v-for</span><span class="T1">="</span><span class="T7">item in missionList</span><span
+      class="T1">"</span></p>
+  <p><span class="T6">      v-bind:mission</span><span class="T1">="</span><span class="T7">item</span><span
+      class="T1">"</span></p>
+  <p><span class="T6">      v-bind:key</span><span class="T1">="</span><span class="T7">item.id</span><span
+      class="T1">"</span></p>
+  <p><span class="T1">    &gt;&lt;/</span><span class="T4">todo-item</span><span class="T1">&gt;</span></p>
+  <p><span class="T1">  &lt;/</span><span class="T4">ol</span><span class="T1">&gt;</span></p>
+  <p><span class="T1">&lt;/</span><span class="T4">div</span><span class="T1">&gt;</span></p>
+</div>
+<p>JS</p>
+<div class="code-extract">
+  <p><span class="T9">const</span> veuf <span class="T1">=</span> window<span class="T1">.</span>vueFunctionApi
+  </p>
+  <p>Vue<span class="T1">.</span><span class="T13">use</span>(veuf<span class="T1">.</span>plugin)</p>
+  <p> </p>
+  <p>Vue<span class="T1">.</span><span class="T13">component</span>(<span class="T1">'</span><span
+      class="T7">todo-item</span><span class="T1">',</span> <span class="T1">{</span></p>
+  <p>  props<span class="T1">:</span> [<span class="T1">'</span><span class="T7">mission</span><span
+      class="T1">'</span>]<span class="T1">,</span></p>
+  <p>  template<span class="T1">:</span> <span class="T1">'</span><span
+      class="T7">&lt;li&gt;{{mission.text}}&lt;/li&gt;</span><span class="T1">'</span></p>
+  <p><span class="T1">}</span>)</p>
+  <p> </p>
+  <p><span class="T9">var</span> app <span class="T1">=</span> <span class="T1">new</span> Vue(<span class="T1">{</span>
+  </p>
+  <p>  el<span class="T1">:</span> <span class="T1">'</span><span class="T7">#app</span><span class="T1">',</span></p>
+  <p><span class="T13">  setup</span><span class="T1">()</span> <span class="T1">{</span></p>
+  <p><span class="T9">    const</span> missionList <span class="T1">=</span> [</p>
+  <p><span class="T1">      {</span> id<span class="T1">:</span> <span class="T19">1</span><span class="T1">,</span>
+    text<span class="T1">:</span> <span class="T1">'</span><span class="T7">Write plain HTML fallback page</span><span
+      class="T1">'</span> <span class="T1">},</span></p>
+  <p><span class="T1">      {</span> id<span class="T1">:</span> <span class="T19">2</span><span class="T1">,</span>
+    text<span class="T1">:</span> <span class="T1">'</span><span class="T7">Create unit tests</span><span
+      class="T1">'</span> <span class="T1">}</span></p>
+  <p>    ]</p>
+  <p><span class="T9">    return</span> <span class="T1">{</span>missionList<span class="T1">}</span></p>
+  <p>  }</p>
+  <p><span class="T1">}</span>)</p>
+</div>
+<!-- code extracts end -->
+
+    </main>
+
+    <nav>
+      <p><a href="./index.html">Home</a></p>
+      <p><a href="./intro.html">Intro</a></p>
+      <p>Vue basics</p>
+      <p><a href="./fetch.html">Fetch</a></p>
+      <p><a href="./interaction.html">Interaction</a></p>
+      <p><a href="./displaying_state.html">Displaying state</a></p>
+      <p><a class="sources-page-ref" href="./sources.html">Sources</a></p>
+    </nav>
+
+    <aside>
+      <img src="./img/vue_logo_hooking_react.svg" alt="Vue logo hooking react"/>
+    </aside>
+
+  </div> <!-- close grid -->
+
+  <footer>
+    <p><a href="./index.html">Veuf</a></p>
+    <p>2019</p>
+    <p>Information may become moot</p>
+  </footer>
+
+</body>
+</html>

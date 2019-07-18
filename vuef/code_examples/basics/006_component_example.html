@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<title>Basic component</title>
+<body>
+
+  <div id="app">
+    <ol>
+      <todo-item
+        v-for="item in missionList"
+        v-bind:key="item.id"
+        v-bind:mission="item"
+      ></todo-item>
+    </ol>
+  </div>
+
+<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-function-api/dist/vue-function-api.umd.js"></script>
+<script>
+
+  const veuf = window.vueFunctionApi
+  Vue.use(veuf.plugin)
+
+  Vue.component('todo-item', {
+    props: ['mission'],
+    template: '<li>{{mission.text}}</li>'
+  })
+
+  var app = new Vue({
+    el: '#app',
+    setup() {
+      const missionList = [
+        { id: 1, text: 'Write plain HTML fallback page' },
+        { id: 2, text: 'Create unit tests' },
+        { id: 3, text: 'Add style' },
+        { id: 4, text: 'Draft app docs' }
+      ]
+      return {
+        missionList
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

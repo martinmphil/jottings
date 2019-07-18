@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang='en-GB'>
+<meta charset='utf-8'>
+<!--mobile 1st responsive style-->
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='./vuef.css'>
+<meta name="description" content="Vue.js 3 function api">
+<meta name="keywords" content="Vue.js 3, function api, JavaScript">
+<meta name="author" content="martin.mphil@gmail.com">
+<title>Vue3 intro</title>
+<style>
+  .T1 { color:#6699cc; }
+  .T2 { color:#5fb3b3; }
+  .T3 { color:#c594c5; }
+  .T4 { color:#f99157; }
+  .T5 { color:#99c794; }
+</style>
+<body>
+  <div class="grid">
+    <main>
+      <h1>Intro</h1>
+      <p>
+        Vue <strong>components</strong> create reusable chunks of code
+        for constructing user interfaces.
+      </p>
+      <p>
+        Components can be
+        <a href="https://vuejs.org/v2/guide/components-registration.html">
+         registered
+        </a> with <br>
+        <strong>Vue.component('my-component-name', { /* ... */ })</strong>
+      </p>
+      <p>
+        Props stands for "properties" and refers to
+        <a href="https://vuejs.org/v2/guide/components.html#Passing-Data-to-Child-Components-with-Props">
+          information passed into a component
+        </a>.
+      </p>
+      <p>
+        A component may include a setup function <strong>setup(){..}</strong> which sets up the component with
+        life-cycle hooks, computed properties and other facilities belonging to that component.
+      </p>
+      <p>
+        In the following example,
+        a setup function concludes with a return statement exposing a variable <strong>missionList</strong>
+        for use by its containing component. 
+      </p>
+      <div class="code-extract">
+        <p><span class="T1">setup</span><span class="T2">()</span> <span 
+        class="T2">{</span></p><p><span class="T3">  const</span> missionList <span 
+        class="T2">=</span> [</p><p><span class="T2">    {</span> id<span 
+        class="T2">:</span> <span class="T4">1</span><span class="T2">,</span> text<span 
+        class="T2">:</span> <span class="T2">'</span><span 
+        class="T5">Write plain HTML fallback page</span><span class="T2">'</span> <span 
+        class="T2">},</span></p><p><span class="T2">    {</span> id<span class="T2">:</span> <span 
+        class="T4">2</span><span class="T2">,</span> text<span class="T2">:</span> <span 
+        class="T2">'</span><span class="T5">Create unit tests</span><span 
+        class="T2">'</span> <span class="T2">},</span></p><p><span 
+        class="T2">    {</span> id<span class="T2">:</span> <span class="T4">3</span><span 
+        class="T2">,</span> text<span class="T2">:</span> <span class="T2">'</span><span 
+        class="T5">Add style</span><span class="T2">'</span> <span class="T2">},</span></p><p><span 
+        class="T2">    {</span> id<span class="T2">:</span> <span class="T4">4</span><span 
+        class="T2">,</span> text<span class="T2">:</span> <span class="T2">'</span><span 
+        class="T5">Draft app docs</span><span class="T2">'</span> <span 
+        class="T2">}</span></p><p>  ]</p><p><span class="T3">  return</span> <span 
+        class="T2">{</span>missionList<span class="T2">}</span></p><p>}</p>
+      </div>
+      See
+      <a href="./code_examples/basics/006_component_example.html" target="_blank">
+        HTML example
+      </a>.
+      <p>
+        Note in the basic component example,
+        the return from the setup function exposes this variable to the Vue instance.
+      </p>
+      <p>
+        Vue allows components to hold reactive values (or state)
+        inside each individual invocation of that component.
+        This state can record the changing condition of a component,
+        eg counting button clicks or user input.
+      </p>
+      <div class="code-extract">
+        <p>Vue<span class="T2">.</span><span class="T1">component</span>(<span 
+        class="T2">'</span><span class="T5">button-counter</span><span class="T2">',</span> <span 
+        class="T2">{</span></p><p><span class="T1">  setup</span><span 
+        class="T2">(){</span></p><p><span class="T3">  let</span> count <span 
+        class="T2">=</span> <span class="T1">value</span>(<span 
+        class="T4">0</span>)</p><p><span class="T3">  return</span> <span 
+        class="T2">{</span>count<span class="T2">}</span></p><p class="T2">  },</p><p 
+        class="T5">  template<span class="T2">:</span> <span class="T2">`</span></p>
+        <p class="T5">    &lt;button v-on:click="count++"&gt;</p>
+        <p class="T5">      You clicked {{ count }} times.</p>
+        <p class="T5">    &lt;/button&gt;</p><p class="T5">  `</p><p><span class="T2">}</span>)</p>
+      </div>
+      See
+      <a href="./code_examples/100_separate_component.html" target="_blank">
+        HTML example
+      </a>.
+      <hr>
+
+    </main>
+
+    <nav>
+      <p><a href="./index.html">Home</a></p>
+      <p>Intro</p>
+      <p><a href="./basic_vue.html">Vue basics</a></p>
+      <p><a href="./fetch.html">Fetch</a></p>
+      <p><a href="./interaction.html">Interaction</a></p>
+      <p><a href="./displaying_state.html">Displaying state</a></p>
+      <p><a class="sources-page-ref" href="./sources.html">Sources</a></p>
+    </nav>
+
+    <aside>
+      <img src="./img/vue_logo_hooking_react.svg" alt="Vue logo hooking react"/>
+    </aside>
+
+  </div> <!-- close grid -->
+
+  <footer>
+    <p><a href="./index.html">Veuf</a></p>
+    <p>2019</p>
+    <p>Information may become moot</p>
+  </footer>
+
+</body>
+</html>
