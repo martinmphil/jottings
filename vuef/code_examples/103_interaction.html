@@ -1,47 +1,44 @@
 <!DOCTYPE html>
-<html lang='en-GB'>
-<meta charset='utf-8'>
-<title>Input</title>
-<link rel='stylesheet' href='./vuef.css'>
+<html lang="en-GB">
+  <meta charset="utf-8" />
+  <title>Input</title>
+  <link rel="stylesheet" href="./vuef.css" />
 
-<body>
-  <div id="app" >
-    <p>News items</p>
-    <news-feed></news-feed>
-  </div>
+  <body>
+    <div id="app">
+      <p>News items</p>
+      <news-feed></news-feed>
+    </div>
 
-<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
-<script src="https://unpkg.com/vue-function-api/dist/vue-function-api.umd.js"></script>
-<script>
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-function-api/dist/vue-function-api.umd.js"></script>
+    <script>
+      const veuf = window.vueFunctionApi;
 
-  const veuf = window.vueFunctionApi
+      Vue.use(veuf.plugin);
 
-  Vue.use(veuf.plugin)
-  
-  Vue.component('news-feed', {
-    setup(){
-      let newsList = veuf.value([]);
-      let topic = veuf.value('vue');
+      Vue.component("news-feed", {
+        setup() {
+          let newsList = veuf.value([]);
+          let topic = veuf.value("vue");
 
-      const getNews = () => {
-        fetch(
-          `http://hn.algolia.com/api/v1/search?query=${topic.value}`
-        )
-          .then(res => res.json())
-          .then(myJson => {
-            newsList.value = myJson.hits
-          })
-      };
-      veuf.onCreated( () => {
-        getNews()
-      });
-      return {
-        newsList,
-        topic,
-        getNews
-      }
-    },
-    template: `
+          const getNews = () => {
+            fetch(`https://hn.algolia.com/api/v1/search?query=${topic.value}`)
+              .then(res => res.json())
+              .then(myJson => {
+                newsList.value = myJson.hits;
+              });
+          };
+          veuf.onCreated(() => {
+            getNews();
+          });
+          return {
+            newsList,
+            topic,
+            getNews
+          };
+        },
+        template: `
       <div>
         <input v-model="topic" />
         <button
@@ -62,12 +59,11 @@
         </ul>
       </div>
     `
-  })
+      });
 
-  var app = new Vue({
-    el: '#app',
-  })
-
-</script>
-</body>
+      var app = new Vue({
+        el: "#app"
+      });
+    </script>
+  </body>
 </html>
