@@ -1,0 +1,45 @@
+/* width & height includes padding + border */
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  font-family: serif;
+}
+
+.answerForm {
+  border-style: solid;
+  border-width: thin;
+  padding: 1em;
+  width: fit-content;
+}
+
+figure {
+  border-style: solid;
+  border-width: thin;
+  padding: 1em;
+  width: fit-content;
+  margin-left: 0;
+}
+
+figcaption {
+  font-family: sans-serif;
+}
+
+/* introduce magins at widths > 20em */
+@media only screen and (min-width: 20em) {
+  .App {
+    margin: 1em;
+  }
+}
+
+/*
+M query 40em to 80em
+Col 1 main-question
+Col 2 figure nav
+
+If more complex navigation is required, then
+M query > 80em 
+Three col Grid
+Nav main figure
+*/
