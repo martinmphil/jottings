@@ -1,8 +1,3 @@
-/* width & height includes padding + border */
-* {
-  box-sizing: border-box;
-}
-
 .App {
   font-family: serif;
 }
@@ -12,6 +7,10 @@
   border-width: thin;
   padding: 1em;
   width: fit-content;
+}
+
+label {
+  margin: 0.8em;
 }
 
 figure {

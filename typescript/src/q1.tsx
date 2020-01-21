@@ -1,7 +1,5 @@
 import React from "react";
 
-const radioButtonAnswerStyle = { margin: "0.8em" };
-
 const submitHandling = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   alert("you just pressed the submit button");
@@ -9,10 +7,7 @@ const submitHandling = (e: React.FormEvent<HTMLFormElement>) => {
 
 const Q1: React.FC = () => {
   return (
-    <div>
-      <h1>Question one</h1>
-      <p>What is one plus one?</p>
-
+    <section>
       <form className="answerForm" onSubmit={submitHandling}>
         <ul>
           <li>
@@ -27,36 +22,38 @@ const Q1: React.FC = () => {
             <label htmlFor="msg">Message:</label>
             <textarea id="msg" name="user_message"></textarea>
           </li>
+          <li>
+            <button type="submit">Submit</button>
+          </li>
         </ul>
       </form>
 
       <hr></hr>
+
+      <h1>Question one</h1>
+      <p>What is one plus one?</p>
+
       <form className="answerForm" onSubmit={submitHandling}>
         <div>
-          <input
-            style={radioButtonAnswerStyle}
-            type="radio"
-            id="alpha"
-            name="Q1Answer"
-            value="2"
-          />
+          <input type="radio" id="alpha" name="Q1Answer" value="2" />
           <label htmlFor="alpha">Two</label>
         </div>
         <div>
-          <input
-            style={radioButtonAnswerStyle}
-            type="radio"
-            id="beta"
-            name="Q1Answer"
-            value="3"
-          />
+          <input type="radio" id="beta" name="Q1Answer" value="3" />
           <label htmlFor="beta">Three</label>
         </div>
         <div>
-          <input type="submit" value="Submit" />
+          <button type="submit">Submit</button>
         </div>
       </form>
-    </div>
+
+      <figure>
+        <span role="img" aria-label="1 beer plus 1 beer<">
+          🍺 + 🍺 = 🍻
+        </span>
+        <figcaption>1 beer plus 1 beer</figcaption>
+      </figure>
+    </section>
   );
 };
 
