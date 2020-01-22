@@ -8,40 +8,46 @@ const submitHandling = (e: React.FormEvent<HTMLFormElement>) => {
 const Q1: React.FC = () => {
   return (
     <section>
-      <form className="answerForm" onSubmit={submitHandling}>
-        <ul>
-          <li>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="user_name" />
-          </li>
-          <li>
-            <label htmlFor="mail">E-mail:</label>
-            <input type="email" id="mail" name="user_name" />
-          </li>
-          <li>
-            <label htmlFor="msg">Message:</label>
-            <textarea id="msg" name="user_message"></textarea>
-          </li>
-          <li>
-            <button type="submit">Submit</button>
-          </li>
-        </ul>
-      </form>
-
-      <hr></hr>
-
       <h1>Question one</h1>
       <p>What is one plus one?</p>
 
       <form className="answerForm" onSubmit={submitHandling}>
-        <div>
-          <input type="radio" id="alpha" name="Q1Answer" value="2" />
-          <label htmlFor="alpha">Two</label>
-        </div>
-        <div>
-          <input type="radio" id="beta" name="Q1Answer" value="3" />
-          <label htmlFor="beta">Three</label>
-        </div>
+        <fieldset>
+          <legend>Q1 answer choices</legend>
+
+          <hr></hr>
+
+          <ul>
+            <li>
+              <input type="radio" id="alpha" name="Q1Answer" value="2" />
+              <label htmlFor="alpha">Two</label>
+            </li>
+
+            <hr></hr>
+
+            <li>
+              <input type="radio" id="beta" name="Q1Answer" value="3" />
+              <label htmlFor="beta">Three</label>
+            </li>
+
+            <hr></hr>
+
+            <li>
+              <input type="radio" id="gamma" name="Q1Answer" value="4" />
+              <label htmlFor="gamma">Four</label>
+            </li>
+
+            <hr></hr>
+
+            <li>
+              <input type="radio" id="delta" name="Q1Answer" value="5" />
+              <label htmlFor="delta">Five</label>
+            </li>
+          </ul>
+
+          <hr></hr>
+        </fieldset>
+
         <div>
           <button type="submit">Submit</button>
         </div>
