@@ -6,10 +6,22 @@ import SampleQuestionText from "./SampleQuestionText";
 // const logo = require("./logo.svg") as string;
 
 const App: React.FC = () => {
-  const [q1B, setQ1B] = useState(0);
+  const [best, setBest] = useState(0);
 
   const bestOpt1 = () => {
-    setQ1B(1);
+    setBest(1);
+  };
+
+  const bestOpt2 = () => {
+    setBest(2);
+  };
+
+  const bestOpt3 = () => {
+    setBest(3);
+  };
+
+  const bestOpt4 = () => {
+    setBest(4);
   };
 
   const submitHandling = () => {
@@ -28,7 +40,7 @@ const App: React.FC = () => {
       <p>After selecting your answers, press the "submit" button.</p>
 
       <p>TO REMOVE</p>
-      <p>q1B is: {q1B}</p>
+      <p>q1B is: {best}</p>
 
       <Question
         scenarioText={SampleQuestionText.scenarioText}
@@ -38,6 +50,9 @@ const App: React.FC = () => {
         optText4={SampleQuestionText.optText4}
         submitHandling={submitHandling}
         bestOpt1={bestOpt1}
+        bestOpt2={bestOpt2}
+        bestOpt3={bestOpt3}
+        bestOpt4={bestOpt4}
       />
 
       <nav>Link home nav</nav>

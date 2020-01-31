@@ -8,6 +8,9 @@ interface Props {
   optText4: string;
   submitHandling: () => void;
   bestOpt1: () => void;
+  bestOpt2: () => void;
+  bestOpt3: () => void;
+  bestOpt4: () => void;
 }
 
 const Question: React.FC<Props> = props => {
@@ -51,6 +54,7 @@ const Question: React.FC<Props> = props => {
           id="bestOpt2"
           className="answer-button best-button"
           aria-label="Option 2 is best"
+          onClick={props.bestOpt2}
         >
           Best
         </button>
@@ -75,6 +79,7 @@ const Question: React.FC<Props> = props => {
           id="bestOpt3"
           className="answer-button best-button"
           aria-label="Option 3 is best"
+          onClick={props.bestOpt4}
         >
           Best
         </button>
@@ -99,6 +104,7 @@ const Question: React.FC<Props> = props => {
           id="bestOpt4"
           className="answer-button best-button"
           aria-label="Option 4 is best"
+          onClick={props.bestOpt4}
         >
           Best
         </button>
