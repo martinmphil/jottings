@@ -7,21 +7,50 @@ import SampleQuestionText from "./SampleQuestionText";
 
 const App: React.FC = () => {
   const [best, setBest] = useState(0);
+  const [worst, setWorst] = useState(0);
 
-  const bestOpt1 = () => {
+  const bestOptA = () => {
     setBest(1);
+    localStorage.q1Best = "A";
   };
 
-  const bestOpt2 = () => {
+  const bestOptB = () => {
     setBest(2);
+    writeToLocalStorage("q1Best", "B");
   };
 
-  const bestOpt3 = () => {
+  const bestOptC = () => {
     setBest(3);
+    writeToLocalStorage("q1Best", "C");
   };
 
-  const bestOpt4 = () => {
+  const bestOptD = () => {
     setBest(4);
+    writeToLocalStorage("q1Best", "D");
+  };
+
+  const worstOptA = () => {
+    setWorst(1);
+    localStorage.q1Worst = "A";
+  };
+
+  const worstOptB = () => {
+    setWorst(1);
+    localStorage.q1Worst = "B";
+  };
+
+  const worstOptC = () => {
+    setWorst(1);
+    localStorage.q1Worst = "C";
+  };
+
+  const worstOptD = () => {
+    setWorst(1);
+    localStorage.q1Worst = "D";
+  };
+
+  const writeToLocalStorage = (x: string, y: string) => {
+    localStorage[x] = y;
   };
 
   const submitHandling = () => {
@@ -39,20 +68,34 @@ const App: React.FC = () => {
       </p>
       <p>After selecting your answers, press the "submit" button.</p>
 
-      <p>TO REMOVE</p>
-      <p>q1B is: {best}</p>
+      {/* <p>  TO REMOVE  </p> */}
+      <hr />
+      <p>
+        The option you selected as Best is:{" "}
+        <span id="lookingAtStateBest">{best}</span>
+      </p>
+      <p>
+        The option you selected as Worst is:{" "}
+        <span id="lookingAtStateWorst">{worst}</span>
+      </p>
 
       <Question
         scenarioText={SampleQuestionText.scenarioText}
-        optText1={SampleQuestionText.optText1}
-        optText2={SampleQuestionText.optText2}
-        optText3={SampleQuestionText.optText3}
-        optText4={SampleQuestionText.optText4}
+        optTextA={SampleQuestionText.optTextA}
+        optTextB={SampleQuestionText.optTextB}
+        optTextC={SampleQuestionText.optTextC}
+        optTextD={SampleQuestionText.optTextD}
         submitHandling={submitHandling}
-        bestOpt1={bestOpt1}
-        bestOpt2={bestOpt2}
-        bestOpt3={bestOpt3}
-        bestOpt4={bestOpt4}
+        bestOptA={bestOptA}
+        bestOptB={bestOptB}
+        bestOptC={bestOptC}
+        bestOptD={bestOptD}
+        worstOptA={worstOptA}
+        worstOptB={worstOptB}
+        worstOptC={worstOptC}
+        worstOptD={worstOptD}
+        best={best}
+        worst={worst}
       />
 
       <nav>Link home nav</nav>

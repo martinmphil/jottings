@@ -2,15 +2,21 @@ import React from "react";
 
 interface Props {
   scenarioText: string;
-  optText1: string;
-  optText2: string;
-  optText3: string;
-  optText4: string;
+  optTextA: string;
+  optTextB: string;
+  optTextC: string;
+  optTextD: string;
   submitHandling: () => void;
-  bestOpt1: () => void;
-  bestOpt2: () => void;
-  bestOpt3: () => void;
-  bestOpt4: () => void;
+  bestOptA: () => void;
+  bestOptB: () => void;
+  bestOptC: () => void;
+  bestOptD: () => void;
+  worstOptA: () => void;
+  worstOptB: () => void;
+  worstOptC: () => void;
+  worstOptD: () => void;
+  best: number;
+  worst: number;
 }
 
 const Question: React.FC<Props> = props => {
@@ -23,24 +29,25 @@ const Question: React.FC<Props> = props => {
 
       <hr />
 
-      <div id="answerOption1" className="answer-option">
+      <div id="answerOptionA" className="answer-option">
         <button
           type="button"
-          id="bestOpt1"
+          id="bestOptA"
           className="answer-button best-button"
-          aria-label="Option 1 is best"
-          onClick={props.bestOpt1}
+          aria-label="Option A is best"
+          onClick={props.bestOptA}
         >
           Best
         </button>
-        <span id="optText1" className="option-text" aria-label="Option 1">
-          {props.optText1}
+        <span id="optTextA" className="option-text" aria-label="Option A">
+          {props.optTextA}
         </span>
         <button
           type="button"
-          id="worstOpt1"
+          id="worstOptA"
           className="answer-button worst-button"
-          aria-label="Option 1 is worst"
+          aria-label="Option A is worst"
+          onClick={props.worstOptA}
         >
           Worst
         </button>
@@ -48,24 +55,25 @@ const Question: React.FC<Props> = props => {
 
       <hr />
 
-      <div id="answerOption2" className="answer-option">
+      <div id="answerOptionB" className="answer-option">
         <button
           type="button"
-          id="bestOpt2"
+          id="bestOptB"
           className="answer-button best-button"
-          aria-label="Option 2 is best"
-          onClick={props.bestOpt2}
+          aria-label="Option B is best"
+          onClick={props.bestOptB}
         >
           Best
         </button>
-        <span id="optText2" className="option-text" aria-label="Option 2">
-          {props.optText2}
+        <span id="optTextB" className="option-text" aria-label="Option B">
+          {props.optTextB}
         </span>
         <button
           type="button"
-          id="worstOpt2"
+          id="worstOptB"
           className="answer-button worst-button"
-          aria-label="Option 2 is worst"
+          aria-label="Option B is worst"
+          onClick={props.worstOptB}
         >
           Worst
         </button>
@@ -73,24 +81,25 @@ const Question: React.FC<Props> = props => {
 
       <hr />
 
-      <div id="answerOption3" className="answer-option">
+      <div id="answerOptionC" className="answer-option">
         <button
           type="button"
-          id="bestOpt3"
+          id="bestOptC"
           className="answer-button best-button"
-          aria-label="Option 3 is best"
-          onClick={props.bestOpt4}
+          aria-label="Option C is best"
+          onClick={props.bestOptC}
         >
           Best
         </button>
-        <span id="optText3" className="option-text" aria-label="Option 3">
-          {props.optText3}
+        <span id="optTextC" className="option-text" aria-label="Option C">
+          {props.optTextC}
         </span>
         <button
           type="button"
-          id="worstOpt3"
+          id="worstOptC"
           className="answer-button worst-button"
-          aria-label="Option 3 is worst"
+          aria-label="Option C is worst"
+          onClick={props.worstOptC}
         >
           Worst
         </button>
@@ -98,24 +107,25 @@ const Question: React.FC<Props> = props => {
 
       <hr />
 
-      <div id="answerOption4" className="answer-option">
+      <div id="answerOptionD" className="answer-option">
         <button
           type="button"
-          id="bestOpt4"
+          id="bestOptD"
           className="answer-button best-button"
-          aria-label="Option 4 is best"
-          onClick={props.bestOpt4}
+          aria-label="Option D is best"
+          onClick={props.bestOptD}
         >
           Best
         </button>
-        <span id="optText4" className="option-text" aria-label="Option 4">
-          {props.optText4}
+        <span id="optTextD" className="option-text" aria-label="Option D">
+          {props.optTextD}
         </span>
         <button
           type="button"
-          id="worstOpt4"
+          id="worstOptd"
           className="answer-button worst-button"
-          aria-label="Option 4 is worst"
+          aria-label="Option D is worst"
+          onClick={props.worstOptD}
         >
           Worst
         </button>

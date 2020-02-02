@@ -18,17 +18,20 @@ afterEach(() => {
   container = null;
 });
 
-it("renders with question and answer text", () => {
+test("candidates see question text", () => {
   act(() => {
     render(
       <Question
         scenarioText={SampleQuestionText.scenarioText}
-        optText1={SampleQuestionText.optText1}
-        optText2={SampleQuestionText.optText2}
-        optText3={SampleQuestionText.optText3}
-        optText4={SampleQuestionText.optText4}
+        optTextA={SampleQuestionText.optTextA}
+        optTextB={SampleQuestionText.optTextB}
+        optTextC={SampleQuestionText.optTextC}
+        optTextD={SampleQuestionText.optTextD}
         submitHandling={jest.fn()}
-        bestOpt1={jest.fn()}
+        bestOptA={jest.fn()}
+        bestOptB={jest.fn()}
+        bestOptC={jest.fn()}
+        bestOptD={jest.fn()}
       />,
       container
     );
@@ -36,16 +39,16 @@ it("renders with question and answer text", () => {
   expect(container.querySelector("#scenarioText").textContent).toBe(
     SampleQuestionText.scenarioText
   );
-  expect(container.querySelector("#optText1").textContent).toBe(
-    SampleQuestionText.optText1
+  expect(container.querySelector("#optTextA").textContent).toBe(
+    SampleQuestionText.optTextA
   );
-  expect(container.querySelector("#optText2").textContent).toBe(
-    SampleQuestionText.optText2
+  expect(container.querySelector("#optTextB").textContent).toBe(
+    SampleQuestionText.optTextB
   );
-  expect(container.querySelector("#optText3").textContent).toBe(
-    SampleQuestionText.optText3
+  expect(container.querySelector("#optTextC").textContent).toBe(
+    SampleQuestionText.optTextC
   );
-  expect(container.querySelector("#optText4").textContent).toBe(
-    SampleQuestionText.optText4
+  expect(container.querySelector("#optTextD").textContent).toBe(
+    SampleQuestionText.optTextD
   );
 });
