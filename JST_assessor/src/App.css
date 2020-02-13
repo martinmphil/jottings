@@ -1,0 +1,28 @@
+.App {
+  font-family: serif;
+}
+
+h1,
+h2 {
+  font-family: sans-serif;
+}
+
+h2 {
+  font-size: 120%;
+}
+
+.exam-number-input {
+  margin: 1em;
+}
+
+#downloadButton {
+  margin: 0.6em;
+  padding: 0.2em;
+}
+
+/* introduce magins at widths > 20em */
+@media only screen and (min-width: 20em) {
+  .App {
+    margin: 1em;
+  }
+}
