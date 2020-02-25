@@ -102,17 +102,17 @@ const App: React.FC = () => {
       // (iii) Best option selected incorrectly
       // (iv) Worst option selected incorrectly
       // (v) Not applicable or not answered (na)
-      // NB scenarios where selecting worst option is not scored should use an idealAnswer argument where worst=0.
+      // NB scenarios where selecting worst option is not scored means markingScheme contains only {best:n}.
       const optionArray = [1, 2, 3, 4].map(x => {
         if (x === idealAnswer.best && x === candidateAnswer.best) {
-          return "1 Best";
+          return "1";
         } else if (x === idealAnswer.worst && x === candidateAnswer.worst) {
-          return "1 Worst";
-        } else if (x === candidateAnswer.best && idealAnswer.worst !== 0) {
-          return "0 Best";
-        } else if (x === candidateAnswer.worst && idealAnswer.worst !== 0) {
-          return "0 Worst";
-        } else return "na";
+          return "1";
+        } else if (x === candidateAnswer.best && idealAnswer.best) {
+          return "0";
+        } else if (x === candidateAnswer.worst && idealAnswer.worst) {
+          return "0";
+        } else return "";
       });
 
       qResult.a = optionArray[0];
@@ -123,6 +123,7 @@ const App: React.FC = () => {
       qResult.ip = candidateAnswer.ip;
 
       return qResult;
+      // End of markQuestion()
     };
 
     //
@@ -151,9 +152,9 @@ const App: React.FC = () => {
 
           const highestAvailableScore = markingScheme
             .map(x => {
-              if (x.best > 0 && x.worst > 0) {
+              if (x.best && x.worst) {
                 return 2;
-              } else if (x.best > 0 || x.worst > 0) {
+              } else if (x.best || x.worst) {
                 return 1;
               } else {
                 return 0;
@@ -273,10 +274,9 @@ const App: React.FC = () => {
           <caption>Exam {examId} results</caption>
           <tbody>
             <tr>
-              <th scope="col">Total_score</th>
+              <th scope="col">Score</th>
               <th scope="col">Name</th>
               <th scope="col">E-mail</th>
-              <th scope="col">Candidate_id</th>
             </tr>
             {examReport.map(x => {
               return (
@@ -284,7 +284,6 @@ const App: React.FC = () => {
                   <td>{x.totalScore}</td>
                   <td>{x.name}</td>
                   <td>{x.email}</td>
-                  <td>{x.candidateId}</td>
                 </tr>
               );
             })}
