@@ -7,6 +7,8 @@ const App: React.FC = () => {
   const [questionNumber, setQuestionNumber] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(false);
+  const [idealBest, setIdealBest] = useState(0);
+  const [idealWorst, setIdealWorst] = useState(0);
 
   const createExam = () => {
     setExamId(888);
@@ -41,13 +43,39 @@ const App: React.FC = () => {
     }
   };
 
-  const submitQuestionNbr = () => {
+  const submitQuestionNbr = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     // NB if exam fully loaded, then selecting question number could be reactive.
     alert("you submitted a question number");
   };
 
-  const submitQuestion = () => {
-    alert("processing your inputted text");
+  const selectingIdealBestOption = (
+    event: React.FormEvent<HTMLInputElement>
+  ) => {
+    let x = parseInt(event.currentTarget.value);
+    if (Number.isInteger(x)) {
+      setIdealBest(x);
+    }
+  };
+
+  const selectingIdealWorstOption = (
+    event: React.FormEvent<HTMLInputElement>
+  ) => {
+    let x = parseInt(event.currentTarget.value);
+    if (Number.isInteger(x)) {
+      setIdealWorst(x);
+    }
+  };
+
+  const submitQuestion = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // Test for differing values as ideal best and ideal worst options.
+    // unless both remain unset.
+    if (idealBest === idealWorst && idealBest > 0) {
+      alert("Please select options for Best and Worst that differ.");
+    } else {
+      alert("processing your inputted text");
+    }
   };
 
   return (
@@ -154,6 +182,95 @@ const App: React.FC = () => {
                 defaultValue={SampleDataForSJT.questions[1].answers[3]}
               ></textarea>
             </fieldset>
+
+            <fieldset>
+              <legend>Select ideal Best option.</legend>
+              <p>
+                <input
+                  type="radio"
+                  id="bestOptA"
+                  name="best"
+                  value="1"
+                  onChange={selectingIdealBestOption}
+                />
+                <label htmlFor="bestOptA">Option A as Best</label>
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  id="bestOptB"
+                  name="best"
+                  value="2"
+                  onChange={selectingIdealBestOption}
+                />
+                <label htmlFor="bestOptB">Option B as Best</label>
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  id="bestOptC"
+                  name="best"
+                  value="3"
+                  onChange={selectingIdealBestOption}
+                />
+                <label htmlFor="bestOptC">Option C as Best</label>
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  id="bestOptD"
+                  name="best"
+                  value="4"
+                  onChange={selectingIdealBestOption}
+                />
+                <label htmlFor="bestOptD">Option D as Best</label>
+              </p>
+            </fieldset>
+
+            <fieldset>
+              <legend>Select ideal Worst option.</legend>
+              <p>
+                <input
+                  type="radio"
+                  id="worstOptA"
+                  name="worst"
+                  value="1"
+                  onChange={selectingIdealWorstOption}
+                />
+                <label htmlFor="worstOptA">Option A as Worst</label>
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  id="worstOptB"
+                  name="worst"
+                  value="2"
+                  onChange={selectingIdealWorstOption}
+                />
+                <label htmlFor="worstOptB">Option B as Worst</label>
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  id="worstOptC"
+                  name="worst"
+                  value="3"
+                  onChange={selectingIdealWorstOption}
+                />
+                <label htmlFor="worstOptC">Option C as Worst</label>
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  id="worstOptD"
+                  name="worst"
+                  value="4"
+                  onChange={selectingIdealWorstOption}
+                />
+                <label htmlFor="worstOptD">Option D as Worst</label>
+              </p>
+            </fieldset>
+
             <input type="submit" value="Submit question" />
           </form>
         </main>
