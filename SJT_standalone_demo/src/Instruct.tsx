@@ -1,18 +1,13 @@
 import React from "react";
 
-interface Props {
-  candidateName: string;
-}
-
-const Instruct: React.FC<Props> = props => {
+const Instruct: React.FC = () => {
   return (
     <header>
       <h1>Instructions</h1>
       <p>
-        <em>{props.candidateName}</em>, please select one of the buttons on the
-        left to pick your "best" (most effective) response, AND select one of
-        the buttons on the right to pick your "worst" (least effective)
-        response.
+        Please select one of the buttons on the left to pick your "best" (most
+        effective) response, AND select one of the buttons on the right to pick
+        your "worst" (least effective) response.
       </p>
       <p>
         Pressing the same Best or Worst button a second time deselects your
