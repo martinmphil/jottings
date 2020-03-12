@@ -20,7 +20,7 @@ interface QuestionText {
 
 const q1Text: QuestionText = {
   scenarioText:
-    "You have took a call from a customer praising the helpful service offered by a colleague in your team. Do you:",
+    "You take a call from a customer praising the helpful service offered by a colleague in your team. Do you:",
   optTextA: "Tell your colleague about the feedback on a one-to-one basis.",
   optTextB: "Inform your team leader and let them relay the praise personally.",
   optTextC:
@@ -31,13 +31,13 @@ const q1Text: QuestionText = {
 
 const q2Text: QuestionText = {
   scenarioText:
-    "You are working on a task for a Senior Manager that is due to be completed today. Another colleague asks you to update a spreadsheet urgently. This will take three hours. However, you only have an hour spare today if you are going to complete the task for the Senior Manager by the deadline. Therefore, updating the spreadsheet will delay the task you are working on for the Senior Manager. Do you:",
+    "You are working on a task for a senior manager that is due to be completed today. Another colleague asks you to update a spreadsheet urgently. This will take three hours. However, you only have an hour spare today if you are going to complete the task for the senior manager by the deadline. Therefore, updating the spreadsheet will delay the task you are working on for the senior manager. Do you:",
   optTextA:
     "Ask your colleague to contact your manager as you’re already busy on another task and perhaps your manager could task someone else to help.",
   optTextB:
-    "Update the spreadsheet for your colleague as it is urgent and then move to the task for the Senior Manager as soon as you finish.",
+    "Update the spreadsheet for your colleague as it is urgent and then move to the task for the senior manager as soon as you finish.",
   optTextC:
-    "Talk to the Senior Manager and ask if you can extend their deadline as you need to complete an urgent task for another colleague.",
+    "Talk to the senior manager and ask if you can extend their deadline as you need to complete an urgent task for another colleague.",
   optTextD:
     "Explain to your colleague that you can help, but you only have an hour available today so you will not be able to complete all of the updates today."
 };
