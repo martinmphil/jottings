@@ -53,13 +53,14 @@ const App: React.FC = () => {
     }
   };
 
-  const submitHandling = () => {
+  const submitHandling = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
     if (best === -1 || worst === -1) {
       alert("You MUST select one 'Best' option AND one 'Worst' option");
     } else {
       let idealAnswer = {
         best: SampleExam.scenarios[questionNumber - 1].best,
-        worst: SampleExam.scenarios[questionNumber - 1].worst
+        worst: SampleExam.scenarios[questionNumber - 1].worst,
       };
       let candidateSubmission = { best, worst };
       gradeScenarioSubmission(idealAnswer, candidateSubmission);
@@ -77,7 +78,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       {showQuestion && (
-        <article>
+        <article className="wrapper">
           <Instruct />
           <Progress examLength={examLength} questionNumber={questionNumber} />
           <Question
