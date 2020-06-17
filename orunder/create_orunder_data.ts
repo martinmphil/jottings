@@ -5,7 +5,7 @@
 // t = target number triggering success if any player rolls equal or under
 // f = force-ratio
 
-interface WhatDoICallAnAtom {
+interface Encounter {
   n: number;
   d: number;
   t: number;
