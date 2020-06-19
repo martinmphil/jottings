@@ -12,45 +12,55 @@
 //   f: number;
 // }
 
-// let orunder_data = { n: 0, d: 0, t: 0, f: 0 };
-
 // const nArr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const nArr: number[] = [1, 2];
+const nArr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-// const polyhedrals: number[] = [6, 8, 12, 20, 100];
-const dice: number[] = [6, 8, 12];
+// const dice: number[] = [6, 8, 12, 20, 100];
+const dice: number[] = [6, 8, 12, 20, 100];
 
+// creates array of target numbers from one to d minus one
 const targetArr = (d: number) => {
   return Array.from({ length: d - 1 }, (_, i) => i + 1);
 };
 
-const force_ratio = (probability: number) => {
-  return probability;
+// calculates force-ratio from probability
+const force_ratio = (prob: number) => {
+  let f: number;
+  if (prob > 0.995) {
+    // overwhelming 100:1 favourite
+    f = 100;
+  } else if (prob > 0.75) {
+    f = 0.5 * (1 / (1 - prob));
+  } else if (prob > 0.5) {
+    f = 4 * prob - 1;
+  } else {
+    f = 2 * prob;
+  }
+  return parseFloat(f.toPrecision(4));
 };
 
 // creates Orunder_data element for one encounter
 const encounter = (n: number, d: number, t: number) => {
-  const idealProb = (d / t) ** n;
-  const realProb = parseFloat(idealProb.toPrecision(4));
-  const f = force_ratio(realProb);
+  const prob = 1 - (1 - t / d) ** n;
+  const f = force_ratio(parseFloat(prob.toPrecision(4)));
   return { n, d, t, f };
 };
 
-// Generates all dice combinations for a specific number of players
+// generates all dice combinations for a specific number of players
 const partyArr = (n: number, dice: number[]) => {
   const everyCombo = dice.flatMap((d) => {
     return targetArr(d).map((t) => {
       return encounter(n, d, t);
     });
   });
-  // removes duplicates
-  const result = everyCombo.filter((x, i, arr) => {
+  // removes duplicate force-ratios "f"
+  const results = everyCombo.filter((x, i, arr) => {
     return arr.map((y) => y.f).indexOf(x.f) === i;
   });
-  return result;
+  return results;
 };
 
-// Generates unique data for range of player numbers
+// generates unique data for full range of player numbers
 const orunderData = nArr.flatMap((n) => {
   return partyArr(n, dice);
 });
