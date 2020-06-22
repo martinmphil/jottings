@@ -5,12 +5,12 @@
 // t = target number triggering success if any player rolls equal or under
 // f = force-ratio
 
-// interface Encounter {
-//   n: number;
-//   d: number;
-//   t: number;
-//   f: number;
-// }
+interface Encounter {
+  n: number;
+  d: number;
+  t: number;
+  f: number;
+}
 
 // const nArr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const nArr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -40,14 +40,14 @@ const force_ratio = (prob: number) => {
 };
 
 // creates Orunder_data element for one encounter
-const encounter = (n: number, d: number, t: number) => {
+const encounter = (n: number, d: number, t: number): Encounter => {
   const prob = 1 - (1 - t / d) ** n;
   const f = force_ratio(parseFloat(prob.toPrecision(4)));
   return { n, d, t, f };
 };
 
 // generates all dice combinations for a specific number of players
-const partyArr = (n: number, dice: number[]) => {
+const partyArr = (n: number, dice: number[]): Encounter[] => {
   const everyCombo = dice.flatMap((d) => {
     return targetArr(d).map((t) => {
       return encounter(n, d, t);
@@ -61,7 +61,7 @@ const partyArr = (n: number, dice: number[]) => {
 };
 
 // generates unique data for full range of player numbers
-const orunderData = nArr.flatMap((n) => {
+const orunderData: Encounter[] = nArr.flatMap((n) => {
   return partyArr(n, dice);
 });
 
