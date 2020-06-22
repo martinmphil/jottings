@@ -1,0 +1,32 @@
+/* width & height includes padding + border */
+* {
+  box-sizing: border-box;
+}
+
+header {
+  text-align: center;
+}
+
+.playerNbrs {
+  padding: 2em;
+}
+
+.playerNbrs > label {
+  display: inline-block;
+  background-color: lightgreen;
+  margin: 1em;
+  padding: 0.8em;
+}
+
+@media only screen and (min-width: 24em) {
+  body {
+    margin: 1em;
+  }
+}
+@media only screen and (min-width: 52em) {
+  body {
+    max-width: 50em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
