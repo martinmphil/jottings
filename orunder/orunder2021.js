@@ -1,18 +1,11 @@
-var reset = function () {
-    document.getElementById("n3").setAttribute("checked", "true");
-    // TO REMOVE
-    console.log("resetting");
+var instruct = function (n, us, them) {
+    if (n === void 0) { n = "10"; }
+    if (us === void 0) { us = "10"; }
+    if (them === void 0) { them = "10"; }
+    return "Po roll " + n + ". Also us is " + us + " and them is " + them + ".";
 };
-reset();
-var main = function () {
-    // const x = document.forms.playerNbrs
-    // const n = document.querySelector('input[name="playerNbrs"]:checked');
-    var n = document
-        .querySelector('input[name="playerNbrs"]:checked')
-        .getAttribute("value");
-    console.log(n);
-    // debugger;
-    document.getElementById("edict").innerText = "Po roll " + n;
+// The reset button requires this fn to reset the output html tag.
+var setup = function () {
+    document.querySelector("output").innerText = "Roll 3d20 =orUnder 4";
 };
-main();
-document.querySelector("form").addEventListener("change", main);
+setup();
