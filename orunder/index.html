@@ -24,7 +24,16 @@
         onchange="edict.value=instruct(
           elements['playerNbrs'].value, 
           usInput.value, 
-          themInput.value
+          themInput.value,
+          advUsInput.value,
+          advThemInput.value
+        )"
+        oninput="edict.value=instruct(
+          elements['playerNbrs'].value, 
+          usInput.value, 
+          themInput.value,
+          advUsInput.value,
+          advThemInput.value
         )"
       >
         <input type="reset" />
@@ -60,24 +69,111 @@
         </fieldset>
 
         <fieldset>
-          <legend>Us</legend>
-          <input type="number" name="usInput" id="usInput" min="0" value="10" />
-          <button type="button">+</button><button type="button">-</button>
+          <legend>We</legend>
+
+          <div class="we-or-they-inputs">
+            <label for="usInput">
+              Us
+              <input
+                type="number"
+                name="usInput"
+                id="usInput"
+                min="0"
+                value="10"
+              />
+            </label>
+            <button id="plus1Us" type="button" aria-label="add one to us">
+              +
+            </button>
+            <button id="minus1Us" type="button" aria-label="minus one from us">
+              -
+            </button>
+          </div>
+
+          <div class="advantage-inputs">
+            <label for="advUsInput">
+              Advantages
+              <input
+                type="number"
+                name="advUsInput"
+                id="advUsInput"
+                value="0"
+              />
+            </label>
+            <button
+              id="plus1AdvUs"
+              type="button"
+              aria-label="add one advantage to us"
+            >
+              +
+            </button>
+            <button
+              id="minus1AdvUs"
+              type="button"
+              aria-label="minus one advantage from us"
+            >
+              -
+            </button>
+          </div>
         </fieldset>
 
         <fieldset>
-          <legend>Them</legend>
-          <input
-            type="number"
-            name="themInput"
-            id="themInput"
-            min="0"
-            value="10"
-          />
-          <button type="button">+</button><button type="button">-</button>
+          <legend>They</legend>
+
+          <div class="we-or-they-inputs">
+            <label for="themInput">
+              Them
+              <input
+                type="number"
+                name="themInput"
+                id="themInput"
+                min="0"
+                value="10"
+              />
+            </label>
+            <button id="plus1Them" type="button" aria-label="add one to them">
+              +
+            </button>
+            <button
+              id="minus1Them"
+              type="button"
+              aria-label="minus one from them"
+            >
+              -
+            </button>
+          </div>
+
+          <div class="advantage-inputs">
+            <label for="advThemInput">
+              Advantages
+              <input
+                type="number"
+                name="advThemInput"
+                id="advThemInput"
+                value="0"
+              />
+            </label>
+            <button
+              id="plus1AdvThem"
+              type="button"
+              aria-label="add one advantage to them"
+            >
+              +
+            </button>
+            <button
+              id="minus1AdvThem"
+              type="button"
+              aria-label="minus one advantage from them"
+            >
+              -
+            </button>
+          </div>
         </fieldset>
 
-        <output name="edict" for="playerNbrs, usInput, themInput"></output>
+        <output
+          name="edict"
+          for="playerNbrs, usInput, themInput, advUs, advThem"
+        ></output>
       </form>
     </main>
     <script src="orunder2021.js"></script>
