@@ -15,12 +15,28 @@
   <body>
     <noscript>Please enable JavaScript to run this app.</noscript>
     <header>
-      Orunder: the whole party succeeds if anyone rolls equal or-under their
-      target number.
+      Rules
       <hr />
     </header>
     <main>
-      <button onclick="reset()" type="button" aria-label="reset app">
+      <hgroup>
+        <h1>Orunder:</h1>
+        <h2>
+          the whole party succeeds if anyone rolls equal or-under the target
+          number
+        </h2>
+      </hgroup>
+      <div>
+        <input type="checkbox" name="d100Input" id="d100Input" value="d100" />
+        <label for="d100Input"> d100 </label>
+      </div>
+
+      <button
+        onclick="reset()"
+        type="button"
+        class="resetBttn"
+        aria-label="reset app"
+      >
         Reset
       </button>
       <form onchange="nSet(elements['playerNbrs'].value)">
