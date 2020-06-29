@@ -18,6 +18,29 @@ header {
   padding: 0.8em;
 }
 
+h1,
+h2 {
+  display: inline;
+  font-weight: 100;
+}
+h1 {
+  font-size: 120%;
+}
+h2 {
+  font-size: 100%;
+}
+
+footer {
+  text-align: center;
+  margin-top: 1em;
+}
+#precisUs {
+  color: blue;
+}
+#precisThem {
+  color: red;
+}
+
 @media only screen and (min-width: 24em) {
   body {
     margin: 1em;
