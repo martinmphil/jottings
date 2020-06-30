@@ -31,8 +31,8 @@ var instruct = function (n, us, them, advUs, advThem, d100) {
     var encounter = nData.filter(function (x) {
         return x.f === nearestFR;
     })[0];
-    var rule = encounter.t === 1 ? "=exactly" : "=orUnder";
-    return "<div>" + n + "d" + encounter.d + "<small> " + rule + " </small>" + encounter.t + "<div>";
+    // const rule = encounter.t === 1 ? "=exactly" : "=orUnder";
+    return n + "d" + encounter.d + "<small> =orUnder\" </small>" + encounter.t;
 };
 var state = {
     n: 3,
