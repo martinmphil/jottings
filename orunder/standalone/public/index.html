@@ -15,17 +15,15 @@
   <body>
     <noscript>Please enable JavaScript to run this app.</noscript>
     <header>
-      Rules
-      <hr />
-    </header>
-    <main>
       <hgroup>
-        <h1>Orunder:</h1>
+        <h1><a href="http://www.dancewith.co.uk/rpg/">Orunder</a></h1>
         <h2>
-          the whole party succeeds if anyone rolls equal or-under the target
+          - the whole party succeeds if anyone rolls equal or-under a target
           number
         </h2>
       </hgroup>
+    </header>
+    <main>
       <div>
         <input type="checkbox" name="d100Input" id="d100Input" value="d100" />
         <label for="d100Input"> d100 </label>
@@ -39,9 +37,10 @@
       >
         Reset
       </button>
+
       <form onchange="nSet(elements['playerNbrs'].value)">
         <fieldset class="playerNbrs">
-          <legend>Number of players</legend>
+          <p>Please select number of players.</p>
           <label for="n1">
             1 <input type="radio" id="n1" name="playerNbrs" value="1" />
           </label>

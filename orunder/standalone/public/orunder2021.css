@@ -3,23 +3,14 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: rgb(16, 16, 16);
+  color: white;
+}
+
 header {
   text-align: center;
-}
-
-.resetBttn {
-  color: red;
-}
-
-.playerNbrs {
-  padding: 2em;
-}
-
-.playerNbrs > label {
-  display: inline-block;
-  background-color: lightgreen;
-  margin: 1em;
-  padding: 0.8em;
+  margin-bottom: 1em;
 }
 
 h1,
@@ -33,6 +24,25 @@ h1 {
 }
 h2 {
   font-size: 100%;
+}
+
+h1 > a {
+  color: hsl(51, 100%, 50%);
+}
+
+.resetBttn {
+  color: red;
+}
+
+.playerNbrs {
+  padding: 2em;
+}
+
+.playerNbrs > label {
+  display: inline-block;
+  background-color: hsl(124, 40%, 40%);
+  margin: 1em;
+  padding: 0.8em;
 }
 
 footer {
