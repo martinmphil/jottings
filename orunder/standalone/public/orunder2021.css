@@ -30,6 +30,10 @@ h1 > a {
   color: hsl(50, 100%, 50%);
 }
 
+button {
+  cursor: pointer;
+}
+
 .d100AndReset {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -53,12 +57,30 @@ h1 > a {
 .playerNbrs > label {
   display: inline-block;
   background-color: hsl(124, 40%, 40%);
-  margin: 1em;
-  padding: 0.8em;
+  font-size: 120%;
+  cursor: pointer;
+  margin: 0.2em 0.2em;
+  border: solid;
+  border-top-color: currentcolor;
+  border-right-color: currentcolor;
+  border-bottom-color: currentcolor;
+  border-left-color: currentcolor;
+  border-color: rgba(0, 0, 0, 0.4);
+  border-radius: 0.4em;
+  padding: 0.6em 1em;
+}
+
+/* work in progress */
+
+.playerNbrs input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
 }
 
 input[type="radio"]:checked + label {
   color: red;
+  background-color: white;
 }
 
 .usFieldset {
