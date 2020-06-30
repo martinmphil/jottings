@@ -41,9 +41,9 @@ const instruct = (
     return x.f === nearestFR;
   })[0];
 
-  // const rule = encounter.t === 1 ? "=exactly" : "=orUnder";
+  const rule = encounter.t === 1 ? "=exactly" : "=orUnder";
 
-  return `${n}d${encounter.d}<small> =orUnder" </small>${encounter.t}`;
+  return `<div>${n}d${encounter.d}<small> ${rule} </small>${encounter.t}<div>`;
 };
 
 interface State {
