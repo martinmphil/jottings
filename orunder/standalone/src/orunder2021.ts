@@ -43,7 +43,7 @@ const instruct = (
 
   const rule = encounter.t === 1 ? "=exactly" : "=orUnder";
 
-  return `${n}d${encounter.d}<small> ${rule} </small>${encounter.t}`;
+  return `<div>${n}d${encounter.d}<small> ${rule} </small>${encounter.t}<div>`;
 };
 
 interface State {
