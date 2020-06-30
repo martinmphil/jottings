@@ -19,21 +19,21 @@
       <hgroup>
         <h1><a href="http://www.dancewith.co.uk/rpg/">Orunder</a></h1>
         <h2>
-          - the whole party succeeds if anyone rolls equal or-under a target
+          - the whole party succeeds if anyone rolls equal or-under their target
           number
         </h2>
       </hgroup>
     </header>
 
     <main>
-      <div class="d100_and_reset">
+      <div class="d100AndReset">
         <div>
           <input type="checkbox" name="d100Input" id="d100Input" value="d100" />
           <label for="d100Input">
             d100
           </label>
         </div>
-        <div class="reset_button_container">
+        <div class="resetButtonContainer">
           <button onclick="reset()" type="button" aria-label="reset app">
             Reset
           </button>
@@ -42,7 +42,7 @@
 
       <form onchange="nSet(elements['playerNbrs'].value)">
         <fieldset class="playerNbrs">
-          <p>Please select number of players.</p>
+          <legend>Select number of players</legend>
           <label for="n1">
             1 <input type="radio" id="n1" name="playerNbrs" value="1" />
           </label>
@@ -75,7 +75,7 @@
       </form>
 
       <form class="both_us_and_them_form">
-        <fieldset class="us_fieldset">
+        <fieldset class="usFieldset">
           <section class="us_or_them_inputs">
             <h3>Us</h3>
             <button id="minus1Us" type="button" aria-label="minus one from us">
@@ -113,7 +113,7 @@
           </section>
         </fieldset>
 
-        <fieldset class="them_fieldset">
+        <fieldset class="themFieldset">
           <section class="us_or_them_inputs">
             <h3>Them</h3>
             <button
