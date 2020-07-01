@@ -43,14 +43,13 @@ button {
   justify-self: end;
 }
 
-/* Number of players section */
+/* Green */
 .playerNbrsFieldset {
   border: none;
+  text-align: center;
 }
 .flexboxWrapper {
   display: flex;
-  display: -webkit-flex; /* Safari */
-  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
   justify-content: center;
   flex-wrap: wrap-reverse;
 }
@@ -74,13 +73,7 @@ input[type="radio"]:checked + label {
   background-color: white;
 }
 
-/* Force input sections */
-
-/* .bothUsAndThemForm {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-} */
-
+/* Both blue and red */
 .bothUsAndThemForm {
   margin: auto;
   text-align: center;
@@ -89,7 +82,8 @@ input[type="radio"]:checked + label {
   display: inline-block;
   padding: 0.5em;
   margin: auto;
-  max-width: 24em;
+  border-color: rgb(64, 64, 64);
+  max-width: 18em;
 }
 .bothUsAndThemForm button {
   margin: 0.2em 0.2em;
@@ -98,6 +92,19 @@ input[type="radio"]:checked + label {
   border-color: rgba(0, 0, 0, 0.4);
   border-radius: 0.4em;
 }
+.bothUsAndThemForm h3,
+.bothUsAndThemForm h4 {
+  font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0em;
+  margin-bottom: 0.2em;
+}
+.bothUsAndThemForm h3 {
+  text-align: left;
+}
+.bothUsAndThemForm h4 {
+  font-size: 90%;
+}
 .usOrThemInputs input {
   font-size: 150%;
   width: 100%;
@@ -105,6 +112,25 @@ input[type="radio"]:checked + label {
 }
 .usOrThemInputs button {
   font-size: 100%;
+  background-color: white;
+}
+#minus1Us,
+#minus1Them {
+  float: left;
+  margin-left: 0em;
+}
+#plus1Us,
+#plus1Them {
+  float: right;
+  margin-right: 0em;
+}
+.bothAdvantageInputSections {
+  clear: both;
+  padding-bottom: 0.1em;
+}
+.bothAdvantageInputSections input {
+  font-size: 100%;
+  max-width: 4em;
 }
 .usFieldset {
   background-color: hsl(240, 100%, 20%);
@@ -112,10 +138,25 @@ input[type="radio"]:checked + label {
 .themFieldset {
   background-color: hsl(340, 100%, 15%);
 }
+.advantageUsSection h4 {
+  color: hsl(190, 100%, 70%);
+}
+.advantageUsSection button,
+.advantageUsSection input {
+  background-color: hsl(190, 100%, 70%);
+}
+.advantageThemSection h4 {
+  color: hsl(0, 80%, 70%);
+}
+.advantageThemSection button,
+.advantageThemSection input {
+  background-color: hsl(0, 80%, 70%);
+}
 
 output > div {
   text-align: center;
-  font-size: larger;
+  font-size: 200%;
+  margin-top: 0.2rem;
 }
 
 footer {
