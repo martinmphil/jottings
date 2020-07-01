@@ -41,40 +41,42 @@
       </div>
 
       <form onchange="nSet(elements['playerNbrs'].value)">
-        <fieldset class="playerNbrs">
-          <legend>Select number of players</legend>
-          <input type="radio" id="n1" name="playerNbrs" value="1" />
-          <label for="n1"> 1 </label>
+        <fieldset class="playerNbrsFieldset">
+          <p>Please select number of players.</p>
+          <div class="flexboxWrapper">
+            <input type="radio" id="n1" name="playerNbrs" value="1" />
+            <label for="n1"> 1 </label>
 
-          <input type="radio" id="n2" name="playerNbrs" value="2" />
-          <label for="n2"> 2 </label>
+            <input type="radio" id="n2" name="playerNbrs" value="2" />
+            <label for="n2"> 2 </label>
 
-          <input type="radio" id="n3" name="playerNbrs" value="3" checked />
-          <label for="n3"> 3 </label>
+            <input type="radio" id="n3" name="playerNbrs" value="3" checked />
+            <label for="n3"> 3 </label>
 
-          <input type="radio" id="n4" name="playerNbrs" value="4" />
-          <label for="n4"> 4 </label>
+            <input type="radio" id="n4" name="playerNbrs" value="4" />
+            <label for="n4"> 4 </label>
 
-          <input type="radio" id="n5" name="playerNbrs" value="5" />
-          <label for="n5"> 5 </label>
+            <input type="radio" id="n5" name="playerNbrs" value="5" />
+            <label for="n5"> 5 </label>
 
-          <input type="radio" id="n6" name="playerNbrs" value="6" />
-          <label for="n6"> 6 </label>
+            <input type="radio" id="n6" name="playerNbrs" value="6" />
+            <label for="n6"> 6 </label>
 
-          <input type="radio" id="n7" name="playerNbrs" value="7" />
-          <label for="n7"> 7 </label>
+            <input type="radio" id="n7" name="playerNbrs" value="7" />
+            <label for="n7"> 7 </label>
 
-          <input type="radio" id="n8" name="playerNbrs" value="8" />
-          <label for="n8"> 8 </label>
+            <input type="radio" id="n8" name="playerNbrs" value="8" />
+            <label for="n8"> 8 </label>
 
-          <input type="radio" id="n9" name="playerNbrs" value="9" />
-          <label for="n9"> 9 </label>
+            <input type="radio" id="n9" name="playerNbrs" value="9" />
+            <label for="n9"> 9 </label>
+          </div>
         </fieldset>
       </form>
 
-      <form class="both_us_and_them_form">
+      <form class="bothUsAndThemForm">
         <fieldset class="usFieldset">
-          <section class="us_or_them_inputs">
+          <section class="usOrThemInputs">
             <h3>Us</h3>
             <button id="minus1Us" type="button" aria-label="minus one from us">
               -
@@ -112,7 +114,7 @@
         </fieldset>
 
         <fieldset class="themFieldset">
-          <section class="us_or_them_inputs">
+          <section class="usOrThemInputs">
             <h3>Them</h3>
             <button
               id="minus1Them"
