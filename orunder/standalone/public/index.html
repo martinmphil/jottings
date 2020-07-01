@@ -62,14 +62,14 @@
             <input type="radio" id="n6" name="playerNbrs" value="6" />
             <label for="n6"> 6 </label>
 
-            <input type="radio" id="n7" name="playerNbrs" value="7" />
+            <!-- <input type="radio" id="n7" name="playerNbrs" value="7" />
             <label for="n7"> 7 </label>
 
             <input type="radio" id="n8" name="playerNbrs" value="8" />
             <label for="n8"> 8 </label>
 
             <input type="radio" id="n9" name="playerNbrs" value="9" />
-            <label for="n9"> 9 </label>
+            <label for="n9"> 9 </label> -->
           </div>
         </fieldset>
       </form>
@@ -78,9 +78,6 @@
         <fieldset class="usFieldset">
           <section class="usOrThemInputs">
             <h3>Us</h3>
-            <button id="minus1Us" type="button" aria-label="minus one from us">
-              -
-            </button>
             <input
               type="number"
               name="usInput"
@@ -88,12 +85,15 @@
               min="0"
               value="10"
             />
+            <button id="minus1Us" type="button" aria-label="minus one from us">
+              -
+            </button>
             <button id="plus1Us" type="button" aria-label="add one to us">
               +
             </button>
           </section>
 
-          <section class="advantage_inputs">
+          <section class="bothAdvantageInputSections advantageUsSection">
             <h4>Advantages</h4>
             <button
               id="minus1AdvUs"
@@ -116,13 +116,6 @@
         <fieldset class="themFieldset">
           <section class="usOrThemInputs">
             <h3>Them</h3>
-            <button
-              id="minus1Them"
-              type="button"
-              aria-label="minus one from them"
-            >
-              -
-            </button>
             <input
               type="number"
               name="themInput"
@@ -130,12 +123,19 @@
               min="0"
               value="10"
             />
+            <button
+              id="minus1Them"
+              type="button"
+              aria-label="minus one from them"
+            >
+              -
+            </button>
             <button id="plus1Them" type="button" aria-label="add one to them">
               +
             </button>
           </section>
 
-          <section class="advantage_inputs">
+          <section class="bothAdvantageInputSections advantageThemSection">
             <h4>Advantages</h4>
             <button
               id="minus1AdvThem"
