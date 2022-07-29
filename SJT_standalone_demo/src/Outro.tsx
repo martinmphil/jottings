@@ -11,7 +11,7 @@ const Outro: React.FC<Props> = (props) => {
       <br />
       <p>Congratulations, you completed your test. </p>
       <p className="score-board">
-        Your scored {props.score} out of {props.outOf}.
+        You achieved {props.score} out of {props.outOf}.
       </p>
       <p>Thank you and goodbye.</p>
     </main>
