@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom element</title>
+    <script defer src="./webcomp.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <noscript>Please turn on your JavaScript, cheers.</noscript>
+    <main>
+      content
+      <h1>Go</h1>
+      <p>to the top</p>
+      <custom-element
+        ><p slot="named-slot">From DOM to web component.</p></custom-element
+      >
+      <p>below the fold</p>
+    </main>
+
+    <template id="page-template">
+      <style>
+        :host p {
+          font-family: monospace;
+        }
+        :host article {
+          background-color: lightblue;
+          padding: 1rem;
+          width: fit-content;
+          font-family: sans-serif;
+        }
+      </style>
+      <article>
+        <h1 style="font-size: medium">Page ahoy!</h1>
+        <slot name="named-slot"></slot>
+      </article>
+    </template>
+  </body>
+</html>
