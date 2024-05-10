@@ -4,6 +4,9 @@ class BespokeElement extends HTMLElement {
     this.innerHTML = `
     <p>This content comes from a custom HTML element.</p>
     `;
+  }
+
+  connectedCallback() {
     this.style.color = "green";
   }
 }
